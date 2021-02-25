@@ -1,8 +1,8 @@
-﻿namespace Recipes.Data.Models.Base
+﻿namespace Recipes.Data.Common.Base
 {
     using System;
 
-    public interface IEntity
+    public interface IAuditInfo
     {
         DateTime CreatedOn { get; set; }
 

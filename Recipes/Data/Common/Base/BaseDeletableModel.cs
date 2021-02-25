@@ -1,8 +1,8 @@
-﻿namespace Recipes.Data.Models.Base
+﻿namespace Recipes.Data.Common.Base
 {
     using System;
 
-    public class DeletableEntity : Entity, IDeletableEntity
+    public class BaseDeletableModel<TKey> : BaseModel<TKey>, IDeletableEntity
     {
         public bool IsDeleted { get; set; }
 

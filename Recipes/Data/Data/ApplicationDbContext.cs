@@ -1,4 +1,4 @@
-﻿namespace Recipes.Data
+﻿namespace Recipes.Data.Data
 {
     using System;
     using System.Linq;
@@ -10,7 +10,7 @@
     using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Options;
-    using Recipes.Data.Common.Base;
+    using Recipes.Data.Common.BaseModels;
     using Recipes.Data.Models;
 
     public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>

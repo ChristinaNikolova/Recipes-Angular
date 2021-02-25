@@ -4,10 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Recipes.Data;
 
-namespace Recipes.Data.Migrations
+namespace Recipes.Data.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20210225062625_CreateDb")]

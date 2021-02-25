@@ -2,7 +2,7 @@
 {
     using System.Linq;
 
-    using Recipes.Data.Common.Base;
+    using Recipes.Data.Common.BaseModels;
 
     public interface IDeletableEntityRepository<TEntity> : IRepository<TEntity>
         where TEntity : class, IDeletableEntity

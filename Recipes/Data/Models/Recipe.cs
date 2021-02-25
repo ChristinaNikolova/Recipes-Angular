@@ -5,7 +5,7 @@
     using System.ComponentModel.DataAnnotations;
 
     using Recipes.Data.Common;
-    using Recipes.Data.Common.Base;
+    using Recipes.Data.Common.BaseModels;
 
     public class Recipe : BaseDeletableModel<string>
     {

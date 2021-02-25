@@ -1,4 +1,4 @@
-﻿namespace Recipes.Data.Migrations
+﻿namespace Recipes.Data.Data.Migrations
 {
     using System;
 

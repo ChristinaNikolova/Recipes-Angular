@@ -1,9 +1,9 @@
-﻿namespace Recipes.Data
+﻿namespace Recipes.Data.Data
 {
     using System.Linq;
 
     using Microsoft.EntityFrameworkCore;
-    using Recipes.Data.Common.Base;
+    using Recipes.Data.Common.BaseModels;
 
     internal static class EntityIndexesConfiguration
     {

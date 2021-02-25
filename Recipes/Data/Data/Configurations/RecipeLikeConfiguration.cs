@@ -1,4 +1,4 @@
-﻿namespace Recipes.Data.Configurations
+﻿namespace Recipes.Data.Data.Configurations
 {
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;

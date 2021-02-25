@@ -1,4 +1,4 @@
-﻿namespace Recipes.Data.Common.Base
+﻿namespace Recipes.Data.Common.BaseModels
 {
     using System;
     using System.ComponentModel.DataAnnotations;

@@ -17,7 +17,6 @@
         {
             if (!dbContext.Ingredients.Any())
             {
-                var test = Constants.IngredientSeederPath;
                 var ingredientsData = JsonConvert
                     .DeserializeObject<List<IngredientDto>>(File.ReadAllText(Constants.IngredientSeederPath))
                     .ToList();

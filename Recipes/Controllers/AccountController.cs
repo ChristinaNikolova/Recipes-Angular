@@ -46,7 +46,6 @@
         [ProducesDefaultResponseType]
         public async Task<object> Login([FromBody] LoginInputModel model)
         {
-            ;
             var user = this.userManager.Users.SingleOrDefault(r => r.Email == model.Email);
             if (user is null)
             {
@@ -73,52 +72,56 @@
             });
         }
 
-        //[HttpPost]
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
-        //[ProducesDefaultResponseType]
-        //public async Task<object> Register([FromBody] RegisterInputModel model)
-        //{
-        //    var user = this._mapper.Map<ApplicationUser>(model);
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesDefaultResponseType]
+        public async Task<object> Register([FromBody] RegisterInputModel model)
+        {
+            var user = new ApplicationUser()
+            {
+                Email = model.Email,
+                UserName = model.Username,
+            };
 
-        //    if (this.userManager.Users.Any(u => u.Email == model.Email))
-        //    {
-        //        return this.BadRequest(new BadRequestViewModel
-        //        {
-        //            Message = "This e-mail is already taken. Please try with another one.",
-        //        });
-        //    }
+            if (this.userManager.Users.Any(u => u.Email == model.Email))
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = "This e-mail is already taken. Please try with another one.",
+                });
+            }
 
-        //    if (this.userManager.Users.Any(u => u.UserName == model.Username))
-        //    {
-        //        return this.BadRequest(new BadRequestViewModel
-        //        {
-        //            Message = "This username is already taken. Please try with another one.",
-        //        });
-        //    }
+            if (this.userManager.Users.Any(u => u.UserName == model.Username))
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = "This username is already taken. Please try with another one.",
+                });
+            }
 
-        //    var result = await this.userManager.CreateAsync(user, model.Password);
+            var result = await this.userManager.CreateAsync(user, model.Password);
 
-        //    if (result.Succeeded)
-        //    {
-        //        var addToRoleResult = await this.userManager.AddToRoleAsync(user, "User");
-        //        if (addToRoleResult.Succeeded)
-        //        {
-        //            await this.signInManager.SignInAsync(user, false);
+            if (result.Succeeded)
+            {
+                var addToRoleResult = await this.userManager.AddToRoleAsync(user, "User");
+                if (addToRoleResult.Succeeded)
+                {
+                    await this.signInManager.SignInAsync(user, false);
 
-        //            return new AuthenticationViewModel
-        //            {
-        //                Message = "You have successfully registered.",
-        //                Token = GenerateJwtToken(user),
-        //            };
-        //        }
-        //    }
+                    return new AuthenticationViewModel
+                    {
+                        Message = "You have successfully registered.",
+                        Token = this.GenerateJwtToken(user),
+                    };
+                }
+            }
 
-        //    return this.BadRequest(new BadRequestViewModel
-        //    {
-        //        Message = "Something went wrong. Check your form and try again",
-        //    });
-        //}
+            return this.BadRequest(new BadRequestViewModel
+            {
+                Message = "Something went wrong. Check your form and try again",
+            });
+        }
 
         private string GenerateJwtToken(ApplicationUser user)
         {
@@ -139,11 +142,6 @@
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
         }
     }
 }

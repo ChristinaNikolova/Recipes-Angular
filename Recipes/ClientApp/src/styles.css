@@ -11,6 +11,10 @@ code {
 
 .btn-primary {
   color: #fff;
-  background-color: #1b6ec2;
+  background-color: #78C2AD;
   border-color: #1861ac;
+}
+
+.bg-primary {
+  background-color: #78C2AD !important;
 }

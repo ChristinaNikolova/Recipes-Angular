@@ -1,5 +1,8 @@
 ﻿namespace Recipes
 {
+    using System.Reflection;
+    using System.Text;
+
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
@@ -16,7 +19,8 @@
     using Recipes.Data.Data.Seeding;
     using Recipes.Data.Models;
     using Recipes.Helpers;
-    using System.Text;
+    using Recipes.Models.Common;
+    using Recipes.Services.Mapping;
 
     public class Startup
     {
@@ -92,6 +96,8 @@
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
+
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {
                 var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();

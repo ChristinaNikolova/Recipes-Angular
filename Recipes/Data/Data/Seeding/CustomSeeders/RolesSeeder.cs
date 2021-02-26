@@ -6,7 +6,7 @@
 
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;
-    using Recipes.Data.Common;
+    using Recipes.Common;
 
     public class RolesSeeder : ISeeder
     {
@@ -14,7 +14,8 @@
         {
             var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-            await SeedRoleAsync(roleManager, Constants.AdminName);
+            await SeedRoleAsync(roleManager, GlobalConstants.AdminName);
+            await SeedRoleAsync(roleManager, GlobalConstants.User);
         }
 
         private static async Task SeedRoleAsync(RoleManager<IdentityRole> roleManager, string roleName)

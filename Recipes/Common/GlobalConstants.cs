@@ -1,11 +1,13 @@
-﻿namespace Recipes.Data.Common
+﻿namespace Recipes.Common
 {
-    public static class Constants
+    public static class GlobalConstants
     {
         // admin
         public const string AdministratorRoleName = "Administrator";
 
         public const string AdminName = "Admin";
+
+        public const string User = "User";
 
         public const string AdminEmail = "admin@recipes.com";
 

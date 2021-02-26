@@ -7,7 +7,7 @@
     using System.Threading.Tasks;
 
     using Newtonsoft.Json;
-    using Recipes.Data.Common;
+    using Recipes.Common;
     using Recipes.Data.Data.Seeding.Dtos;
     using Recipes.Data.Models;
 
@@ -18,7 +18,7 @@
             if (!dbContext.Ingredients.Any())
             {
                 var ingredientsData = JsonConvert
-                    .DeserializeObject<List<IngredientDto>>(File.ReadAllText(Constants.IngredientSeederPath))
+                    .DeserializeObject<List<IngredientDto>>(File.ReadAllText(GlobalConstants.IngredientSeederPath))
                     .ToList();
 
                 List<Ingredient> ingredients = new List<Ingredient>();

@@ -7,7 +7,7 @@
     using System.Threading.Tasks;
 
     using Newtonsoft.Json;
-    using Recipes.Data.Common;
+    using Recipes.Common;
     using Recipes.Data.Data.Seeding.Dtos;
     using Recipes.Data.Models;
 
@@ -18,7 +18,7 @@
             if (!dbContext.Categories.Any())
             {
                 var categoriesData = JsonConvert
-                    .DeserializeObject<List<CategoryDto>>(File.ReadAllText(Constants.CategorySeederPath))
+                    .DeserializeObject<List<CategoryDto>>(File.ReadAllText(GlobalConstants.CategorySeederPath))
                     .ToList();
 
                 List<Category> categories = new List<Category>();

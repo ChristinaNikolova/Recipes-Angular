@@ -27,11 +27,10 @@ export class RegisterComponent implements OnInit {
   }
 
   public signUp() {
-    console.log(this.registerForm.value)
     this.authService
       .register(this.registerForm.value)
       .subscribe(() => {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/login'])
       });
   }
 

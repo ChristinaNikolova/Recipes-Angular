@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
       .login(this.loginForm.value)
       .subscribe((data) => {
         localStorage.setItem('token', data['token']);
-        localStorage.setItem('name', data['user']['name']);
+        localStorage.setItem('username', data['username']);
         this.router.navigate(['/home'])
       });
   }

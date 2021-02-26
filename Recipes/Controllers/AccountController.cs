@@ -14,6 +14,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
     using Microsoft.IdentityModel.Tokens;
+    using Recipes.Common;
     using Recipes.Data.Models;
     using Recipes.Helpers;
     using Recipes.Models.Account.InputModels;
@@ -47,11 +48,12 @@
         public async Task<object> Login([FromBody] LoginInputModel model)
         {
             var user = this.userManager.Users.SingleOrDefault(r => r.Email == model.Email);
+
             if (user is null)
             {
                 return this.BadRequest(new BadRequestViewModel
                 {
-                    Message = "Incorrect e-mail or password.",
+                    Message = Messages.IncorrectCredentials,
                 });
             }
 
@@ -61,14 +63,15 @@
             {
                 return new AuthenticationViewModel
                 {
-                    Message = "You have successfully logged in.",
+                    Username = user.UserName,
+                    Message = Messages.SuccessfulLogin,
                     Token = this.GenerateJwtToken(user),
                 };
             }
 
             return this.BadRequest(new BadRequestViewModel
             {
-                Message = "Incorrect e-mail or password.",
+                Message = Messages.IncorrectCredentials,
             });
         }
 
@@ -88,7 +91,7 @@
             {
                 return this.BadRequest(new BadRequestViewModel
                 {
-                    Message = "This e-mail is already taken. Please try with another one.",
+                    Message = Messages.InvalidEmail,
                 });
             }
 
@@ -96,7 +99,7 @@
             {
                 return this.BadRequest(new BadRequestViewModel
                 {
-                    Message = "This username is already taken. Please try with another one.",
+                    Message = Messages.InvalidUsername,
                 });
             }
 
@@ -111,7 +114,8 @@
 
                     return new AuthenticationViewModel
                     {
-                        Message = "You have successfully registered.",
+                        Username = model.Username,
+                        Message = Messages.SuccessfulRegister,
                         Token = this.GenerateJwtToken(user),
                     };
                 }
@@ -119,7 +123,7 @@
 
             return this.BadRequest(new BadRequestViewModel
             {
-                Message = "Something went wrong. Check your form and try again",
+                Message = Messages.UnknownError,
             });
         }
 
@@ -134,7 +138,7 @@
                     {
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                         new Claim(ClaimTypes.Name, user.UserName),
-                        new Claim(ClaimTypes.Role, this.userManager.IsInRoleAsync(user, "Administrator").GetAwaiter().GetResult() ? "Administrator" : "User"),
+                        new Claim(ClaimTypes.Role, this.userManager.IsInRoleAsync(user, GlobalConstants.AdminName).GetAwaiter().GetResult() ? GlobalConstants.AdminName : GlobalConstants.User),
                     }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),

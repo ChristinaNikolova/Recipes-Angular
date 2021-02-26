@@ -8,7 +8,7 @@ import { AuthService } from '../../core/services/auth.service';
 })
 export class HomeComponent implements OnInit {
   public isLoggedIn: boolean;
-  public name: string;
+  public username: string;
 
   constructor(
     private authService: AuthService
@@ -16,6 +16,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoggedIn = this.authService.isAuthenticated();
-    this.name = localStorage.getItem('name');
+    this.username = localStorage.getItem('username');
   }
 }

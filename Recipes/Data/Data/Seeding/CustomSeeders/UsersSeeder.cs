@@ -6,7 +6,7 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
-    using Recipes.Data.Common;
+    using Recipes.Common;
     using Recipes.Data.Models;
 
     public class UsersSeeder : ISeeder
@@ -15,7 +15,7 @@
         {
             var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
-            await SeedUserAsync(userManager, Constants.AdminEmail, Constants.AdminName);
+            await SeedUserAsync(userManager, GlobalConstants.AdminEmail, GlobalConstants.AdminName);
         }
 
         private static async Task SeedUserAsync(UserManager<ApplicationUser> userManager, string userEmail, string userName)
@@ -30,7 +30,7 @@
                     UserName = userName,
                     Email = userEmail,
                     EmailConfirmed = true,
-                    PasswordHash = Constants.SystemPasswordHashed,
+                    PasswordHash = GlobalConstants.SystemPasswordHashed,
                 };
 
                 var creationResult = await userManager.CreateAsync(admin);

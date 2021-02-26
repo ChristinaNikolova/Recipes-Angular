@@ -1,6 +1,7 @@
 ﻿namespace Recipes
 {
     using Microsoft.AspNetCore.Authentication;
+    using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
@@ -9,10 +10,13 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using Microsoft.IdentityModel.Tokens;
     using Recipes.Data.Common.Repositories;
     using Recipes.Data.Data;
     using Recipes.Data.Data.Seeding;
     using Recipes.Data.Models;
+    using Recipes.Helpers;
+    using System.Text;
 
     public class Startup
     {
@@ -30,6 +34,30 @@
                     this.Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDatabaseDeveloperPageExceptionFilter();
+
+            var jwtSettingsSection = this.Configuration.GetSection("JwtSettings");
+            services.Configure<JwtSettings>(jwtSettingsSection);
+
+            // configure jwt authentication
+            var jwtSettings = jwtSettingsSection.Get<JwtSettings>();
+            var key = Encoding.ASCII.GetBytes(jwtSettings.Secret);
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.RequireHttpsMetadata = false;
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                };
+            });
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {

@@ -1,39 +1,44 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
-import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
-import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
-import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
+import { HeaderComponent } from './components/shared/header/header.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
+import { HomeComponent } from './components/home/home.component';
+import { ReactiveFormsModule } from '@angular/forms';
+//import { ToastrModule } from 'ngx-toastr';
+//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { JwtInterceptorService } from './core/interceptors/jwt-interceptor.service';
+import { ResponseHandlerInterceptorService } from './core/interceptors/response-handler-interceptor.service';
+import { LoginComponent } from './components/authentication/login/login.component';
+import { RegisterComponent } from './components/authentication/register/register.component';
+import { AuthService } from './core/services/auth.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavMenuComponent,
+    HeaderComponent,
+    FooterComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
     HttpClientModule,
-    FormsModule,
-    ApiAuthorizationModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
-    ])
+    //ToastrModule.forRoot({
+    //  positionClass: 'toast-bottom-right'
+    //}),
+    //BrowserAnimationsModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
+    AuthService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ResponseHandlerInterceptorService, multi: true }
   ],
   bootstrap: [AppComponent]
 })

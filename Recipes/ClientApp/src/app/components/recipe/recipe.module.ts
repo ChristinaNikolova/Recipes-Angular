@@ -7,6 +7,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CategoriesService } from '../../core/services/categories.service';
 import { SingleRecipeComponent } from './single-recipe/single-recipe.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
+import { ToastrModule } from 'ngx-toastr';
+import { RecipeDetailsResolver } from '../../core/resolvers/recipe-details.resolver';
 
 @NgModule({
   declarations: [
@@ -18,11 +20,12 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    ToastrModule.forRoot(),
     RouterModule.forChild([
       { path: '', pathMatch: 'full', redirectTo: 'home' },
       { path: 'all', component: AllRecipesComponent },
       { path: 'create', component: CreateRecipeComponent },
-      { path: 'details/:id', component: RecipeDetailsComponent }
+      { path: 'details/:id', component: RecipeDetailsComponent, resolve: { singleRecipe: RecipeDetailsResolver } }
     ]),
   ],
   providers: [

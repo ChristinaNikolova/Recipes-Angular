@@ -54,6 +54,17 @@
             return recipes;
         }
 
+        public async Task<T> GetDetailsAsync<T>(string id)
+        {
+            var recipe = await this.recipesRepository
+                .All()
+                .Where(r => r.Id == id)
+                .To<T>()
+                .FirstOrDefaultAsync();
+
+            return recipe;
+        }
+
         public async Task<bool> IsTitleAlreadyExistingAsync(string title)
         {
             var isExisting = await this.recipesRepository

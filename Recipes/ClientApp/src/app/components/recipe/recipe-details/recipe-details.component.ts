@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { RecipesService } from '../../../core/services/recipes.service';
-
-import IRecipe from '../../shared/models/IRecipe';
+import IDetailsRecipe from '../../shared/models/recipes/IDetailsRecipe';
 
 @Component({
   selector: 'app-recipe-details',
@@ -10,19 +8,14 @@ import IRecipe from '../../shared/models/IRecipe';
   styleUrls: ['./recipe-details.component.css']
 })
 export class RecipeDetailsComponent implements OnInit {
-  public recipe: IRecipe;
+  public recipe: IDetailsRecipe;
 
   constructor(
-    private recipesService: RecipesService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
-    this.route.params.subscribe((data) => {
-      const id: string = data['id'];
-      console.log(id);
-      this.recipesService.getDetails(id).subscribe((data) => {
-        this.recipe = data;
-      })
-    });
+    this.recipe = this.route.snapshot.data['singleRecipe'];
+    console.log(this.recipe);
   }
 }

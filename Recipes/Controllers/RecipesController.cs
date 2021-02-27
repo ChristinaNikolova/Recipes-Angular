@@ -73,5 +73,17 @@
 
             return new List<RecipeBaseViewModel>(recipes);
         }
+
+        [HttpGet("{id}")]
+        [ProducesDefaultResponseType]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<ActionResult<RecipeDetailsViewModel>> Details(string id)
+        {
+            var recipe = await this.recipesService.GetDetailsAsync<RecipeDetailsViewModel>(id);
+
+            return recipe;
+        }
     }
 }

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import IBaseRecipe from '../../shared/models/IBaseRecipe';
+import IBaseRecipe from '../../shared/models/recipes/IBaseRecipe';
 
 @Component({
   selector: 'app-single-recipe',

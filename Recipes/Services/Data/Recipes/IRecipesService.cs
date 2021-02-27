@@ -10,5 +10,7 @@
         Task<bool> IsTitleAlreadyExistingAsync(string title);
 
         Task<IEnumerable<T>> GetAllAsync<T>();
+
+        Task<T> GetDetailsAsync<T>(string id);
     }
 }

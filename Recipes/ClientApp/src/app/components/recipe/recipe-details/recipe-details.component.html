@@ -1,1 +1,101 @@
-<p>recipe-details works!</p>
+<div class="single-recipe-layout1">
+  <div class="ctg-name">{{recipe.categoryName}}</div>
+  <h2 class="item-title">{{recipe.title}}</h2>
+  <div class="row mb-4">
+    <div class="col-xl-9 col-12">
+      <ul class="entry-meta">
+        <li class="single-meta">
+          <i class="far fa-calendar-alt"></i>
+          Created on: ...
+        </li>
+        <li class="single-meta">
+          <i class="fas fa-user"></i> by
+          <span>{{recipe.authorUserName}}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-8 item-figure">
+      <img class="img-fluid w-100" src="{{recipe.picture}}" alt="{{recipe.title}}" />
+    </div>
+    <div class="col-lg-3 item-feature">
+      <ul>
+        <li>
+          <div class="feature-wrap">
+            <div class="media">
+              <div class="feature-icon">
+                <i class="far fa-clock"></i>
+              </div>
+              <div class="media-body space-sm">
+                <span class="feature-title">PREP TIME</span>
+                <div class="feature-sub-title">{{recipe.preparationTime}} Mins</div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="feature-wrap">
+            <div class="media">
+              <div class="feature-icon">
+                <i class="fas fa-utensils"></i>
+              </div>
+              <div class="media-body space-sm">
+                <span class="feature-title">COOK TIME</span>
+                <div class="feature-sub-title">{{recipe.cookingTime}}</div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="feature-wrap">
+            <div class="media">
+              <div class="feature-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="media-body space-sm">
+                <span class="feature-title">SERVING</span>
+                <div class="feature-sub-title">
+                  {{recipe.portions}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="feature-wrap">
+            <div class="media">
+              <div class="feature-icon">
+                <i class="fa fa-list-ol"></i>
+              </div>
+              <div class="media-body space-sm">
+                <span class="feature-title">CATEGORY</span>
+                <div class="feature-sub-title">{{recipe.categoryName}}</div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="making-elements-wrap">
+    <div class="row">
+      <div class="col-md-6">
+        <p class="item-description">
+          {{recipe.content}}
+        </p>
+      </div>
+      <div class="col-md-6">
+        <div class="ingridients-wrap">
+          <h3 class="item-title"><i class="fas fa-list-ul"></i>Ingridients</h3>
+          <!--@foreach (var ingredient in Model.Ingredients)
+          {
+          <div class="checkbox checkbox-primary">
+            <label for="checkbox1">@ingredient.Quantity @ingredient.IngredientName</label>
+          </div>
+          }-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

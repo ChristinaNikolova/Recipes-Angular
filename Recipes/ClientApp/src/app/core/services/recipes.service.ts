@@ -1,16 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import IBaseRecipe from '../../components/shared/models/IBaseRecipe';
-import IRecipe from '../../components/shared/models/IRecipe';
+import IBaseRecipe from '../../components/shared/models/recipes/IBaseRecipe';
+import IDetailsRecipe from '../../components/shared/models/recipes/IDetailsRecipe';
+import IRecipe from '../../components/shared/models/recipes/IRecipe';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipesService {
- private readonly baseUrl = 'https://localhost:44309/api/recipes/';
- private readonly createUrl = 'create';
- private readonly allUrl = 'all';
+  private readonly baseUrl = 'https://localhost:44309/api/recipes/';
+  private readonly createUrl = 'create';
+  private readonly allUrl = 'all';
+  private readonly getDetailsUrl = 'details/';
 
   constructor(
     private http: HttpClient
@@ -24,8 +26,7 @@ export class RecipesService {
     return this.http.get<Array<IBaseRecipe>>(this.baseUrl + this.allUrl);
   }
 
-  public getDetails(id) {
-    console.log('in');
-    return null;
+  public getDetails(id: string): Observable<IDetailsRecipe> {
+    return this.http.get<IDetailsRecipe>(this.baseUrl + this.getDetailsUrl + `${id}`);
   }
 }

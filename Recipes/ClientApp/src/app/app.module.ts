@@ -15,6 +15,7 @@ import { LoginComponent } from './components/authentication/login/login.componen
 import { RegisterComponent } from './components/authentication/register/register.component';
 import { AuthService } from './core/services/auth.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RecipesService } from './core/services/recipes.service';
 
 @NgModule({
   declarations: [
@@ -23,20 +24,19 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     FooterComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    //ToastrModule.forRoot({
-    //  positionClass: 'toast-bottom-right'
-    //}),
+    //ToastrModule.forRoot(),
     //BrowserAnimationsModule
   ],
   providers: [
     AuthService,
+    RecipesService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ResponseHandlerInterceptorService, multi: true }
   ],

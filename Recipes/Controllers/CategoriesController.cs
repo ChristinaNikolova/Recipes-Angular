@@ -1,0 +1,30 @@
+﻿namespace Recipes.Controllers
+{
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+    using Recipes.Services.Data.Categories;
+
+    [Route("api/[controller]/[action]")]
+    public class CategoriesController : ApiController
+    {
+        private readonly ICategoriesService categoriesService;
+
+        public CategoriesController(ICategoriesService categoriesService)
+        {
+            this.categoriesService = categoriesService;
+        }
+
+        [HttpGet]
+        [ProducesDefaultResponseType]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<IEnumerable<string>>> GetAllNames()
+        {
+            var categories = await this.categoriesService.GetAllNamesAsync();
+
+            return new List<string>(categories);
+        }
+    }
+}

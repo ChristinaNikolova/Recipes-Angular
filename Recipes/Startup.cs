@@ -20,6 +20,8 @@
     using Recipes.Data.Models;
     using Recipes.Helpers;
     using Recipes.Models.Common;
+    using Recipes.Services.Data.Categories;
+    using Recipes.Services.Data.Recipes;
     using Recipes.Services.Mapping;
 
     public class Startup
@@ -87,6 +89,9 @@
             // Data repositories
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
+
+            services.AddTransient<ICategoriesService, CategoriesService>();
+            services.AddTransient<IRecipesService, RecipesService>();
 
             services.AddSpaStaticFiles(configuration =>
             {

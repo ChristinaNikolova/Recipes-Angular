@@ -2,7 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    using Recipes.Common;
+    using global::Recipes.Common;
 
     public class RegisterInputModel
     {

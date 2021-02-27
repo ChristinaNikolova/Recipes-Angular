@@ -46,6 +46,7 @@
 
         public virtual Category Category { get; set; }
 
+        //add to form
         public virtual ICollection<RecipeIngredient> RepiceIngredients { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }

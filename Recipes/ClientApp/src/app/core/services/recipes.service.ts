@@ -21,7 +21,11 @@ export class RecipesService {
   }
 
   public getAll(): Observable<Array<IBaseRecipe>> {
-
     return this.http.get<Array<IBaseRecipe>>(this.baseUrl + this.allUrl);
+  }
+
+  public getDetails(id) {
+    console.log('in');
+    return null;
   }
 }

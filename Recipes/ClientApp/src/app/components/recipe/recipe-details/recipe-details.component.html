@@ -12,6 +12,10 @@
           <i class="fas fa-user"></i> by
           <span>{{recipe.authorUserName}}</span>
         </li>
+        <li class="single-meta">
+          <i class="far fa-heart" (click)="like(recipe.id)" *ngIf="!(recipe.isFavourite)"><span class="like-text"> Add to favourites</span></i>
+          <i class="fas fa-heart" (click)="dislike(recipe.id)" *ngIf="(recipe.isFavourite)"><span class="like-text"> Remove from favourites</span></i>
+        </li>
       </ul>
     </div>
   </div>
@@ -28,7 +32,7 @@
                 <i class="far fa-clock"></i>
               </div>
               <div class="media-body space-sm">
-                <span class="feature-title">PREP TIME</span>
+                <span class="feature-title"> PREP TIME</span>
                 <div class="feature-sub-title">{{recipe.preparationTime}} Mins</div>
               </div>
             </div>
@@ -41,8 +45,8 @@
                 <i class="fas fa-utensils"></i>
               </div>
               <div class="media-body space-sm">
-                <span class="feature-title">COOK TIME</span>
-                <div class="feature-sub-title">{{recipe.cookingTime}}</div>
+                <span class="feature-title"> COOK TIME</span>
+                <div class="feature-sub-title">{{recipe.cookingTime}} Mins</div>
               </div>
             </div>
           </div>
@@ -54,7 +58,7 @@
                 <i class="fas fa-users"></i>
               </div>
               <div class="media-body space-sm">
-                <span class="feature-title">SERVING</span>
+                <span class="feature-title"> SERVING</span>
                 <div class="feature-sub-title">
                   {{recipe.portions}}
                 </div>
@@ -69,7 +73,7 @@
                 <i class="fa fa-list-ol"></i>
               </div>
               <div class="media-body space-sm">
-                <span class="feature-title">CATEGORY</span>
+                <span class="feature-title"> CATEGORY</span>
                 <div class="feature-sub-title">{{recipe.categoryName}}</div>
               </div>
             </div>

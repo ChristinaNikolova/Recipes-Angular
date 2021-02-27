@@ -11,19 +11,23 @@
     using Recipes.Models.Common;
     using Recipes.Models.Recipes.InputModels;
     using Recipes.Models.Recipes.ViewModels;
+    using Recipes.Services.Data.RecipeLikes;
     using Recipes.Services.Data.Recipes;
 
     [Route("api/[controller]/[action]")]
     public class RecipesController : ApiController
     {
         private readonly IRecipesService recipesService;
+        private readonly IRecipeLikesService recipeLikesService;
         private readonly UserManager<ApplicationUser> userManager;
 
         public RecipesController(
             IRecipesService recipesService,
+            IRecipeLikesService recipeLikesService,
             UserManager<ApplicationUser> userManager)
         {
             this.recipesService = recipesService;
+            this.recipeLikesService = recipeLikesService;
             this.userManager = userManager;
         }
 
@@ -83,7 +87,65 @@
         {
             var recipe = await this.recipesService.GetDetailsAsync<RecipeDetailsViewModel>(id);
 
+            var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
+
+            recipe.IsFavourite = await this.recipeLikesService.IsFavouriteAsync(user.Id, id);
+
             return recipe;
+        }
+
+        [HttpPost("{id}")]
+        [ProducesDefaultResponseType]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<ActionResult> Like(string id)
+        {
+            try
+            {
+                var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
+
+                await this.recipeLikesService.LikeAsync(user.Id, id);
+
+                return this.Ok(new
+                {
+                    Message = "Like added successfully.",
+                });
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = "Something went wrong.",
+                });
+            }
+        }
+
+        [HttpPost("{id}")]
+        [ProducesDefaultResponseType]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<ActionResult> Dislike(string id)
+        {
+            try
+            {
+                var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
+
+                await this.recipeLikesService.DislikeAsync(user.Id, id);
+
+                return this.Ok(new
+                {
+                    Message = "Like removed successfully.",
+                });
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = "Something went wrong.",
+                });
+            }
         }
     }
 }

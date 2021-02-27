@@ -12,5 +12,7 @@
         public int CookingTime { get; set; }
 
         public string AuthorUserName { get; set; }
+
+        public bool IsFavourite { get; set; }
     }
 }

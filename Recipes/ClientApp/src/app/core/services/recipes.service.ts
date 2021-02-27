@@ -13,6 +13,8 @@ export class RecipesService {
   private readonly createUrl = 'create';
   private readonly allUrl = 'all';
   private readonly getDetailsUrl = 'details/';
+  private readonly likeUrl = 'like/';
+  private readonly dislikeUrl = 'dislike/';
 
   constructor(
     private http: HttpClient
@@ -28,5 +30,13 @@ export class RecipesService {
 
   public getDetails(id: string): Observable<IDetailsRecipe> {
     return this.http.get<IDetailsRecipe>(this.baseUrl + this.getDetailsUrl + `${id}`);
+  }
+
+  public like(id: string) {
+    return this.http.post(this.baseUrl + this.likeUrl + `${id}`, {});
+  }
+
+  public dislike(id: string) {
+    return this.http.post(this.baseUrl + this.dislikeUrl + `${id}`, {});
   }
 }

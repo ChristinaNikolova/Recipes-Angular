@@ -21,6 +21,7 @@
     using Recipes.Helpers;
     using Recipes.Models.Common;
     using Recipes.Services.Data.Categories;
+    using Recipes.Services.Data.RecipeLikes;
     using Recipes.Services.Data.Recipes;
     using Recipes.Services.Mapping;
 
@@ -92,6 +93,7 @@
 
             services.AddTransient<ICategoriesService, CategoriesService>();
             services.AddTransient<IRecipesService, RecipesService>();
+            services.AddTransient<IRecipeLikesService, RecipeLikesService>();
 
             services.AddSpaStaticFiles(configuration =>
             {

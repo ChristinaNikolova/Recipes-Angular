@@ -1,3 +1,15 @@
 img {
   width: 100% !important;
 }
+
+.fa-heart:hover {
+  cursor: pointer;
+}
+
+.feature-icon, .single-meta {
+  color: #78C2AD;
+}
+
+.like-text {
+  font-weight: bold;
+}

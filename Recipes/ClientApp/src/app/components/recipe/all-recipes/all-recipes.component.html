@@ -1,1 +1,13 @@
-<p>all-recipes works!</p>
+<div class="container">
+  <div class="row space-top">
+    <div class="col-md-12">
+      <h1 class="text-center">All Recipes</h1>
+      <hr />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4" *ngFor="let recipe of recipes$ | async">
+      <app-single-recipe [recipe]=recipe></app-single-recipe>
+    </div>
+  </div>
+</div>

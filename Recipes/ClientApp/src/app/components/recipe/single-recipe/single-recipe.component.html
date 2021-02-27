@@ -1,0 +1,13 @@
+<div class="card">
+  <h3 class="card-header">{{recipe.title}}</h3>
+  <img src="{{recipe.picture}}" alt="movie-poster">
+  <div class="card-body">
+    <p class="card-text">{{recipe.content | slice:0:20}}...</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{recipe.categoryName}}</li>
+  </ul>
+  <div class="card-body">
+    <button class="btn btn-primary" (click)="seeDetails(recipe.id)">See the recipe</button>
+  </div>
+</div>

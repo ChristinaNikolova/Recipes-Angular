@@ -1,10 +1,13 @@
 ﻿namespace Recipes.Services.Data.Recipes
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using global::Recipes.Data.Common.Repositories;
     using global::Recipes.Data.Models;
     using global::Recipes.Services.Data.Categories;
+    using global::Recipes.Services.Mapping;
     using Microsoft.EntityFrameworkCore;
 
     public class RecipesService : IRecipesService
@@ -38,6 +41,17 @@
 
             await this.recipesRepository.AddAsync(recipe);
             await this.recipesRepository.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<T>> GetAllAsync<T>()
+        {
+            var recipes = await this.recipesRepository
+                .All()
+                .OrderByDescending(r => r.CreatedOn)
+                .To<T>()
+                .ToListAsync();
+
+            return recipes;
         }
 
         public async Task<bool> IsTitleAlreadyExistingAsync(string title)

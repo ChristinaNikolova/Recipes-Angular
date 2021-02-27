@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { RecipesService } from '../../../core/services/recipes.service';
+import IBaseRecipe from '../../shared/models/IBaseRecipe';
 
 @Component({
   selector: 'app-all-recipes',
@@ -6,10 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./all-recipes.component.css']
 })
 export class AllRecipesComponent implements OnInit {
+  public recipes$: Observable<Array<IBaseRecipe>>;
 
-  constructor() { }
+  constructor(
+    private recipesService: RecipesService) { }
 
   ngOnInit() {
+    this.recipes$ = this.recipesService.getAll();
   }
-
 }

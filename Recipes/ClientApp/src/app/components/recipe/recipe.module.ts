@@ -5,11 +5,15 @@ import { AllRecipesComponent } from './all-recipes/all-recipes.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CategoriesService } from '../../core/services/categories.service';
+import { SingleRecipeComponent } from './single-recipe/single-recipe.component';
 
 
 
 @NgModule({
-  declarations: [CreateRecipeComponent, AllRecipesComponent],
+  declarations: [
+    CreateRecipeComponent,
+    AllRecipesComponent,
+    SingleRecipeComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

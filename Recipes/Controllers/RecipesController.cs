@@ -1,6 +1,7 @@
 ﻿namespace Recipes.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Http;
@@ -9,6 +10,7 @@
     using Recipes.Data.Models;
     using Recipes.Models.Common;
     using Recipes.Models.Recipes.InputModels;
+    using Recipes.Models.Recipes.ViewModels;
     using Recipes.Services.Data.Recipes;
 
     [Route("api/[controller]/[action]")]
@@ -60,6 +62,16 @@
                     Message = "Something went wrong.",
                 });
             }
+        }
+
+        [HttpGet]
+        [ProducesDefaultResponseType]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<IEnumerable<RecipeBaseViewModel>>> All()
+        {
+            var recipes = await this.recipesService.GetAllAsync<RecipeBaseViewModel>();
+
+            return new List<RecipeBaseViewModel>(recipes);
         }
     }
 }

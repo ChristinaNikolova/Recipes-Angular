@@ -1,6 +1,7 @@
 ﻿namespace Recipes.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Http;
@@ -8,6 +9,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Recipes.Data.Models;
     using Recipes.Models.Comments.InputModels;
+    using Recipes.Models.Comments.ViewModels;
     using Recipes.Models.Common;
     using Recipes.Services.Comments;
 
@@ -42,6 +44,27 @@
                 {
                     Message = "Successfully added.",
                 });
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = "Something went wrong.",
+                });
+            }
+        }
+
+        [HttpGet("{recipeId}")]
+        [ProducesDefaultResponseType]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<IEnumerable<CommentViewModel>>> All(string recipeId)
+        {
+            ;
+            try
+            {
+                var comments = await this.commentsService.GetAllCurrentRecipeAsync<CommentViewModel>(recipeId);
+
+                return new List<CommentViewModel>(comments);
             }
             catch (Exception)
             {

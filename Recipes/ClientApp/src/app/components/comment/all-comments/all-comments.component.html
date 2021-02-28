@@ -1,0 +1,3 @@
+<article class="post post-content" *ngFor="let comment of comments$ | async">
+  <app-single-comment [comment]="comment"></app-single-comment>
+</article>

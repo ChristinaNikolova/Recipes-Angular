@@ -42,6 +42,7 @@ import { SharedModule } from '../shared/shared.module';
     ]),
   ],
   providers: [
-    CategoriesService]
+    CategoriesService
+  ]
 })
 export class RecipeModule { }

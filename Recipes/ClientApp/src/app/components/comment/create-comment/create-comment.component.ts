@@ -26,6 +26,7 @@ export class CreateCommentComponent implements OnInit {
 
   public create(): void {
     this.commentsService.create(this.form.value, this.recipeId).subscribe((_) => {
+      this.form.reset();
       this.router.navigate([`/recipe/details/${this.recipeId}`]);
     });
   }

@@ -1,0 +1,13 @@
+<div class="row mt-2 mb-2">
+  <div class="col-md-8">
+    <h4 class="ml-5">Find a recipe</h4>
+    <p class="ml-5">Search for a recipe using the form below:</p>
+    <form [formGroup]="form" (submit)="search()" class="my-2 my-lg-0">
+      <input class="form-control ml-5" type="text" placeholder="Search" formControlName="search">
+      <div class="alert alert-danger" *ngIf="f.search?.errors?.required && f.search?.touched">The field is required</div>
+      <div class="alert alert-danger" *ngIf="f.search?.errors?.minlength">The field should be at least {{f.search.errors.minlength.requiredLength}} characters</div>
+      <button class="btn btn-secondary ml-5 mt-1" type="submit" [disabled]="form.invalid">Search</button>
+    </form>
+    <button (click)="clear()" class="btn btn-danger ml-5 mt-1 custom-danger">Clear</button>
+  </div>
+</div>

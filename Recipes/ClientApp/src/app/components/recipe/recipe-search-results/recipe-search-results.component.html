@@ -1,11 +1,11 @@
 <div class="container">
   <app-search-recipe></app-search-recipe>
   <div class="col-md-12">
-    <h1 class="text-center">All Recipes</h1>
+    <h1 class="text-center">Searched Recipes</h1>
     <hr />
   </div>
   <div class="row">
-    <div class="col-lg-4" *ngFor="let recipe of recipes$ | async">
+    <div class="col-lg-4" *ngFor="let recipe of searchedRecipes$ | async">
       <app-single-recipe [recipe]=recipe></app-single-recipe>
     </div>
   </div>

@@ -12,5 +12,7 @@
         Task<IEnumerable<T>> GetAllAsync<T>();
 
         Task<T> GetDetailsAsync<T>(string id);
+
+        Task<IEnumerable<T>> GetSearchedAsync<T>(string query);
     }
 }

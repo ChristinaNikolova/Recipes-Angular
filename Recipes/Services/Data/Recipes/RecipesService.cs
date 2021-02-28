@@ -65,6 +65,18 @@
             return recipe;
         }
 
+        public async Task<IEnumerable<T>> GetSearchedAsync<T>(string query)
+        {
+            var recipes = await this.recipesRepository
+                .All()
+                .Where(r => r.Title.ToLower().Contains(query.ToLower()))
+                .OrderByDescending(r => r.CreatedOn)
+                .To<T>()
+                .ToListAsync();
+
+            return recipes;
+        }
+
         public async Task<bool> IsTitleAlreadyExistingAsync(string title)
         {
             var isExisting = await this.recipesRepository

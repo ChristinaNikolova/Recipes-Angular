@@ -15,6 +15,7 @@ export class RecipesService {
   private readonly getDetailsUrl = 'details/';
   private readonly likeUrl = 'like/';
   private readonly dislikeUrl = 'dislike/';
+  private readonly searchUrl = 'search/';
 
   constructor(
     private http: HttpClient
@@ -38,5 +39,9 @@ export class RecipesService {
 
   public dislike(id: string) {
     return this.http.post(this.baseUrl + this.dislikeUrl + `${id}`, {});
+  }
+
+  public search(query: string): Observable<Array<IBaseRecipe>> {
+    return this.http.get<Array<IBaseRecipe>>(this.baseUrl + this.searchUrl + `${query}`)
   }
 }

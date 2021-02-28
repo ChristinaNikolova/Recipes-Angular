@@ -26,6 +26,7 @@
             IRecipeLikesService recipeLikesService,
             UserManager<ApplicationUser> userManager)
         {
+            ;
             this.recipesService = recipesService;
             this.recipeLikesService = recipeLikesService;
             this.userManager = userManager;
@@ -146,6 +147,18 @@
                     Message = "Something went wrong.",
                 });
             }
+        }
+
+        [HttpGet("{query}")]
+        [ProducesDefaultResponseType]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<ActionResult<IEnumerable<RecipeBaseViewModel>>> Search(string query)
+        {
+            var recipes = await this.recipesService.GetSearchedAsync<RecipeBaseViewModel>(query);
+
+            return new List<RecipeBaseViewModel>(recipes);
         }
     }
 }

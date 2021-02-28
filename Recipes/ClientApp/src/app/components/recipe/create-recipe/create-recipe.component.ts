@@ -36,7 +36,7 @@ export class CreateRecipeComponent implements OnInit {
   }
 
   public create(): void {
-    this.recipesService.create(this.form.value).subscribe((data) => {
+    this.recipesService.create(this.form.value).subscribe((_) => {
       this.router.navigate(['/recipe/all']);
     });
   }

@@ -1,0 +1,22 @@
+<h2>Comments</h2>
+<h5>Leave comment</h5>
+<div class="post post-content">
+  <form [formGroup]="form" (submit)="create()" id="commentForm">
+    <label>Comment</label>
+    <textarea type="text" formControlName="content"></textarea>
+    <div class="alert alert-danger" *ngIf="f.content?.errors?.required && f.content?.touched">The field is required</div>
+    <div class="alert alert-danger" *ngIf="f.content?.errors?.minlength">Content should be at least {{f.content.errors.minlength.requiredLength}} characters</div>
+    <div class="alert alert-danger" *ngIf="f.content?.errors?.maxlength">Content should be maximal {{f.content.errors.maxlength.requiredLength}} characters</div>
+    <button [disabled]="form.invalid" id="btnPostComment" type="submit" class="btn btn-primary mt-2">Add Comment</button>
+  </form>
+</div>
+<div class="card">
+  <div class="card-header">
+    Featured
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>

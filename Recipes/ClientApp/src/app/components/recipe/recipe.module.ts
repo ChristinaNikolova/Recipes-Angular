@@ -13,6 +13,7 @@ import { SearchRecipeComponent } from './search-recipe/search-recipe.component';
 import { RecipeSearchResultsComponent } from './recipe-search-results/recipe-search-results.component';
 import { RecipeOrderComponent } from './recipe-order/recipe-order.component';
 import { RecipeOrderResultComponent } from './recipe-order-result/recipe-order-result.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { RecipeOrderResultComponent } from './recipe-order-result/recipe-order-r
   ],
   imports: [
     CommonModule,
+    SharedModule,
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
@@ -40,7 +42,6 @@ import { RecipeOrderResultComponent } from './recipe-order-result/recipe-order-r
     ]),
   ],
   providers: [
-    CategoriesService
-  ]
+    CategoriesService]
 })
 export class RecipeModule { }

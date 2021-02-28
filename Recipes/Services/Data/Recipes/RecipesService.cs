@@ -65,6 +65,34 @@
             return recipe;
         }
 
+        public async Task<IEnumerable<T>> GetOrderAsync<T>(string criteria)
+        {
+            var query = this.recipesRepository
+                .All();
+
+            if (criteria.ToLower() == "old")
+            {
+                query = query
+                    .OrderBy(r => r.CreatedOn);
+            }
+            else if (criteria.ToLower() == "new")
+            {
+                query = query
+                    .OrderByDescending(r => r.CreatedOn);
+            }
+            else if (criteria.ToLower() == "likes")
+            {
+                query = query
+                   .OrderByDescending(r => r.RecipeLikes.Count);
+            }
+
+            var recipes = await query
+                .To<T>()
+                .ToListAsync();
+
+            return recipes;
+        }
+
         public async Task<IEnumerable<T>> GetSearchedAsync<T>(string query)
         {
             var recipes = await this.recipesRepository

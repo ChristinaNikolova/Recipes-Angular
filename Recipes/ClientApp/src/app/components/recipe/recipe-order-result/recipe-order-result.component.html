@@ -2,12 +2,13 @@
   <app-search-recipe></app-search-recipe>
   <app-recipe-order></app-recipe-order>
   <div class="col-md-12">
-    <h1 class="text-center">All Recipes</h1>
+    <h1 class="text-center">Ordered Recipes by {{orderCriteria}}</h1>
     <hr />
   </div>
   <div class="row">
-    <div class="col-lg-4" *ngFor="let recipe of recipes$ | async">
+    <div class="col-lg-4" *ngFor="let recipe of orderedRecipes$ | async">
       <app-single-recipe [recipe]=recipe></app-single-recipe>
     </div>
   </div>
 </div>
+

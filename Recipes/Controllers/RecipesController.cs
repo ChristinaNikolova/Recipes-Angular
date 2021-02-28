@@ -26,7 +26,6 @@
             IRecipeLikesService recipeLikesService,
             UserManager<ApplicationUser> userManager)
         {
-            ;
             this.recipesService = recipesService;
             this.recipeLikesService = recipeLikesService;
             this.userManager = userManager;
@@ -74,9 +73,19 @@
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<RecipeBaseViewModel>>> All()
         {
-            var recipes = await this.recipesService.GetAllAsync<RecipeBaseViewModel>();
+            try
+            {
+                var recipes = await this.recipesService.GetAllAsync<RecipeBaseViewModel>();
 
-            return new List<RecipeBaseViewModel>(recipes);
+                return new List<RecipeBaseViewModel>(recipes);
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = "Something went wrong.",
+                });
+            }
         }
 
         [HttpGet("{id}")]
@@ -86,13 +95,23 @@
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<ActionResult<RecipeDetailsViewModel>> Details(string id)
         {
-            var recipe = await this.recipesService.GetDetailsAsync<RecipeDetailsViewModel>(id);
+            try
+            {
+                var recipe = await this.recipesService.GetDetailsAsync<RecipeDetailsViewModel>(id);
 
-            var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
+                var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
 
-            recipe.IsFavourite = await this.recipeLikesService.IsFavouriteAsync(user.Id, id);
+                recipe.IsFavourite = await this.recipeLikesService.IsFavouriteAsync(user.Id, id);
 
-            return recipe;
+                return recipe;
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = "Something went wrong.",
+                });
+            }
         }
 
         [HttpPost("{id}")]
@@ -156,9 +175,42 @@
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<ActionResult<IEnumerable<RecipeBaseViewModel>>> Search(string query)
         {
-            var recipes = await this.recipesService.GetSearchedAsync<RecipeBaseViewModel>(query);
+            try
+            {
+                var recipes = await this.recipesService.GetSearchedAsync<RecipeBaseViewModel>(query);
 
-            return new List<RecipeBaseViewModel>(recipes);
+                return new List<RecipeBaseViewModel>(recipes);
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = "Something went wrong.",
+                });
+            }
+        }
+
+        [HttpGet("{criteria}")]
+        [ProducesDefaultResponseType]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<ActionResult<IEnumerable<RecipeBaseViewModel>>> Order(string criteria)
+        {
+            try
+            {
+                var recipes = await this.recipesService.GetOrderAsync<RecipeBaseViewModel>(criteria);
+
+                return new List<RecipeBaseViewModel>(recipes);
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = "Something went wrong.",
+                });
+            }
+
         }
     }
 }

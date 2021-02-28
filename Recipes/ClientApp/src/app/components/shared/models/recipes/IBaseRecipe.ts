@@ -4,5 +4,6 @@ export default interface IBaseRecipe {
   content: string;
   picture: string;
   categoryName: string;
+  recipeLikesCount: number;
 }
 

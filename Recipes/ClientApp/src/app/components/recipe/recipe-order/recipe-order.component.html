@@ -1,0 +1,8 @@
+<div>
+  <button class="btn btn-secondary" (click)="toogle()">Order by</button>
+  <ul *ngIf="(isShown)">
+    <li class="recipe-order" (click)="getOldest()">Oldest to newest</li>
+    <li class="recipe-order" (click)="getNewest()">Newest to oldest</li>
+    <li class="recipe-order" (click)="likes()">Likes</li>
+  </ul>
+</div>

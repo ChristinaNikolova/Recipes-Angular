@@ -5,7 +5,9 @@
     <p class="card-text">{{recipe.content | slice:0:20}}...</p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">{{recipe.categoryName}}</li>
+    <li class="list-group-item">Category: {{recipe.categoryName}}</li>
+    <li class="list-group-item">Likes: {{recipe.recipeLikesCount}}</li>
+    <li class="list-group-item">Comments: </li>
   </ul>
   <div class="card-body">
     <button class="btn btn-dark" [routerLink]="['/recipe/details', recipe.id]">See the recipe</button>

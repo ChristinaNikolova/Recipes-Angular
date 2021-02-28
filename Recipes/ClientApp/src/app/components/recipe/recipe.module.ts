@@ -11,6 +11,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { RecipeDetailsResolver } from '../../core/resolvers/recipe-details.resolver';
 import { SearchRecipeComponent } from './search-recipe/search-recipe.component';
 import { RecipeSearchResultsComponent } from './recipe-search-results/recipe-search-results.component';
+import { RecipeOrderComponent } from './recipe-order/recipe-order.component';
+import { RecipeOrderResultComponent } from './recipe-order-result/recipe-order-result.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { RecipeSearchResultsComponent } from './recipe-search-results/recipe-sea
     SingleRecipeComponent,
     RecipeDetailsComponent,
     SearchRecipeComponent,
-    RecipeSearchResultsComponent
+    RecipeSearchResultsComponent,
+    RecipeOrderComponent,
+    RecipeOrderResultComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +35,8 @@ import { RecipeSearchResultsComponent } from './recipe-search-results/recipe-sea
       { path: 'all', component: AllRecipesComponent },
       { path: 'create', component: CreateRecipeComponent },
       { path: 'details/:id', component: RecipeDetailsComponent, resolve: { singleRecipe: RecipeDetailsResolver } },
-      { path: 'results', component: RecipeSearchResultsComponent }
+      { path: 'results', component: RecipeSearchResultsComponent },
+      { path: 'orderResults', component: RecipeOrderResultComponent }
     ]),
   ],
   providers: [

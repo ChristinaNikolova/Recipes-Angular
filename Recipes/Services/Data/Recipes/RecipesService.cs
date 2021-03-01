@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-
+    using global::Recipes.Common;
     using global::Recipes.Data.Common.Repositories;
     using global::Recipes.Data.Models;
     using global::Recipes.Services.Data.Categories;
@@ -77,25 +77,27 @@
 
         public async Task<IEnumerable<T>> GetOrderAsync<T>(string criteria)
         {
+            var criteriaToLower = criteria.ToLower();
+
             var query = this.recipesRepository
                 .All();
 
-            if (criteria.ToLower() == "old")
+            if (criteriaToLower == GlobalConstants.OldCriteria)
             {
                 query = query
                     .OrderBy(r => r.CreatedOn);
             }
-            else if (criteria.ToLower() == "new")
+            else if (criteriaToLower == GlobalConstants.NewCriteria)
             {
                 query = query
                     .OrderByDescending(r => r.CreatedOn);
             }
-            else if (criteria.ToLower() == "likes")
+            else if (criteriaToLower == GlobalConstants.LikesCountCriteria)
             {
                 query = query
                    .OrderByDescending(r => r.RecipeLikes.Count);
             }
-            else if (criteria.ToLower() == "comments")
+            else if (criteriaToLower == GlobalConstants.LikesCountCriteria)
             {
                 query = query
                    .OrderByDescending(r => r.Comments.Count);

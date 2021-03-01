@@ -2,7 +2,7 @@
 {
     public static class GlobalConstants
     {
-        // admin
+        // Admin
         public const string AdministratorRoleName = "Administrator";
 
         public const string AdminName = "Admin";
@@ -11,15 +11,24 @@
 
         public const string SystemPasswordHashed = "AQAAAAEAACcQAAAAECrjCD23cQQ28Tyci+UMuaGrFMDUb/trG4E0RbJa4McRVfWFJ6c5UG4NpbXDB6K5rQ==";
 
-        // user
+        // User
         public const string User = "User";
 
-        // seeders path
+        // Seeders path
         public const string CategorySeederPath = @"./Data/Data/Seeding/Data/Categories.json";
 
         public const string IngredientSeederPath = @"./Data/Data/Seeding/Data/Ingredients.json";
 
-        // jwt
+        // JWT
         public const int DefaultDaysExpiredToken = 7;
+
+        // Criteria
+        public const string OldCriteria = "old";
+
+        public const string NewCriteria = "new";
+
+        public const string LikesCountCriteria = "likes";
+
+        public const string CommentsCountCriteria = "comments";
     }
 }

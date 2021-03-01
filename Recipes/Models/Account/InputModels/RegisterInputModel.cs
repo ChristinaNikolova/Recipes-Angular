@@ -7,15 +7,15 @@
     public class RegisterInputModel
     {
         [Required]
-        [MinLength(InputValidations.UsernameMinimumLength, ErrorMessage = Messages.UsernameErrorMessage)]
+        [MinLength(InputValidations.UsernameMinimumLength, ErrorMessage = Messages.UsernameError)]
         public string Username { get; set; }
 
         [Required]
-        [EmailAddress(ErrorMessage = Messages.EmailErrorMessage)]
+        [EmailAddress(ErrorMessage = Messages.EmailError)]
         public string Email { get; set; }
 
         [Required]
-        [MinLength(InputValidations.PasswordMinimumLength, ErrorMessage = Messages.PasswordErrorMessage)]
+        [MinLength(InputValidations.PasswordMinimumLength, ErrorMessage = Messages.PasswordError)]
         public string Password { get; set; }
     }
 }

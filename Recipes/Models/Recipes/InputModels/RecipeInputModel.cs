@@ -2,14 +2,17 @@
 {
     using System.ComponentModel.DataAnnotations;
 
+    using global::Recipes.Common;
+    using global::Recipes.Data.Common;
+
     public class RecipeInputModel
     {
         [Required]
-        [StringLength(50, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
+        [StringLength(Validations.Recipe.TitleMaxLenght, ErrorMessage = Messages.RequiredMinMaxLengthError, MinimumLength = InputValidations.RecipeTitleMinLenght)]
         public string Title { get; set; }
 
         [Required]
-        [StringLength(5000, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
+        [StringLength(Validations.Recipe.ContentMaxLenght, ErrorMessage = Messages.RequiredMinMaxLengthError, MinimumLength = InputValidations.RecipeContentMinLenght)]
 
         public string Content { get; set; }
 
@@ -17,13 +20,13 @@
 
         public string Picture { get; set; }
 
-        [Range(typeof(int), "1", "2147483647")]
+        [Range(typeof(int), InputValidations.RecipePortionsMin, InputValidations.IntMaxValue)]
         public int Portions { get; set; }
 
-        [Range(typeof(int), "1", "2147483647")]
+        [Range(typeof(int), InputValidations.RecipePrepTimeMin, InputValidations.IntMaxValue)]
         public int PreparationTime { get; set; }
 
-        [Range(typeof(int), "1", "2147483647")]
+        [Range(typeof(int), InputValidations.RecipeCookTimeMin, InputValidations.IntMaxValue)]
         public int CookingTime { get; set; }
 
         [Required]

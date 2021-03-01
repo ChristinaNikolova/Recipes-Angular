@@ -20,6 +20,8 @@
 
         public const string PasswordError = "Password should be at least 5 symbols long.";
 
+        public const string RequiredMinMaxLengthError = "The {0} must be at least {2} and at max {1} characters long.";
+
         public const string SuccessfullyAdded = "Successfully added.";
 
         public const string SuccessfullyUpdated = "Successfully updated.";

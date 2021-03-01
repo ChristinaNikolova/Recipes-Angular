@@ -104,4 +104,7 @@
   </div>
 </div>
 <hr />
-<app-create-comment [recipeId]="recipe.id"></app-create-comment>
+<app-all-comments [recipeId]=recipe.id (postCommentEmitter)="test()"></app-all-comments>
+
+
+

@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { CommentsService } from '../../../core/services/comments.service';
 
 @Component({
@@ -10,12 +9,12 @@ import { CommentsService } from '../../../core/services/comments.service';
 })
 export class CreateCommentComponent implements OnInit {
   @Input() recipeId: string;
+  @Output() postCommentEmitter = new EventEmitter<void>();
   public form: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private commentsService: CommentsService,
-    private router: Router
   ) { }
 
   ngOnInit() {
@@ -27,7 +26,7 @@ export class CreateCommentComponent implements OnInit {
   public create(): void {
     this.commentsService.create(this.form.value, this.recipeId).subscribe((_) => {
       this.form.reset();
-      this.router.navigate([`/recipe/details/${this.recipeId}`]);
+      this.postCommentEmitter.emit();
     });
   }
 

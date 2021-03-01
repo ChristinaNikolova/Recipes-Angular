@@ -1,9 +1,9 @@
 ﻿namespace Recipes.Services.Comments
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+
     using Microsoft.EntityFrameworkCore;
     using Recipes.Data.Common.Repositories;
     using Recipes.Data.Models;

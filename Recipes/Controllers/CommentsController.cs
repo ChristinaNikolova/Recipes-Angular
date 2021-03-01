@@ -59,7 +59,6 @@
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<CommentViewModel>>> All(string recipeId)
         {
-            ;
             try
             {
                 var comments = await this.commentsService.GetAllCurrentRecipeAsync<CommentViewModel>(recipeId);

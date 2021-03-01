@@ -17,6 +17,10 @@ import { AuthService } from './core/services/auth.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RecipesService } from './core/services/recipes.service';
 import { RecipeDetailsResolver } from './core/resolvers/recipe-details.resolver';
+import { UserFavouriteRecipesComponent } from './components/user/user-favourite-recipes/user-favourite-recipes.component';
+import { UserOwnRecipesComponent } from './components/user/user-own-recipes/user-own-recipes.component';
+import { UsersService } from './core/services/users.service';
+import { UserFavouriteSingleRecipeComponent } from './components/user/user-favourite-single-recipe/user-favourite-single-recipe.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,10 @@ import { RecipeDetailsResolver } from './core/resolvers/recipe-details.resolver'
     FooterComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserFavouriteRecipesComponent,
+    UserOwnRecipesComponent,
+    UserFavouriteSingleRecipeComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +45,7 @@ import { RecipeDetailsResolver } from './core/resolvers/recipe-details.resolver'
   providers: [
     AuthService,
     RecipesService,
+    UsersService,
     RecipeDetailsResolver,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ResponseHandlerInterceptorService, multi: true }

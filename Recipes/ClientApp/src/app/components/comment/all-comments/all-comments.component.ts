@@ -17,11 +17,10 @@ export class AllCommentsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.comments$ = this.commentsService.getAllCurrentRecipe(this.recipeId);
+    this.reload();
   }
 
   public reload(): void {
-    console.log("in");
     this.comments$ = this.commentsService.getAllCurrentRecipe(this.recipeId);
   }
 }

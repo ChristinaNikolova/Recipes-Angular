@@ -16,5 +16,7 @@
         public string CategoryName { get; set; }
 
         public int RecipeLikesCount { get; set; }
+
+        public int CommentsCount { get; set; }
     }
 }

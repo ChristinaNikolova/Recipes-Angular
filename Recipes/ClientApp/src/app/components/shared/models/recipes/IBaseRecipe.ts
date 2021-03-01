@@ -5,5 +5,6 @@ export default interface IBaseRecipe {
   picture: string;
   categoryName: string;
   recipeLikesCount: number;
+  commentsCount: number;
 }
 

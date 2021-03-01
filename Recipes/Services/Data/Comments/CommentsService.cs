@@ -1,13 +1,13 @@
-﻿namespace Recipes.Services.Comments
+﻿namespace Recipes.Services.Data.Comments
 {
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
+    using global::Recipes.Data.Common.Repositories;
+    using global::Recipes.Data.Models;
+    using global::Recipes.Services.Mapping;
     using Microsoft.EntityFrameworkCore;
-    using Recipes.Data.Common.Repositories;
-    using Recipes.Data.Models;
-    using Recipes.Services.Mapping;
 
     public class CommentsService : ICommentsService
     {

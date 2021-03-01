@@ -11,7 +11,7 @@
     using Recipes.Models.Comments.InputModels;
     using Recipes.Models.Comments.ViewModels;
     using Recipes.Models.Common;
-    using Recipes.Services.Comments;
+    using Recipes.Services.Data.Comments;
 
     [Route("api/[controller]/[action]")]
     public class CommentsController : ApiController
@@ -57,6 +57,7 @@
         [HttpGet("{recipeId}")]
         [ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<CommentViewModel>>> All(string recipeId)
         {
             try

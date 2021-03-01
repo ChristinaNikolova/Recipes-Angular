@@ -11,7 +11,8 @@
       </tr>
     </thead>
     <tbody *ngFor="let recipe of favouriteRecipes$ | async">
-      <tr app-user-favourite-single-recipe-row [recipe]="recipe" (removeFavRecipe)="reload()"></tr>
+      <tr app-user-favourite-single-recipe [recipe]="recipe" (reloadEventEmitter)="reload()"></tr>
     </tbody>
   </table>
 </div>
+

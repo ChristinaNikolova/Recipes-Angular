@@ -31,11 +31,15 @@ export class CreateRecipeComponent implements OnInit {
       cookingTime: ['', [Validators.required, Validators.min(1)]],
       categoryName: ['', [Validators.required]]
     });
-    
+
     this.categories$ = this.categoriesService.getAllNames();
   }
 
   public create(): void {
+    if (this.form.invalid) {
+      return;
+    }
+
     this.recipesService.create(this.form.value).subscribe((_) => {
       this.router.navigate(['/recipe/all']);
     });

@@ -14,6 +14,8 @@ import { RecipeSearchResultsComponent } from './recipe-search-results/recipe-sea
 import { RecipeOrderComponent } from './recipe-order/recipe-order.component';
 import { RecipeOrderResultComponent } from './recipe-order-result/recipe-order-result.component';
 import { SharedModule } from '../shared/shared.module';
+import { UpdateRecipeComponent } from './update-recipe/update-recipe.component';
+import { RecipeUpdateResolver } from '../../core/resolvers/recipe-update.resolver';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { SharedModule } from '../shared/shared.module';
     SearchRecipeComponent,
     RecipeSearchResultsComponent,
     RecipeOrderComponent,
-    RecipeOrderResultComponent
+    RecipeOrderResultComponent,
+    UpdateRecipeComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +41,8 @@ import { SharedModule } from '../shared/shared.module';
       { path: 'create', component: CreateRecipeComponent },
       { path: 'details/:id', component: RecipeDetailsComponent, resolve: { singleRecipe: RecipeDetailsResolver } },
       { path: 'results', component: RecipeSearchResultsComponent },
-      { path: 'orderResults', component: RecipeOrderResultComponent }
+      { path: 'orderResults', component: RecipeOrderResultComponent },
+      { path: 'update/:id', component: UpdateRecipeComponent, resolve: { singleRecipe: RecipeUpdateResolver } }
     ]),
   ],
   providers: [

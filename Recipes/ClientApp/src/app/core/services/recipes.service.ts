@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import IBaseRecipe from '../../components/shared/models/recipes/IBaseRecipe';
 import IDetailsRecipe from '../../components/shared/models/recipes/IDetailsRecipe';
 import IRecipe from '../../components/shared/models/recipes/IRecipe';
+import IUpdateRecipe from '../../components/shared/models/recipes/IUpdateRecipe';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,9 @@ export class RecipesService {
   private readonly dislikeUrl = 'dislike/';
   private readonly searchUrl = 'search/';
   private readonly orderUrl = 'order/';
+  private readonly deleteUrl = 'delete/';
+  private readonly recipeForUpdateUrl = 'recipeForUpdate/';
+  private readonly updateUrl = 'update';
 
   constructor(
     private http: HttpClient
@@ -48,5 +52,18 @@ export class RecipesService {
 
   public order(criteria: string): Observable<Array<IBaseRecipe>> {
     return this.http.get<Array<IBaseRecipe>>(this.baseUrl + this.orderUrl + `${criteria}`);
+  }
+
+  public delete(recipeId: string) {
+    return this.http.delete(this.baseUrl + this.deleteUrl + `${recipeId}`);
+  }
+
+  public getRecipeForUpdate(id: string) {
+    return this.http.get<IUpdateRecipe>(this.baseUrl + this.recipeForUpdateUrl + `${id}`);
+  }
+
+  public update(data: IUpdateRecipe, id: string) {
+    data.id = id;
+    return this.http.put(this.baseUrl + this.updateUrl, data);
   }
 }

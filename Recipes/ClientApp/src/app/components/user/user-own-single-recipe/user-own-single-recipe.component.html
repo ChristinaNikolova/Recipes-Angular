@@ -1,0 +1,9 @@
+<td>
+  <a [routerLink]="['/recipe/details', recipe.id]" class="custom-title"><h6>{{recipe.title}}</h6></a>
+</td>
+<td>
+  <img src="{{recipe.picture}}" alt="recipe-pic">
+</td>
+<td>{{recipe.categoryName}}</td>
+<td><button [routerLink]="['/recipe/update', recipe.id]" class="btn btn-warning">Update</button></td>
+<td><button (click)="remove(recipe.id)" class="btn btn-danger">Delete</button></td>

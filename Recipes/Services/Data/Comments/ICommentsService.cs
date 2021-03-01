@@ -1,4 +1,4 @@
-﻿namespace Recipes.Services.Comments
+﻿namespace Recipes.Services.Data.Comments
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;

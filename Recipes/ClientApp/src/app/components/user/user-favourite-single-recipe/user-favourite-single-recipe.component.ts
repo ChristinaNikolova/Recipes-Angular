@@ -3,13 +3,13 @@ import { RecipesService } from '../../../core/services/recipes.service';
 import IFavouriteRecipe from '../../shared/models/user/IFavouriteRecipe';
 
 @Component({
-  selector: '[app-user-favourite-single-recipe-row]',
+  selector: '[app-user-favourite-single-recipe]',
   templateUrl: './user-favourite-single-recipe.component.html',
   styleUrls: ['./user-favourite-single-recipe.component.css']
 })
 export class UserFavouriteSingleRecipeComponent implements OnInit {
   @Input() recipe: IFavouriteRecipe;
-  @Output() removeFavRecipe = new EventEmitter<void>();
+  @Output() reloadEventEmitter = new EventEmitter<void>();
 
   constructor(
     private recipesService: RecipesService
@@ -20,7 +20,7 @@ export class UserFavouriteSingleRecipeComponent implements OnInit {
 
   public remove(recipeId: string) {
     this.recipesService.dislike(recipeId).subscribe((_) => {
-      this.removeFavRecipe.emit();
+      this.reloadEventEmitter.emit();
     });
   }
 }

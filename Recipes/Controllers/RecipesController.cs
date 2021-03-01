@@ -71,6 +71,7 @@
         [HttpGet]
         [ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<RecipeBaseViewModel>>> All()
         {
             try
@@ -102,6 +103,28 @@
                 var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
 
                 recipe.IsFavourite = await this.recipeLikesService.IsFavouriteAsync(user.Id, id);
+
+                return recipe;
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = "Something went wrong.",
+                });
+            }
+        }
+
+        [HttpGet("{id}")]
+        [ProducesDefaultResponseType]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<ActionResult<RecipeUpdateInputModel>> RecipeForUpdate(string id)
+        {
+            try
+            {
+                var recipe = await this.recipesService.GetDetailsAsync<RecipeUpdateInputModel>(id);
 
                 return recipe;
             }
@@ -202,6 +225,56 @@
                 var recipes = await this.recipesService.GetOrderAsync<RecipeBaseViewModel>(criteria);
 
                 return new List<RecipeBaseViewModel>(recipes);
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = "Something went wrong.",
+                });
+            }
+        }
+
+        [HttpDelete("{recipeId}")]
+        [ProducesDefaultResponseType]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<ActionResult> Delete(string recipeId)
+        {
+            try
+            {
+                await this.recipesService.DeleteAsync(recipeId);
+
+                return this.Ok(new
+                {
+                    Message = "Successfully deleted!",
+                });
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = "Something went wrong.",
+                });
+            }
+        }
+
+        [HttpPut]
+        [ProducesDefaultResponseType]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<ActionResult> Update(RecipeUpdateInputModel input)
+        {
+            try
+            {
+                await this.recipesService.UpdateAsync(input.Id, input.Title, input.Content, input.CategoryName, input.CookingTime, input.PreparationTime, input.Portions, input.Picture);
+
+                return this.Ok(new
+                {
+                    Message = "Successfully deleted!",
+                });
             }
             catch (Exception)
             {

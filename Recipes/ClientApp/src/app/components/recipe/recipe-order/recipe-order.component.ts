@@ -41,4 +41,10 @@ export class RecipeOrderComponent implements OnInit {
     var criteria = 'likes';
     this.router.navigate(['/recipe/orderResults'], { queryParams: { criteria } });
   }
+
+  public comments(): void {
+    this.toogle();
+    var criteria = 'comments';
+    this.router.navigate(['/recipe/orderResults'], { queryParams: { criteria } });
+  }
 }

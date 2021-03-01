@@ -12,7 +12,8 @@ export class UserFavouriteRecipesComponent implements OnInit {
   favouriteRecipes$: Observable<Array<IFavouriteRecipe>>;
 
   constructor(
-    private usersService: UsersService) { }
+    private usersService: UsersService
+  ) { }
 
   ngOnInit() {
     this.reload();

@@ -21,6 +21,8 @@ import { UserFavouriteRecipesComponent } from './components/user/user-favourite-
 import { UserOwnRecipesComponent } from './components/user/user-own-recipes/user-own-recipes.component';
 import { UsersService } from './core/services/users.service';
 import { UserFavouriteSingleRecipeComponent } from './components/user/user-favourite-single-recipe/user-favourite-single-recipe.component';
+import { UserOwnSingleRecipeComponent } from './components/user/user-own-single-recipe/user-own-single-recipe.component';
+import { RecipeUpdateResolver } from './core/resolvers/recipe-update.resolver';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { UserFavouriteSingleRecipeComponent } from './components/user/user-favou
     RegisterComponent,
     UserFavouriteRecipesComponent,
     UserOwnRecipesComponent,
-    UserFavouriteSingleRecipeComponent
+    UserFavouriteSingleRecipeComponent,
+    UserOwnSingleRecipeComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +50,7 @@ import { UserFavouriteSingleRecipeComponent } from './components/user/user-favou
     RecipesService,
     UsersService,
     RecipeDetailsResolver,
+    RecipeUpdateResolver,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ResponseHandlerInterceptorService, multi: true }
   ],

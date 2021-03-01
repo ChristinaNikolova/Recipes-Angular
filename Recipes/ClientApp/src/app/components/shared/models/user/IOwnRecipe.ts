@@ -1,6 +1,6 @@
 export default interface IOwnRecipe {
-  recipeId: string;
-  recipeTitle: string;
-  recipePicture: string;
-  recipeCategoryName: string;
+  id: string;
+  title: string;
+  picture: string;
+  categoryName: string;
 }

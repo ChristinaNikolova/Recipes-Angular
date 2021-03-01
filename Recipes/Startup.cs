@@ -20,12 +20,12 @@
     using Recipes.Data.Models;
     using Recipes.Helpers;
     using Recipes.Models.Common;
-    using Recipes.Services.Comments;
     using Recipes.Services.Data.Categories;
+    using Recipes.Services.Data.Comments;
     using Recipes.Services.Data.RecipeLikes;
     using Recipes.Services.Data.Recipes;
+    using Recipes.Services.Data.Users;
     using Recipes.Services.Mapping;
-    using Recipes.Services.Users;
 
     public class Startup
     {

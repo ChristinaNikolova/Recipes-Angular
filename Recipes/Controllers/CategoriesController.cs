@@ -20,6 +20,7 @@
         [HttpGet]
         [ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<string>>> GetAllNames()
         {
             var categories = await this.categoriesService.GetAllNamesAsync();

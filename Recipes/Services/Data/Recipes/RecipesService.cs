@@ -43,6 +43,16 @@
             await this.recipesRepository.SaveChangesAsync();
         }
 
+        public async Task DeleteAsync(string recipeId)
+        {
+            var recipe = await this.GetByIdAsync(recipeId);
+
+            recipe.IsDeleted = true;
+
+            this.recipesRepository.Update(recipe);
+            await this.recipesRepository.SaveChangesAsync();
+        }
+
         public async Task<IEnumerable<T>> GetAllAsync<T>()
         {
             var recipes = await this.recipesRepository
@@ -85,6 +95,11 @@
                 query = query
                    .OrderByDescending(r => r.RecipeLikes.Count);
             }
+            else if (criteria.ToLower() == "comments")
+            {
+                query = query
+                   .OrderByDescending(r => r.Comments.Count);
+            }
 
             var recipes = await query
                 .To<T>()
@@ -112,6 +127,31 @@
                 .AnyAsync(r => r.Title == title);
 
             return isExisting;
+        }
+
+        public async Task UpdateAsync(string id, string title, string content, string categoryName, int cookingTime, int preparationTime, int portions, string picture)
+        {
+            var recipe = await this.GetByIdAsync(id);
+
+            var categoryId = await this.categoriesService.GetIdByNameAsync(categoryName);
+
+            recipe.Title = title;
+            recipe.Content = content;
+            recipe.CategoryId = categoryId;
+            recipe.CookingTime = cookingTime;
+            recipe.PreparationTime = preparationTime;
+            recipe.Portions = portions;
+            recipe.Picture = picture;
+
+            this.recipesRepository.Update(recipe);
+            await this.recipesRepository.SaveChangesAsync();
+        }
+
+        private async Task<Recipe> GetByIdAsync(string id)
+        {
+            return await this.recipesRepository
+                            .All()
+                            .FirstOrDefaultAsync(r => r.Id == id);
         }
     }
 }

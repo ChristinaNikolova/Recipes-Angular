@@ -3,7 +3,6 @@
     using System;
     using System.IdentityModel.Tokens.Jwt;
     using System.Linq;
-    using System.Net.Http;
     using System.Security.Claims;
     using System.Text;
     using System.Threading.Tasks;
@@ -28,7 +27,6 @@
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly JwtSettings jwtSettings;
-        private readonly HttpClient client;
 
         public AccountController(
             SignInManager<ApplicationUser> signInManager,
@@ -38,7 +36,6 @@
             this.signInManager = signInManager;
             this.userManager = userManager;
             this.jwtSettings = jwtSettings.Value;
-            this.client = new HttpClient();
         }
 
         [HttpPost]
@@ -107,7 +104,7 @@
 
             if (result.Succeeded)
             {
-                var addToRoleResult = await this.userManager.AddToRoleAsync(user, "User");
+                var addToRoleResult = await this.userManager.AddToRoleAsync(user, GlobalConstants.User);
                 if (addToRoleResult.Succeeded)
                 {
                     await this.signInManager.SignInAsync(user, false);
@@ -140,7 +137,7 @@
                         new Claim(ClaimTypes.Name, user.UserName),
                         new Claim(ClaimTypes.Role, this.userManager.IsInRoleAsync(user, GlobalConstants.AdminName).GetAwaiter().GetResult() ? GlobalConstants.AdminName : GlobalConstants.User),
                     }),
-                Expires = DateTime.UtcNow.AddDays(7),
+                Expires = DateTime.UtcNow.AddDays(GlobalConstants.DefaultDaysExpiredToken),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
             };
 

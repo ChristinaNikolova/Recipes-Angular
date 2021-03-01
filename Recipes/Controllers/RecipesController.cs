@@ -7,6 +7,7 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using Recipes.Common;
     using Recipes.Data.Models;
     using Recipes.Models.Common;
     using Recipes.Models.Recipes.InputModels;
@@ -32,10 +33,10 @@
         }
 
         [HttpPost]
-        [ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult> Create([FromBody] RecipeInputModel model)
         {
             var isTitleAlreadyExisting = await this.recipesService.IsTitleAlreadyExistingAsync(model.Title);
@@ -44,7 +45,7 @@
             {
                 return this.BadRequest(new BadRequestViewModel
                 {
-                    Message = "Recipe with the given name already exists.",
+                    Message = Messages.AlreadyExistsRecipe,
                 });
             }
 
@@ -56,22 +57,22 @@
 
                 return this.Ok(new
                 {
-                    Message = "Recipe added successfully.",
+                    Message = Messages.SuccessfullyAdded,
                 });
             }
             catch (Exception)
             {
                 return this.BadRequest(new BadRequestViewModel
                 {
-                    Message = "Something went wrong.",
+                    Message = Messages.UnknownError,
                 });
             }
         }
 
         [HttpGet]
-        [ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult<IEnumerable<RecipeBaseViewModel>>> All()
         {
             try
@@ -84,16 +85,16 @@
             {
                 return this.BadRequest(new BadRequestViewModel
                 {
-                    Message = "Something went wrong.",
+                    Message = Messages.UnknownError,
                 });
             }
         }
 
         [HttpGet("{id}")]
-        [ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult<RecipeDetailsViewModel>> Details(string id)
         {
             try
@@ -110,16 +111,16 @@
             {
                 return this.BadRequest(new BadRequestViewModel
                 {
-                    Message = "Something went wrong.",
+                    Message = Messages.UnknownError,
                 });
             }
         }
 
         [HttpGet("{id}")]
-        [ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult<RecipeUpdateInputModel>> RecipeForUpdate(string id)
         {
             try
@@ -132,16 +133,16 @@
             {
                 return this.BadRequest(new BadRequestViewModel
                 {
-                    Message = "Something went wrong.",
+                    Message = Messages.UnknownError,
                 });
             }
         }
 
         [HttpPost("{id}")]
-        [ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult> Like(string id)
         {
             try
@@ -152,23 +153,23 @@
 
                 return this.Ok(new
                 {
-                    Message = "Like added successfully.",
+                    Message = Messages.SuccessfullyAdded,
                 });
             }
             catch (Exception)
             {
                 return this.BadRequest(new BadRequestViewModel
                 {
-                    Message = "Something went wrong.",
+                    Message = Messages.UnknownError,
                 });
             }
         }
 
         [HttpPost("{id}")]
-        [ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult> Dislike(string id)
         {
             try
@@ -179,23 +180,23 @@
 
                 return this.Ok(new
                 {
-                    Message = "Like removed successfully.",
+                    Message = Messages.SuccessfullyDeleted,
                 });
             }
             catch (Exception)
             {
                 return this.BadRequest(new BadRequestViewModel
                 {
-                    Message = "Something went wrong.",
+                    Message = Messages.UnknownError,
                 });
             }
         }
 
         [HttpGet("{query}")]
-        [ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult<IEnumerable<RecipeBaseViewModel>>> Search(string query)
         {
             try
@@ -208,16 +209,16 @@
             {
                 return this.BadRequest(new BadRequestViewModel
                 {
-                    Message = "Something went wrong.",
+                    Message = Messages.UnknownError,
                 });
             }
         }
 
         [HttpGet("{criteria}")]
-        [ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult<IEnumerable<RecipeBaseViewModel>>> Order(string criteria)
         {
             try
@@ -230,16 +231,16 @@
             {
                 return this.BadRequest(new BadRequestViewModel
                 {
-                    Message = "Something went wrong.",
+                    Message = Messages.UnknownError,
                 });
             }
         }
 
         [HttpDelete("{recipeId}")]
-        [ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult> Delete(string recipeId)
         {
             try
@@ -248,23 +249,23 @@
 
                 return this.Ok(new
                 {
-                    Message = "Successfully deleted!",
+                    Message = Messages.SuccessfullyDeleted,
                 });
             }
             catch (Exception)
             {
                 return this.BadRequest(new BadRequestViewModel
                 {
-                    Message = "Something went wrong.",
+                    Message = Messages.UnknownError,
                 });
             }
         }
 
         [HttpPut]
-        [ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult> Update(RecipeUpdateInputModel input)
         {
             try
@@ -273,14 +274,14 @@
 
                 return this.Ok(new
                 {
-                    Message = "Successfully deleted!",
+                    Message = Messages.SuccessfullyUpdated,
                 });
             }
             catch (Exception)
             {
                 return this.BadRequest(new BadRequestViewModel
                 {
-                    Message = "Something went wrong.",
+                    Message = Messages.UnknownError,
                 });
             }
         }

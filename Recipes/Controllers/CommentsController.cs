@@ -7,6 +7,7 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using Recipes.Common;
     using Recipes.Data.Models;
     using Recipes.Models.Comments.InputModels;
     using Recipes.Models.Comments.ViewModels;
@@ -28,10 +29,10 @@
         }
 
         [HttpPost]
-        [ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult> Create([FromBody] CommentInputModel model)
         {
             try
@@ -42,22 +43,22 @@
 
                 return this.Ok(new
                 {
-                    Message = "Successfully added.",
+                    Message = Messages.SuccessfullyAdded,
                 });
             }
             catch (Exception)
             {
                 return this.BadRequest(new BadRequestViewModel
                 {
-                    Message = "Something went wrong.",
+                    Message = Messages.UnknownError,
                 });
             }
         }
 
         [HttpGet("{recipeId}")]
-        [ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult<IEnumerable<CommentViewModel>>> All(string recipeId)
         {
             try
@@ -70,7 +71,7 @@
             {
                 return this.BadRequest(new BadRequestViewModel
                 {
-                    Message = "Something went wrong.",
+                    Message = Messages.UnknownError,
                 });
             }
         }

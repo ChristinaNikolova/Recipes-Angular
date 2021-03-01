@@ -7,6 +7,7 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using Recipes.Common;
     using Recipes.Data.Models;
     using Recipes.Models.Common;
     using Recipes.Models.Users.ViewModels;
@@ -27,9 +28,9 @@
         }
 
         [HttpGet]
-        [ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult<IEnumerable<UserFavouriteRecipesViewModel>>> Favourite()
         {
             try
@@ -44,15 +45,15 @@
             {
                 return this.BadRequest(new BadRequestViewModel
                 {
-                    Message = "Something went wrong.",
+                    Message = Messages.UnknownError,
                 });
             }
         }
 
         [HttpGet]
-        [ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult<IEnumerable<UserOwnRecipesViewModel>>> Own()
         {
             try
@@ -67,7 +68,7 @@
             {
                 return this.BadRequest(new BadRequestViewModel
                 {
-                    Message = "Something went wrong.",
+                    Message = Messages.UnknownError,
                 });
             }
         }

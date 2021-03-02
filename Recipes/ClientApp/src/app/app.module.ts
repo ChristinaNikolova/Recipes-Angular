@@ -13,16 +13,16 @@ import { JwtInterceptorService } from './core/interceptors/jwt-interceptor.servi
 import { ResponseHandlerInterceptorService } from './core/interceptors/response-handler-interceptor.service';
 import { LoginComponent } from './components/authentication/login/login.component';
 import { RegisterComponent } from './components/authentication/register/register.component';
-import { AuthService } from './core/services/auth.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RecipesService } from './core/services/recipes.service';
 import { RecipeDetailsResolver } from './core/resolvers/recipe-details.resolver';
 import { UserFavouriteRecipesComponent } from './components/user/user-favourite-recipes/user-favourite-recipes.component';
 import { UserOwnRecipesComponent } from './components/user/user-own-recipes/user-own-recipes.component';
-import { UsersService } from './core/services/users.service';
 import { UserFavouriteSingleRecipeComponent } from './components/user/user-favourite-single-recipe/user-favourite-single-recipe.component';
 import { UserOwnSingleRecipeComponent } from './components/user/user-own-single-recipe/user-own-single-recipe.component';
 import { RecipeUpdateResolver } from './core/resolvers/recipe-update.resolver';
+import { AuthService } from './core/services/auth/auth.service';
+import { RecipesService } from './core/services/recipes/recipes.service';
+import { UsersService } from './core/services/users/users.service';
 
 @NgModule({
   declarations: [

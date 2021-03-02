@@ -1,5 +1,5 @@
-export default interface IRegister {
+import ILogin from "./ILogin";
+
+export default interface IRegister extends ILogin {
   username: string;
-  email: string;
-  password: string;
 }

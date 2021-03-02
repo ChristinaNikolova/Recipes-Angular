@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UsersService } from '../../../core/services/users.service';
+import { UsersService } from '../../../core/services/users/users.service';
 import IFavouriteRecipe from '../../shared/models/user/IFavouriteRecipe';
 
 @Component({

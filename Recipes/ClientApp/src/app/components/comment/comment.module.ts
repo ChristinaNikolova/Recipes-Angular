@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CommentsService } from '../../core/services/comments.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommentsService } from '../../core/services/comments/comments.service';
 
 @NgModule({
   declarations: [

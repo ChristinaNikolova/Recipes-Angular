@@ -4,7 +4,7 @@
       <h1>Create New Recipe</h1>
     </div>
   </div>
-  <form [formGroup]="form" (submit)="create()">
+  <form [formGroup]="createForm" (submit)="create()">
     <div class="row space-top">
       <div class="col-lg-8">
         <div class="form-group">
@@ -52,7 +52,7 @@
           <input class="form-control" id="picture" type="url" formControlName="picture">
         </div>
         <div class="alert alert-danger" *ngIf="f.picture?.errors?.required && f.picture?.touched">The field is required</div>
-        <button type="submit" class="btn btn-secondary" [disabled]="form.invalid">Create</button>
+        <button type="submit" class="btn btn-secondary" [disabled]="createForm.invalid">Create</button>
       </div>
     </div>
   </form>

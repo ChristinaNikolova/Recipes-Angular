@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { RecipesService } from '../../../core/services/recipes.service';
+import { RecipesService } from '../../../core/services/recipes/recipes.service';
 import IBaseRecipe from '../../shared/models/recipes/IBaseRecipe';
 
 @Component({
@@ -12,7 +12,8 @@ export class AllRecipesComponent implements OnInit {
   public recipes$: Observable<Array<IBaseRecipe>>;
 
   constructor(
-    private recipesService: RecipesService) { }
+    private recipesService: RecipesService
+  ) { }
 
   ngOnInit() {
     this.recipes$ = this.recipesService.getAll();

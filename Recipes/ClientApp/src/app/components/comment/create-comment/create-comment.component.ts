@@ -1,6 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CommentsService } from '../../../core/services/comments.service';
+import { CommentsService } from '../../../core/services/comments/comments.service';
+
+const CONTENT_MIN_LEN = 3;
+const CONTENT_MAX_LEN = 500;
 
 @Component({
   selector: 'app-create-comment',
@@ -10,7 +13,7 @@ import { CommentsService } from '../../../core/services/comments.service';
 export class CreateCommentComponent implements OnInit {
   @Input() recipeId: string;
   @Output() postCommentEmitter = new EventEmitter<void>();
-  public form: FormGroup;
+  public createForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
@@ -18,19 +21,19 @@ export class CreateCommentComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.form = this.fb.group({
-      content: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(500)]]
+    this.createForm = this.fb.group({
+      content: ['', [Validators.required, Validators.minLength(CONTENT_MIN_LEN), Validators.maxLength(CONTENT_MAX_LEN)]]
     });
   }
 
   public create(): void {
-    this.commentsService.create(this.form.value, this.recipeId).subscribe((_) => {
-      this.form.reset();
+    this.commentsService.create(this.createForm.value, this.recipeId).subscribe((_) => {
+      this.createForm.reset();
       this.postCommentEmitter.emit();
     });
   }
 
   public get f() {
-    return this.form.controls;
+    return this.createForm.controls;
   }
 }

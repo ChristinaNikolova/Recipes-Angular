@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import IBaseRecipe from '../../components/shared/models/recipes/IBaseRecipe';
-import IDetailsRecipe from '../../components/shared/models/recipes/IDetailsRecipe';
-import IRecipe from '../../components/shared/models/recipes/IRecipe';
-import IUpdateRecipe from '../../components/shared/models/recipes/IUpdateRecipe';
+import IBaseRecipe from '../../../components/shared/models/recipes/IBaseRecipe';
+import IDetailsRecipe from '../../../components/shared/models/recipes/IDetailsRecipe';
+import IRecipe from '../../../components/shared/models/recipes/IRecipe';
+import IUpdateRecipe from '../../../components/shared/models/recipes/IUpdateRecipe';
 
 @Injectable({
   providedIn: 'root'

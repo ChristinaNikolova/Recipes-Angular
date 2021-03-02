@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+
     using global::Recipes.Common;
     using global::Recipes.Data.Common.Repositories;
     using global::Recipes.Data.Models;
@@ -97,7 +98,7 @@
                 query = query
                    .OrderByDescending(r => r.RecipeLikes.Count);
             }
-            else if (criteriaToLower == GlobalConstants.LikesCountCriteria)
+            else if (criteriaToLower == GlobalConstants.CommentsCountCriteria)
             {
                 query = query
                    .OrderByDescending(r => r.Comments.Count);

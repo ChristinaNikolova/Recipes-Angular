@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import IFavouriteRecipe from '../../components/shared/models/user/IFavouriteRecipe';
-import IOwnRecipe from '../../components/shared/models/user/IOwnRecipe';
+import IFavouriteRecipe from '../../../components/shared/models/user/IFavouriteRecipe';
+import IOwnRecipe from '../../../components/shared/models/user/IOwnRecipe';
 
 @Injectable({
   providedIn: 'root'

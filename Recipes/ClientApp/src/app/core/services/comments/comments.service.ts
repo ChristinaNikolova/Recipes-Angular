@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import IComment from '../../components/shared/models/comments/IComment';
-import ICommentDetails from '../../components/shared/models/comments/ICommentDetails';
+import IComment from '../../../components/shared/models/comments/IComment';
+import ICommentDetails from '../../../components/shared/models/comments/ICommentDetails';
 
 @Injectable({
   providedIn: 'root'

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import IRegister from '../../components/shared/models/authentication/IRegister';
-import ILogin from '../../components/shared/models/authentication/ILogin';
+import IRegister from '../../../components/shared/models/authentication/IRegister';
+import ILogin from '../../../components/shared/models/authentication/ILogin';
 
 @Injectable()
 export class AuthService {

@@ -4,7 +4,6 @@ import { CreateRecipeComponent } from './create-recipe/create-recipe.component';
 import { AllRecipesComponent } from './all-recipes/all-recipes.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CategoriesService } from '../../core/services/categories.service';
 import { SingleRecipeComponent } from './single-recipe/single-recipe.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import { ToastrModule } from 'ngx-toastr';
@@ -16,6 +15,7 @@ import { RecipeOrderResultComponent } from './recipe-order-result/recipe-order-r
 import { SharedModule } from '../shared/shared.module';
 import { UpdateRecipeComponent } from './update-recipe/update-recipe.component';
 import { RecipeUpdateResolver } from '../../core/resolvers/recipe-update.resolver';
+import { CategoriesService } from '../../core/services/categories/categories.service';
 
 @NgModule({
   declarations: [

@@ -1,3 +1,4 @@
+import IRecipeIngredient from "../ingredients/IRecipeIngredient";
 import IBaseRecipe from "./IBaseRecipe";
 
 export default interface IDetailsRecipe extends IBaseRecipe {
@@ -6,4 +7,5 @@ export default interface IDetailsRecipe extends IBaseRecipe {
   cookingTime: number;
   authorUserName: string;
   isFavourite: boolean;
+  ingredients: Array<IRecipeIngredient>;
 }

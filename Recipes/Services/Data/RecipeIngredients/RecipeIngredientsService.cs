@@ -1,9 +1,13 @@
 ﻿namespace Recipes.Services.Data.RecipeIngredients
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using global::Recipes.Data.Common.Repositories;
     using global::Recipes.Data.Models;
+    using global::Recipes.Services.Mapping;
+    using Microsoft.EntityFrameworkCore;
 
     public class RecipeIngredientsService : IRecipeIngredientsService
     {
@@ -25,6 +29,18 @@
 
             await this.recipeIngredientsRepository.AddAsync(recipeIngredient);
             await this.recipeIngredientsRepository.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<T>> GetIngredientByRecipeAsync<T>(string recipeId)
+        {
+            var ingredients = await this.recipeIngredientsRepository
+                .All()
+                .Where(ri => ri.RecipeId == recipeId)
+                .OrderBy(ri => ri.Ingredient.Name)
+                .To<T>()
+                .ToListAsync();
+
+            return ingredients;
         }
     }
 }

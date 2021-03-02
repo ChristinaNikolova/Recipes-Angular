@@ -48,7 +48,9 @@
                 AuthorId = userId,
                 Picture = pictureUrl,
             };
-            ;
+
+            await this.recipesRepository.AddAsync(recipe);
+            await this.recipesRepository.SaveChangesAsync();
 
             foreach (var currentIngredientParams in ingredients)
             {
@@ -67,9 +69,6 @@
 
                 await this.recipeingredientsService.CreateAsync(ingredientId, recipe.Id, currentIngredientParams.Quantity);
             }
-
-            await this.recipesRepository.AddAsync(recipe);
-            await this.recipesRepository.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(string recipeId)

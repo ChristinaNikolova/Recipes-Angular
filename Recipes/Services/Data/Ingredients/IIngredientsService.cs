@@ -1,5 +1,6 @@
 ﻿namespace Recipes.Services.Data.Ingredients
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     public interface IIngredientsService

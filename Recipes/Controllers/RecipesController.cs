@@ -10,8 +10,10 @@
     using Recipes.Common;
     using Recipes.Data.Models;
     using Recipes.Models.Common;
+    using Recipes.Models.Ingredients;
     using Recipes.Models.Recipes.InputModels;
     using Recipes.Models.Recipes.ViewModels;
+    using Recipes.Services.Data.RecipeIngredients;
     using Recipes.Services.Data.RecipeLikes;
     using Recipes.Services.Data.Recipes;
 
@@ -20,15 +22,18 @@
     {
         private readonly IRecipesService recipesService;
         private readonly IRecipeLikesService recipeLikesService;
+        private readonly IRecipeIngredientsService recipeIngredientsService;
         private readonly UserManager<ApplicationUser> userManager;
 
         public RecipesController(
             IRecipesService recipesService,
             IRecipeLikesService recipeLikesService,
+            IRecipeIngredientsService recipeIngredientsService,
             UserManager<ApplicationUser> userManager)
         {
             this.recipesService = recipesService;
             this.recipeLikesService = recipeLikesService;
+            this.recipeIngredientsService = recipeIngredientsService;
             this.userManager = userManager;
         }
 
@@ -104,6 +109,7 @@
                 var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
 
                 recipe.IsFavourite = await this.recipeLikesService.IsFavouriteAsync(user.Id, id);
+                recipe.Ingredients = await this.recipeIngredientsService.GetIngredientByRecipeAsync<IngredientViewModel>(id);
 
                 return recipe;
             }

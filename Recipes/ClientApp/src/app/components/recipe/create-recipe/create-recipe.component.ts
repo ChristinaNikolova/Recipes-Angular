@@ -12,6 +12,10 @@ const CONTENT_MAX_LEN = 5000;
 const PORTION_MIN = 1;
 const PREP_MIN = 1;
 const COOK_MIN = 1;
+const INGREDIENT_NAME_MIN_LEN = 3;
+const INGREDIENT_NAME_MAX_LEN = 50;
+const INGREDIENT_QUANTITY_MIN_LEN = 3;
+const INGREDIENT_QUANTITY_MAX_LEN = 50;
 
 @Component({
   selector: 'app-create-recipe',
@@ -71,8 +75,8 @@ export class CreateRecipeComponent implements OnInit {
       categoryName: ['', [Validators.required]],
       ingredients: this.fb.array(
         new Array(this.ingredientsCount).fill(null).map((_, index) => (this.fb.group({
-          name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
-          quantity: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]]
+          name: ['', [Validators.required, Validators.minLength(INGREDIENT_NAME_MIN_LEN), Validators.maxLength(INGREDIENT_NAME_MAX_LEN)]],
+          quantity: ['', [Validators.required, Validators.minLength(INGREDIENT_QUANTITY_MIN_LEN), Validators.maxLength(INGREDIENT_QUANTITY_MAX_LEN)]]
         })))
       )
     });

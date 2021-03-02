@@ -56,15 +56,21 @@
         <div formArrayName="ingredients">
           <label class="form-control-label bold">Ingredients: </label>
           <div *ngFor="let ingredient of ingredients.controls; let i=index" [formGroupName]="i">
+            <label class="form-control-label color">Ingredient: </label>
             <div class="form-group">
               <label class="form-control-label" for="name">Name</label>
               <input class="form-control" id="name" type="text" formControlName="name">
             </div>
-            <div class="alert alert-danger" *ngIf="f.ingredients?.name?.errors?.required && ff.ingredients?.name?.touched">The field is required</div>
+            <div class="alert alert-danger" *ngIf="f.ingredients?.controls[i].controls.name?.errors?.required && f.ingredients?.controls[i].controls.name?.touched">The field is required</div>
+            <div class="alert alert-danger" *ngIf="f.ingredients?.controls[i].controls.name?.errors?.minlength">Ingredient name should be at least {{f.ingredients.controls[i].controls.name.errors.minlength.requiredLength}} characters</div>
+            <div class="alert alert-danger" *ngIf="f.ingredients?.controls[i].controls.name?.errors?.maxlength">Ingredient name should be maximal {{f.ingredients.controls[i].controls.name.errors.maxlength.requiredLength}} characters</div>
             <div class="form-group">
               <label class="form-control-label" for="quantity">Quantity</label>
               <input class="form-control" id="quantity" type="text" formControlName="quantity">
             </div>
+            <div class="alert alert-danger" *ngIf="f.ingredients?.controls[i].controls.quantity?.errors?.required && f.ingredients?.controls[i].controls.quantity?.touched">The field is required</div>
+            <div class="alert alert-danger" *ngIf="f.ingredients?.controls[i].controls.quantity?.errors?.minlength">Ingredient quantity should be at least {{f.ingredients.controls[i].controls.quantity.errors.minlength.requiredLength}} characters</div>
+            <div class="alert alert-danger" *ngIf="f.ingredients?.controls[i].controls.quantity?.errors?.maxlength">Ingredient quantity should be maximal {{f.ingredients.controls[i].controls.quantity.errors.maxlength.requiredLength}} characters</div>
           </div>
         </div>
         <button class="btn btn-primary custom" (click)="addIngredient()">Add ingredient</button>

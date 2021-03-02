@@ -22,10 +22,11 @@
     using Recipes.Models.Common;
     using Recipes.Services.Data.Categories;
     using Recipes.Services.Data.Comments;
+    using Recipes.Services.Data.Ingredients;
+    using Recipes.Services.Data.RecipeIngredients;
     using Recipes.Services.Data.RecipeLikes;
     using Recipes.Services.Data.Recipes;
     using Recipes.Services.Data.Users;
-    using Recipes.Services.Ingredients;
     using Recipes.Services.Mapping;
 
     public class Startup
@@ -101,6 +102,7 @@
             services.AddTransient<ICommentsService, CommentsService>();
             services.AddTransient<IUsersService, UsersService>();
             services.AddTransient<IIngredientsService, IngredientsService>();
+            services.AddTransient<IRecipeIngredientsService, RecipeIngredientsService>();
 
             services.AddSpaStaticFiles(configuration =>
             {

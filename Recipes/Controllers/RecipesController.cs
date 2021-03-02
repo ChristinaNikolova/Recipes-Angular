@@ -53,7 +53,7 @@
             {
                 var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
 
-                await this.recipesService.CreateAsync(model.Title, model.Content, model.Portions, model.PreparationTime, model.CookingTime, model.CategoryName, model.Picture, user.Id);
+                await this.recipesService.CreateAsync(model.Title, model.Content, model.Portions, model.PreparationTime, model.CookingTime, model.CategoryName, model.Picture, model.Ingredients, user.Id);
 
                 return this.Ok(new
                 {

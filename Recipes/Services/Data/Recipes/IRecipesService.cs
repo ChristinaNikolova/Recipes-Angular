@@ -3,9 +3,11 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
+    using global::Recipes.Models.Ingredients.InputModels;
+
     public interface IRecipesService
     {
-        Task CreateAsync(string title, string content, int portions, int preparationTime, int cookingTime, string categoryName, string pictureUrl, string userId);
+        Task CreateAsync(string title, string content, int portions, int preparationTime, int cookingTime, string categoryName, string pictureUrl, IEnumerable<IngredientInputModel> ingredients, string userId);
 
         Task<bool> IsTitleAlreadyExistingAsync(string title);
 

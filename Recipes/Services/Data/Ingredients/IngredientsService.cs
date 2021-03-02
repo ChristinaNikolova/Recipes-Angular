@@ -1,10 +1,11 @@
-﻿namespace Recipes.Services.Ingredients
+﻿namespace Recipes.Services.Data.Ingredients
 {
-    using System;
+    using System.Linq;
     using System.Threading.Tasks;
+
+    using global::Recipes.Data.Common.Repositories;
+    using global::Recipes.Data.Models;
     using Microsoft.EntityFrameworkCore;
-    using Recipes.Data.Common.Repositories;
-    using Recipes.Data.Models;
 
     public class IngredientsService : IIngredientsService
     {
@@ -26,6 +27,17 @@
             await this.ingredientsRepository.SaveChangesAsync();
 
             return ingredient.Id;
+        }
+
+        public async Task<string> GetIdByNameAsync(string name)
+        {
+            var id = await this.ingredientsRepository
+                .All()
+                .Where(i => i.Name.ToLower() == name.ToLower())
+                .Select(i => i.Id)
+                .FirstOrDefaultAsync();
+
+            return id;
         }
 
         public async Task<bool> IsAlreadyAddedAsync(string name)

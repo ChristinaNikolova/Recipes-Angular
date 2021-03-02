@@ -7,7 +7,10 @@
     using global::Recipes.Common;
     using global::Recipes.Data.Common.Repositories;
     using global::Recipes.Data.Models;
+    using global::Recipes.Models.Ingredients.InputModels;
     using global::Recipes.Services.Data.Categories;
+    using global::Recipes.Services.Data.Ingredients;
+    using global::Recipes.Services.Data.RecipeIngredients;
     using global::Recipes.Services.Mapping;
     using Microsoft.EntityFrameworkCore;
 
@@ -15,18 +18,23 @@
     {
         private readonly IRepository<Recipe> recipesRepository;
         private readonly ICategoriesService categoriesService;
+        private readonly IIngredientsService ingredientsService;
+        private readonly IRecipeIngredientsService recipeingredientsService;
 
         public RecipesService(
             IRepository<Recipe> recipesRepository,
-            ICategoriesService categoriesService)
+            ICategoriesService categoriesService,
+            IIngredientsService ingredientsService,
+            IRecipeIngredientsService recipeingredientsService)
         {
             this.recipesRepository = recipesRepository;
             this.categoriesService = categoriesService;
+            this.ingredientsService = ingredientsService;
+            this.recipeingredientsService = recipeingredientsService;
         }
 
-        public async Task CreateAsync(string title, string content, int portions, int preparationTime, int cookingTime, string categoryName, string pictureUrl, string userId)
+        public async Task CreateAsync(string title, string content, int portions, int preparationTime, int cookingTime, string categoryName, string pictureUrl, IEnumerable<IngredientInputModel> ingredients, string userId)
         {
-            //foreach(var currentIngredient in )
             var categoryId = await this.categoriesService.GetIdByNameAsync(categoryName);
 
             var recipe = new Recipe()
@@ -40,6 +48,25 @@
                 AuthorId = userId,
                 Picture = pictureUrl,
             };
+            ;
+
+            foreach (var currentIngredientParams in ingredients)
+            {
+                var ingredientId = string.Empty;
+
+                var isAdded = await this.ingredientsService.IsAlreadyAddedAsync(currentIngredientParams.Name);
+
+                if (isAdded)
+                {
+                    ingredientId = await this.ingredientsService.GetIdByNameAsync(currentIngredientParams.Name);
+                }
+                else
+                {
+                    ingredientId = await this.ingredientsService.CreateAsync(currentIngredientParams.Name);
+                }
+
+                await this.recipeingredientsService.CreateAsync(ingredientId, recipe.Id, currentIngredientParams.Quantity);
+            }
 
             await this.recipesRepository.AddAsync(recipe);
             await this.recipesRepository.SaveChangesAsync();

@@ -1,9 +1,11 @@
 ﻿namespace Recipes.Models.Recipes.InputModels
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using global::Recipes.Common;
     using global::Recipes.Data.Common;
+    using global::Recipes.Models.Ingredients.InputModels;
 
     public class RecipeInputModel
     {
@@ -31,5 +33,7 @@
 
         [Required]
         public string CategoryName { get; set; }
+
+        public IEnumerable<IngredientInputModel> Ingredients { get; set; }
     }
 }

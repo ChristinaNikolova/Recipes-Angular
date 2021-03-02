@@ -22,5 +22,11 @@
         public const string RecipeCookTimeMin = "1";
 
         public const string IntMaxValue = "2147483647";
+
+        // Ingredient
+        public const int IngredientNameMinLenght = 3;
+
+        // RecipeIngredient
+        public const int RecipeIngredientQunatityMinLenght = 3;
     }
 }

@@ -26,6 +26,7 @@
 
         public async Task CreateAsync(string title, string content, int portions, int preparationTime, int cookingTime, string categoryName, string pictureUrl, string userId)
         {
+            //foreach(var currentIngredient in )
             var categoryId = await this.categoriesService.GetIdByNameAsync(categoryName);
 
             var recipe = new Recipe()

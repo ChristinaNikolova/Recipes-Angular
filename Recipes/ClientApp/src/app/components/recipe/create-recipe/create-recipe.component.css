@@ -11,3 +11,13 @@ button {
   button:disabled {
     cursor: not-allowed;
   }
+
+.bold {
+  font-weight: bold;
+}
+
+.custom {
+  background-color: lightblue;
+  border-color: lightblue;
+  color: black;
+}

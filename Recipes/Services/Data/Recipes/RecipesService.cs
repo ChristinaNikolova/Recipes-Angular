@@ -52,23 +52,7 @@
             await this.recipesRepository.AddAsync(recipe);
             await this.recipesRepository.SaveChangesAsync();
 
-            foreach (var currentIngredientParams in ingredients)
-            {
-                var ingredientId = string.Empty;
-
-                var isAdded = await this.ingredientsService.IsAlreadyAddedAsync(currentIngredientParams.Name);
-
-                if (isAdded)
-                {
-                    ingredientId = await this.ingredientsService.GetIdByNameAsync(currentIngredientParams.Name);
-                }
-                else
-                {
-                    ingredientId = await this.ingredientsService.CreateAsync(currentIngredientParams.Name);
-                }
-
-                await this.recipeingredientsService.CreateAsync(ingredientId, recipe.Id, currentIngredientParams.Quantity);
-            }
+            await this.AddIngredientsToRecipeAsync(ingredients, recipe);
         }
 
         public async Task DeleteAsync(string recipeId)
@@ -159,7 +143,7 @@
             return isExisting;
         }
 
-        public async Task UpdateAsync(string id, string title, string content, string categoryName, int cookingTime, int preparationTime, int portions, string picture)
+        public async Task UpdateAsync(string id, string title, string content, string categoryName, int cookingTime, int preparationTime, int portions, IEnumerable<IngredientInputModel> ingredients, string picture)
         {
             var recipe = await this.GetByIdAsync(id);
 
@@ -175,6 +159,29 @@
 
             this.recipesRepository.Update(recipe);
             await this.recipesRepository.SaveChangesAsync();
+
+            await this.AddIngredientsToRecipeAsync(ingredients, recipe);
+        }
+
+        private async Task AddIngredientsToRecipeAsync(IEnumerable<IngredientInputModel> ingredients, Recipe recipe)
+        {
+            foreach (var currentIngredientParams in ingredients)
+            {
+                var ingredientId = string.Empty;
+
+                var isAdded = await this.ingredientsService.IsAlreadyAddedAsync(currentIngredientParams.Name);
+
+                if (isAdded)
+                {
+                    ingredientId = await this.ingredientsService.GetIdByNameAsync(currentIngredientParams.Name);
+                }
+                else
+                {
+                    ingredientId = await this.ingredientsService.CreateAsync(currentIngredientParams.Name);
+                }
+
+                await this.recipeingredientsService.CreateAsync(ingredientId, recipe.Id, currentIngredientParams.Quantity);
+            }
         }
 
         private async Task<Recipe> GetByIdAsync(string id)

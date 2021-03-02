@@ -42,9 +42,9 @@
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult> Create([FromBody] RecipeInputModel model)
+        public async Task<ActionResult> Create([FromBody] RecipeInputModel input)
         {
-            var isTitleAlreadyExisting = await this.recipesService.IsTitleAlreadyExistingAsync(model.Title);
+            var isTitleAlreadyExisting = await this.recipesService.IsTitleAlreadyExistingAsync(input.Title);
 
             if (isTitleAlreadyExisting)
             {
@@ -58,7 +58,7 @@
             {
                 var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
 
-                await this.recipesService.CreateAsync(model.Title, model.Content, model.Portions, model.PreparationTime, model.CookingTime, model.CategoryName, model.Picture, model.Ingredients, user.Id);
+                await this.recipesService.CreateAsync(input.Title, input.Content, input.Portions, input.PreparationTime, input.CookingTime, input.CategoryName, input.Picture, input.Ingredients, user.Id);
 
                 return this.Ok(new
                 {
@@ -276,7 +276,7 @@
         {
             try
             {
-                await this.recipesService.UpdateAsync(input.Id, input.Title, input.Content, input.CategoryName, input.CookingTime, input.PreparationTime, input.Portions, input.Picture);
+                await this.recipesService.UpdateAsync(input.Id, input.Title, input.Content, input.CategoryName, input.CookingTime, input.PreparationTime, input.Portions, input.Ingredients, input.Picture);
 
                 return this.Ok(new
                 {

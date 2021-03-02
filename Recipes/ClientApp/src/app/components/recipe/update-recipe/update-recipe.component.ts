@@ -13,6 +13,10 @@ const CONTENT_MAX_LEN = 5000;
 const PORTION_MIN = 1;
 const PREP_MIN = 1;
 const COOK_MIN = 1;
+const INGREDIENT_NAME_MIN_LEN = 3;
+const INGREDIENT_NAME_MAX_LEN = 50;
+const INGREDIENT_QUANTITY_MIN_LEN = 3;
+const INGREDIENT_QUANTITY_MAX_LEN = 50;
 
 @Component({
   selector: 'app-update-recipe',
@@ -24,6 +28,7 @@ export class UpdateRecipeComponent implements OnInit {
   public updateForm: FormGroup;
   public id: string;
   public recipe: IUpdateRecipe;
+  public ingredientsCount = 0;
 
   constructor(
     private fb: FormBuilder,
@@ -35,18 +40,8 @@ export class UpdateRecipeComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.recipe = this.route.snapshot.data['singleRecipe'];
     this.categories$ = this.categoriesService.getAllNames();
-
-    this.updateForm = this.fb.group({
-      title: [this.recipe.title, [Validators.required, Validators.minLength(TITLE_MIN_LEN), Validators.maxLength(TITLE_MAX_LEN)]],
-      content: [this.recipe.content, [Validators.required, Validators.minLength(CONTENT_MIN_LEN), Validators.maxLength(CONTENT_MAX_LEN)]],
-      picture: [this.recipe.picture, [Validators.required]],
-      portions: [this.recipe.portions, [Validators.required, Validators.min(PORTION_MIN)]],
-      preparationTime: [this.recipe.preparationTime, [Validators.required, Validators.min(PREP_MIN)]],
-      cookingTime: [this.recipe.cookingTime, [Validators.required, Validators.min(COOK_MIN)]],
-      categoryName: [this.recipe.categoryName, [Validators.required]]
-    });
+    this.buildForm();
   }
 
   public update(): void {
@@ -61,5 +56,36 @@ export class UpdateRecipeComponent implements OnInit {
 
   public get f() {
     return this.updateForm.controls;
+  }
+
+  public get ingredients(): FormGroup {
+    return this.updateForm.get('ingredients') as FormGroup;
+  }
+
+  public addIngredient() {
+    const currentFormValue = this.updateForm.value;
+    this.ingredientsCount++;
+    this.buildForm();
+    this.updateForm.patchValue(currentFormValue);
+  }
+
+  private buildForm(): void {
+    this.recipe = this.route.snapshot.data['singleRecipe'];
+
+    this.updateForm = this.fb.group({
+      title: [this.recipe.title, [Validators.required, Validators.minLength(TITLE_MIN_LEN), Validators.maxLength(TITLE_MAX_LEN)]],
+      content: [this.recipe.content, [Validators.required, Validators.minLength(CONTENT_MIN_LEN), Validators.maxLength(CONTENT_MAX_LEN)]],
+      picture: [this.recipe.picture, [Validators.required]],
+      portions: [this.recipe.portions, [Validators.required, Validators.min(PORTION_MIN)]],
+      preparationTime: [this.recipe.preparationTime, [Validators.required, Validators.min(PREP_MIN)]],
+      cookingTime: [this.recipe.cookingTime, [Validators.required, Validators.min(COOK_MIN)]],
+      categoryName: [this.recipe.categoryName, [Validators.required]],
+      ingredients: this.fb.array(
+        new Array(this.ingredientsCount).fill(null).map((_, index) => (this.fb.group({
+          name: ['', [Validators.required, Validators.minLength(INGREDIENT_NAME_MIN_LEN), Validators.maxLength(INGREDIENT_NAME_MAX_LEN)]],
+          quantity: ['', [Validators.required, Validators.minLength(INGREDIENT_QUANTITY_MIN_LEN), Validators.maxLength(INGREDIENT_QUANTITY_MAX_LEN)]]
+        })))
+      )
+    });
   }
 }

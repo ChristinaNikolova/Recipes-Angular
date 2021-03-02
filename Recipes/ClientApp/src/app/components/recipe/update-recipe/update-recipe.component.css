@@ -11,3 +11,7 @@ button {
   button:disabled {
     cursor: not-allowed;
   }
+
+.color {
+  color: #78C2AD;
+}

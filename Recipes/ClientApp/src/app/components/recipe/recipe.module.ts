@@ -16,6 +16,8 @@ import { SharedModule } from '../shared/shared.module';
 import { UpdateRecipeComponent } from './update-recipe/update-recipe.component';
 import { RecipeUpdateResolver } from '../../core/resolvers/recipe-update.resolver';
 import { CategoriesService } from '../../core/services/categories/categories.service';
+import { UpdateRecipeIngredientComponent } from './update-recipe-ingredient/update-recipe-ingredient.component';
+import { SingleRecipeIngredientComponent } from './single-recipe-ingredient/single-recipe-ingredient.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { CategoriesService } from '../../core/services/categories/categories.ser
     RecipeSearchResultsComponent,
     RecipeOrderComponent,
     RecipeOrderResultComponent,
-    UpdateRecipeComponent
+    UpdateRecipeComponent,
+    UpdateRecipeIngredientComponent,
+    SingleRecipeIngredientComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +46,8 @@ import { CategoriesService } from '../../core/services/categories/categories.ser
       { path: 'details/:id', component: RecipeDetailsComponent, resolve: { singleRecipe: RecipeDetailsResolver } },
       { path: 'results', component: RecipeSearchResultsComponent },
       { path: 'orderResults', component: RecipeOrderResultComponent },
-      { path: 'update/:id', component: UpdateRecipeComponent, resolve: { singleRecipe: RecipeUpdateResolver } }
+      { path: 'update/:id', component: UpdateRecipeComponent, resolve: { singleRecipe: RecipeUpdateResolver } },
+      { path: 'ingredients/:id', component: UpdateRecipeIngredientComponent }
     ]),
   ],
   providers: [

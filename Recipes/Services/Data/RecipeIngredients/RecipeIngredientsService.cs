@@ -31,6 +31,16 @@
             await this.recipeIngredientsRepository.SaveChangesAsync();
         }
 
+        public async Task DeleteAsync(string ingredientId, string recipeId)
+        {
+            var recipeIngredient = await this.recipeIngredientsRepository
+                .All()
+                .FirstOrDefaultAsync(ri => ri.RecipeId == recipeId && ri.IngredientId == ingredientId);
+
+            this.recipeIngredientsRepository.Delete(recipeIngredient);
+            await this.recipeIngredientsRepository.SaveChangesAsync();
+        }
+
         public async Task<IEnumerable<T>> GetIngredientByRecipeAsync<T>(string recipeId)
         {
             var ingredients = await this.recipeIngredientsRepository

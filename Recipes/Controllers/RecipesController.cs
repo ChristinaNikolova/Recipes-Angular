@@ -10,7 +10,7 @@
     using Recipes.Common;
     using Recipes.Data.Models;
     using Recipes.Models.Common;
-    using Recipes.Models.Ingredients;
+    using Recipes.Models.Ingredients.InputModels;
     using Recipes.Models.Recipes.InputModels;
     using Recipes.Models.Recipes.ViewModels;
     using Recipes.Services.Data.RecipeIngredients;
@@ -109,7 +109,7 @@
                 var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
 
                 recipe.IsFavourite = await this.recipeLikesService.IsFavouriteAsync(user.Id, id);
-                recipe.Ingredients = await this.recipeIngredientsService.GetIngredientByRecipeAsync<IngredientViewModel>(id);
+                recipe.Ingredients = await this.recipeIngredientsService.GetIngredientByRecipeAsync<BaseIngredientViewModel>(id);
 
                 return recipe;
             }

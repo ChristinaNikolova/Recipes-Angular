@@ -5,5 +5,6 @@
   <img src="{{recipe.picture}}" alt="recipe-pic">
 </td>
 <td>{{recipe.categoryName}}</td>
+<td><button [routerLink]="['/recipe/ingredients', recipe.id]" class="btn btn-secondary">Ingredients</button></td>
 <td><button [routerLink]="['/recipe/update', recipe.id]" class="btn btn-warning">Update</button></td>
 <td><button (click)="remove(recipe.id)" class="btn btn-danger">Delete</button></td>

@@ -52,6 +52,7 @@
     <Folder Include="ClientApp\src\app\components\authentication\" />
     <Folder Include="ClientApp\src\app\components\user\" />
     <Folder Include="ClientApp\src\app\core\interceptors\" />
+    <Folder Include="ClientApp\src\app\core\services\ingredients\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -8,5 +8,7 @@
         Task CreateAsync(string ingredientId, string recipeId, string quantity);
 
         Task<IEnumerable<T>> GetIngredientByRecipeAsync<T>(string recipeId);
+
+        Task DeleteAsync(string ingredientId, string recipeId);
     }
 }

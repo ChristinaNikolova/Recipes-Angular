@@ -3,7 +3,7 @@
     using System.Collections.Generic;
 
     using global::Recipes.Data.Models;
-    using global::Recipes.Models.Ingredients;
+    using global::Recipes.Models.Ingredients.InputModels;
     using global::Recipes.Services.Mapping;
 
     public class RecipeDetailsViewModel : RecipeBaseViewModel, IMapFrom<Recipe>
@@ -18,6 +18,6 @@
 
         public bool IsFavourite { get; set; }
 
-        public IEnumerable<IngredientViewModel> Ingredients { get; set; }
+        public IEnumerable<BaseIngredientViewModel> Ingredients { get; set; }
     }
 }

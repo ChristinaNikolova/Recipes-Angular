@@ -52,7 +52,7 @@
           <input class="form-control" id="picture" type="url" formControlName="picture">
         </div>
         <div class="alert alert-danger" *ngIf="f.picture?.errors?.required && f.picture?.touched">The field is required</div>
-        <button type="submit" class="btn btn-secondary" [disabled]="updateForm.invalid">Create</button>
+        <button type="submit" class="btn btn-secondary" [disabled]="updateForm.invalid">Update</button>
       </div>
     </div>
   </form>

@@ -1,10 +1,10 @@
-﻿namespace Recipes.Models.Ingredients
+﻿namespace Recipes.Models.Ingredients.InputModels
 {
     using global::Recipes.Data.Models;
 
     using global::Recipes.Services.Mapping;
 
-    public class IngredientViewModel : IMapFrom<RecipeIngredient>
+    public class BaseIngredientViewModel : IMapFrom<RecipeIngredient>
     {
         public string IngredientName { get; set; }
 

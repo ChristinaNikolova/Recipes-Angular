@@ -20,6 +20,7 @@ import { AuthService } from './core/services/auth/auth.service';
 import { RecipesService } from './core/services/recipes/recipes.service';
 import { UsersService } from './core/services/users/users.service';
 import { IngredientsService } from './core/services/ingredients/ingredients.service';
+import { NotFoundComponent } from './components/shared/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { IngredientsService } from './core/services/ingredients/ingredients.serv
     FooterComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

@@ -8,10 +8,13 @@ export class AuthService {
   private readonly baseUrl = 'https://localhost:44309/api/account/';
   private readonly loginUrl = 'login';
   private readonly registerUrl = 'register';
+  private readonly isUserAdmin: boolean;
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+    this.isUserAdmin = false;
+  }
 
   register(body: IRegister) {
     return this.http.post(this.baseUrl + this.registerUrl, body);
@@ -31,5 +34,9 @@ export class AuthService {
 
   getToken() {
     return localStorage.getItem('token');
+  }
+
+  isAdmin(): boolean {
+    return localStorage.getItem('isAdmin') === 'true' ? !this.isUserAdmin : this.isUserAdmin;
   }
 }

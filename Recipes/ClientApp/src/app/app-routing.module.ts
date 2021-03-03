@@ -4,6 +4,7 @@ import { LoginComponent } from './components/authentication/login/login.componen
 import { RegisterComponent } from './components/authentication/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/shared/not-found/not-found.component';
+import { AdminGuard } from './core/guards/admin.guard';
 import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'recipe', loadChildren: './components/recipe/recipe.module#RecipeModule', canActivate: [AuthGuard]},
   { path: 'comment', loadChildren: './components/comment/comment.module#CommentModule', canActivate: [AuthGuard] },
   { path: 'user', loadChildren: './components/user/user.module#UserModule', canActivate: [AuthGuard] },
+  { path: 'admin', loadChildren: './components/admin/admin.module#AdminModule', canActivate: [AdminGuard] },
   { path: '**', component: NotFoundComponent }
 ];
 

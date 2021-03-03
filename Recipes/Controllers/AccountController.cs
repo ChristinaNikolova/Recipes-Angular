@@ -55,6 +55,7 @@
             }
 
             var result = await this.signInManager.PasswordSignInAsync(user.UserName, model.Password, false, false);
+            var isAdmin = user.UserName == "Admin";
 
             if (result.Succeeded)
             {
@@ -63,6 +64,7 @@
                     Username = user.UserName,
                     Message = Messages.SuccessfulLogin,
                     Token = this.GenerateJwtToken(user),
+                    IsAdmin = isAdmin,
                 };
             }
 

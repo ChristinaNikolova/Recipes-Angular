@@ -5,6 +5,7 @@ import { UserOwnRecipesComponent } from './user-own-recipes/user-own-recipes.com
 import { UserFavouriteSingleRecipeComponent } from './user-favourite-single-recipe/user-favourite-single-recipe.component';
 import { UserOwnSingleRecipeComponent } from './user-own-single-recipe/user-own-single-recipe.component';
 import { RouterModule } from '@angular/router';
+import { UsersService } from '../../core/services/users/users.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,10 @@ import { RouterModule } from '@angular/router';
       { path: '', pathMatch: 'full', redirectTo: 'home' },
       { path: 'own', component: UserOwnRecipesComponent },
       { path: 'favourite', component: UserFavouriteRecipesComponent },
-    ])
+    ]),
+  ],
+  providers: [
+    UsersService
   ]
 })
 export class UserModule { }

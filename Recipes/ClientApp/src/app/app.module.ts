@@ -17,9 +17,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RecipeDetailsResolver } from './core/resolvers/recipe-details.resolver';
 import { RecipeUpdateResolver } from './core/resolvers/recipe-update.resolver';
 import { AuthService } from './core/services/auth/auth.service';
-import { RecipesService } from './core/services/recipes/recipes.service';
-import { UsersService } from './core/services/users/users.service';
-import { IngredientsService } from './core/services/ingredients/ingredients.service';
 import { NotFoundComponent } from './components/shared/not-found/not-found.component';
 
 @NgModule({
@@ -42,9 +39,6 @@ import { NotFoundComponent } from './components/shared/not-found/not-found.compo
   ],
   providers: [
     AuthService,
-    RecipesService,
-    UsersService,
-    IngredientsService,
     RecipeDetailsResolver,
     RecipeUpdateResolver,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true },

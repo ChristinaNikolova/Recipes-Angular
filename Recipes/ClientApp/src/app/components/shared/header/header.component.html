@@ -13,11 +13,11 @@
           <span class="sr-only">(current)</span>
         </a>
       </li>
-      <li class="nav-item" *ngIf="authService.isAuthenticated()">
-        <a class="nav-link" [routerLink]="['/recipe/all']">Recipes</a>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/category/all']">Categories</a>
       </li>
       <li class="nav-item" *ngIf="authService.isAuthenticated()">
-        <a class="nav-link" [routerLink]="['/category/all']">Categories</a>
+        <a class="nav-link" [routerLink]="['/recipe/all']">Recipes</a>
       </li>
       <li class="nav-item" *ngIf="authService.isAuthenticated()">
         <a class="nav-link" [routerLink]="['/user/own']">My Own Recipes</a>

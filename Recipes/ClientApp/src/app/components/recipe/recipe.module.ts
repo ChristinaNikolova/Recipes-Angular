@@ -18,6 +18,8 @@ import { RecipeUpdateResolver } from '../../core/resolvers/recipe-update.resolve
 import { CategoriesService } from '../../core/services/categories/categories.service';
 import { UpdateRecipeIngredientComponent } from './update-recipe-ingredient/update-recipe-ingredient.component';
 import { SingleRecipeIngredientComponent } from './single-recipe-ingredient/single-recipe-ingredient.component';
+import { IngredientsService } from '../../core/services/ingredients/ingredients.service';
+import { RecipesService } from '../../core/services/recipes/recipes.service';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { SingleRecipeIngredientComponent } from './single-recipe-ingredient/sing
     ]),
   ],
   providers: [
-    CategoriesService
+    RecipesService,
+    CategoriesService,
+    IngredientsService
   ]
 })
 export class RecipeModule { }

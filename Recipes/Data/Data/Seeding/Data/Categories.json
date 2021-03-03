@@ -1,26 +1,34 @@
 ﻿[
   {
-    "Name": "Salads"
+    "Name": "Salads",
+    "Picture": "https://www.lecremedelacrumb.com/wp-content/uploads/2019/01/best-simple-green-salad-3.jpg"
   },
   {
-    "Name": "Seafood"
+    "Name": "Seafood",
+    "Picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_xs1X7tnMNqkWujfbjszoPSaDuVgogxGgVQ&usqp=CAU"
   },
   {
-    "Name": "Vegetarian"
+    "Name": "Vegetarian",
+    "Picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Vegetarian_diet.jpg/1200px-Vegetarian_diet.jpg"
   },
   {
-    "Name": "Soups"
+    "Name": "Soups",
+    "Picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFV1jgsJzlwTxFF0g9ot93qVFkHN7vP4ip6A&usqp=CAU"
   },
   {
-    "Name": "Desserts"
+    "Name": "Desserts",
+    "Picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnn_0AiJnOgspItoW0-qxAIJrXN5HvGvPG_g&usqp=CAU"
   },
   {
-    "Name": "Beef"
+    "Name": "Beef",
+    "Picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyKtFQWwS5M7-5RdpX0f8YJDbt1vKqzFXtUA&usqp=CAU"
   },
   {
-    "Name": "Pork"
-  }, 
+    "Name": "Pork",
+    "Picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKZhAXTr5bR6DnMd5HfA5Znzf4oy822C6dTQ&usqp=CAU"
+  },
   {
-    "Name": "Chicken"
+    "Name": "Chicken",
+    "Picture": "https://image.freepik.com/free-photo/top-view-assortment-with-chicken-food-salad_23-2148308840.jpg"
   }
 ]

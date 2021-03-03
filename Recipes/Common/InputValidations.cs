@@ -28,5 +28,8 @@
 
         // RecipeIngredient
         public const int RecipeIngredientQunatityMinLenght = 3;
+
+        // Category
+        public const int CategoryNameMinLenght = 3;
     }
 }

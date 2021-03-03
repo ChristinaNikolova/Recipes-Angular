@@ -1,6 +1,6 @@
-export default interface ICategory {
+import ICreateCategory from "./ICreateCategory";
+
+export default interface ICategory extends ICreateCategory {
   id: string;
-  name: string;
-  picture: string;
   recipesCount: number;
 }

@@ -3,7 +3,7 @@
     public static class GlobalConstants
     {
         // Admin
-        public const string AdministratorRoleName = "Administrator";
+        //public const string AdministratorRoleName = "Administrator";
 
         public const string AdminName = "Admin";
 

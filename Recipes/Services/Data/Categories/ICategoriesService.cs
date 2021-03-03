@@ -8,5 +8,9 @@
         Task<IEnumerable<T>> GetAllAsync<T>();
 
         Task<string> GetIdByNameAsync(string categoryName);
+
+        Task<bool> IsCategoryAlreadyExistingAsync(string name);
+
+        Task CreateAsync(string name, string picture);
     }
 }

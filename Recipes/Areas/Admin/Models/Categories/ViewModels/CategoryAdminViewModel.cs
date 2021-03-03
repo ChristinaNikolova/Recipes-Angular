@@ -1,4 +1,4 @@
-﻿namespace Recipes.Areas.Admin.Admin.Categories.ViewModels
+﻿namespace Recipes.Areas.Admin.Models.Categories.ViewModels
 {
     using Recipes.Data.Models;
     using Recipes.Services.Mapping;

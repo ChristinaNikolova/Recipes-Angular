@@ -1,4 +1,4 @@
-﻿namespace Recipes.Areas.Admin.Admin.Categories.InputModels
+﻿namespace Recipes.Areas.Admin.Models.Categories.InputModels
 {
     using System.ComponentModel.DataAnnotations;
 

@@ -31,5 +31,7 @@
         public const string AlreadyExistsRecipe = "Recipe with the given title already exists.";
 
         public const string AlreadyExistsCategory = "Category with the given name already exists.";
+
+        public const string AlreadyExistsIngredient = "Ingredient with the given name already exists.";
     }
 }

@@ -1,0 +1,4 @@
+<td>{{ingredient.name}}</td>
+<td>{{ingredient.recipeIngredientsCount}}</td>
+<td><button [routerLink]="['/admin/ingredient/update', ingredient.id]" class="btn btn-warning">Update</button></td>
+<td><button (click)="remove(ingredient.id)" class="btn btn-danger">Delete</button></td>

@@ -1,4 +1,5 @@
-export default interface IIngredient {
-  name: string;
+import ICreateIngredient from "./ICreateIngredient";
+
+export default interface IIngredient extends ICreateIngredient {
   quantity: string;
 }

@@ -6,21 +6,22 @@
 
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
-    using Recipes.Areas.Admin.Models.Categories.InputModels;
-    using Recipes.Areas.Admin.Models.Categories.ViewModels;
+    using Recipes.Areas.Admin.Models.Ingredients.InputModels;
+    using Recipes.Areas.Admin.Models.Ingredients.ViewModels;
     using Recipes.Common;
     using Recipes.Controllers;
     using Recipes.Models.Common;
-    using Recipes.Services.Data.Categories;
+    using Recipes.Models.Ingredients.InputModels;
+    using Recipes.Services.Data.Ingredients;
 
     [Route("api/admin/[controller]/[action]")]
-    public class CategoriesController : ApiController
+    public class IngredientsController : ApiController
     {
-        private readonly ICategoriesService categoriesService;
+        private readonly IIngredientsService ingredientsService;
 
-        public CategoriesController(ICategoriesService categoriesService)
+        public IngredientsController(IIngredientsService ingredientsService)
         {
-            this.categoriesService = categoriesService;
+            this.ingredientsService = ingredientsService;
         }
 
         [HttpPost]
@@ -28,23 +29,23 @@
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult> Create([FromBody] CategoryInputModel input)
+        public async Task<ActionResult> Create([FromBody] IngredientCreateAdminInputModel input)
         {
             if (this.User.IsInRole(GlobalConstants.AdminName))
             {
-                var isCategoryAlreadyExisting = await this.categoriesService.IsCategoryAlreadyExistingAsync(input.Name);
+                var isIngredientAlreadyExisting = await this.ingredientsService.IsAlreadyAddedAsync(input.Name);
 
-                if (isCategoryAlreadyExisting)
+                if (isIngredientAlreadyExisting)
                 {
                     return this.BadRequest(new BadRequestViewModel
                     {
-                        Message = Messages.AlreadyExistsCategory,
+                        Message = Messages.AlreadyExistsIngredient,
                     });
                 }
 
                 try
                 {
-                    await this.categoriesService.CreateAsync(input.Name, input.Picture);
+                    await this.ingredientsService.CreateAsync(input.Name);
 
                     return this.Ok(new
                     {
@@ -68,15 +69,15 @@
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult<IEnumerable<CategoryAdminViewModel>>> All()
+        public async Task<ActionResult<IEnumerable<IngredientAdminViewModel>>> All()
         {
             if (this.User.IsInRole(GlobalConstants.AdminName))
             {
                 try
                 {
-                    var categories = await this.categoriesService.GetAllAsync<CategoryAdminViewModel>();
+                    var ingredients = await this.ingredientsService.GetAllAsync<IngredientAdminViewModel>();
 
-                    return new List<CategoryAdminViewModel>(categories);
+                    return new List<IngredientAdminViewModel>(ingredients);
                 }
                 catch (Exception)
                 {
@@ -95,15 +96,15 @@
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult<CategoryUpdateInputModel>> CategoryForUpdate(string id)
+        public async Task<ActionResult<IngredientUpdateInputModel>> IngredientForUpdate(string id)
         {
             if (this.User.IsInRole(GlobalConstants.AdminName))
             {
                 try
                 {
-                    var category = await this.categoriesService.GetDetailsAsync<CategoryUpdateInputModel>(id);
+                    var ingredient = await this.ingredientsService.GetDetailsAsync<IngredientUpdateInputModel>(id);
 
-                    return category;
+                    return ingredient;
                 }
                 catch (Exception)
                 {
@@ -128,7 +129,7 @@
             {
                 try
                 {
-                    await this.categoriesService.DeleteAsync(id);
+                    await this.ingredientsService.DeleteAsync(id);
 
                     return this.Ok(new
                     {
@@ -152,13 +153,13 @@
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult> Update(CategoryUpdateInputModel input)
+        public async Task<ActionResult> Update(IngredientUpdateInputModel input)
         {
             if (this.User.IsInRole(GlobalConstants.AdminName))
             {
                 try
                 {
-                    await this.categoriesService.UpdateAsync(input.Id, input.Name, input.Picture);
+                    await this.ingredientsService.UpdateAsync(input.Id, input.Name);
 
                     return this.Ok(new
                     {

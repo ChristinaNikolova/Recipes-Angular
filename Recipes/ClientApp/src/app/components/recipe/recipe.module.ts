@@ -56,7 +56,9 @@ import { RecipeCurrentCategoryComponent } from './recipe-current-category/recipe
   providers: [
     RecipesService,
     CategoriesService,
-    IngredientsService
+    IngredientsService,
+    RecipeDetailsResolver,
+    RecipeUpdateResolver,
   ]
 })
 export class RecipeModule { }

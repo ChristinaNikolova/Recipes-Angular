@@ -14,11 +14,8 @@ import { ResponseHandlerInterceptorService } from './core/interceptors/response-
 import { LoginComponent } from './components/authentication/login/login.component';
 import { RegisterComponent } from './components/authentication/register/register.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RecipeDetailsResolver } from './core/resolvers/recipe-details.resolver';
-import { RecipeUpdateResolver } from './core/resolvers/recipe-update.resolver';
 import { AuthService } from './core/services/auth/auth.service';
 import { NotFoundComponent } from './components/shared/not-found/not-found.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,8 +36,6 @@ import { NotFoundComponent } from './components/shared/not-found/not-found.compo
   ],
   providers: [
     AuthService,
-    RecipeDetailsResolver,
-    RecipeUpdateResolver,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ResponseHandlerInterceptorService, multi: true }
   ],

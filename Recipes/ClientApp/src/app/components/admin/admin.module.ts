@@ -8,6 +8,10 @@ import { CategoryAllComponent } from './category-all/category-all.component';
 import { CategorySingleComponent } from './category-single/category-single.component';
 import { CategoryUpdateComponent } from './category-update/category-update.component';
 import { CategoryUpdateResolver } from '../../core/resolvers/category-update-resolver';
+import { IngredientCreateComponent } from './ingredient-create/ingredient-create.component';
+import { IngredientAllComponent } from './ingredient-all/ingredient-all.component';
+import { IngredientSingleComponent } from './ingredient-single/ingredient-single.component';
+import { IngredientUpdateComponent } from './ingredient-update/ingredient-update.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +19,11 @@ import { CategoryUpdateResolver } from '../../core/resolvers/category-update-res
     CategoryCreateComponent,
     CategoryAllComponent,
     CategorySingleComponent,
-    CategoryUpdateComponent
+    CategoryUpdateComponent,
+    IngredientCreateComponent,
+    IngredientAllComponent,
+    IngredientSingleComponent,
+    IngredientUpdateComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +34,10 @@ import { CategoryUpdateResolver } from '../../core/resolvers/category-update-res
       { path: 'administration', component: AdminHomeComponent },
       { path: 'category/all', component: CategoryAllComponent },
       { path: 'category/create', component: CategoryCreateComponent },
-      { path: 'category/update/:id', component: CategoryUpdateComponent, resolve: { singleCategory: CategoryUpdateResolver } }
+      { path: 'category/update/:id', component: CategoryUpdateComponent, resolve: { singleCategory: CategoryUpdateResolver } },
+      { path: 'ingredient/all', component: IngredientAllComponent },
+      { path: 'ingredient/create', component: IngredientCreateComponent },
+      //{ path: 'ingredient/update/:id', component: IngredientUpdateComponent, resolve: { singleIngredient: IngredientUpdateResolver } }
     ])
   ],
   providers: [

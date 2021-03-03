@@ -7,8 +7,16 @@
     {
         Task<string> CreateAsync(string name);
 
+        Task UpdateAsync(string id, string name);
+
         Task<bool> IsAlreadyAddedAsync(string name);
 
         Task<string> GetIdByNameAsync(string name);
+
+        Task<IEnumerable<T>> GetAllAsync<T>();
+
+        Task<T> GetDetailsAsync<T>(string id);
+
+        Task DeleteAsync(string id);
     }
 }

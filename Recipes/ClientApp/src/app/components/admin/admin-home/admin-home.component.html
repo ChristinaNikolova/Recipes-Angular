@@ -11,14 +11,8 @@
     <li class="bold">
       Ingredients
       <div class="mt-2 mb-2">
-        <button class="btn btn-secondary mr-2">All Ingredients</button>
-        <button class="btn btn-primary mr-2">Create ingredient</button>
-      </div>
-    </li>
-    <li class="bold">
-      Comments
-      <div class="mt-2 mb-2">
-        <button class="btn btn-danger mr-2">Delete comment</button>
+        <button [routerLink]="['/admin/ingredient/all']" class="btn btn-secondary mr-2">All Ingredients</button>
+        <button [routerLink]="['/admin/ingredient/create']" class="btn btn-primary mr-2">Create ingredient</button>
       </div>
     </li>
   </ul>

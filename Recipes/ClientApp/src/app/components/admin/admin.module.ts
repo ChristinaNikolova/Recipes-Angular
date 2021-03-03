@@ -12,6 +12,7 @@ import { IngredientCreateComponent } from './ingredient-create/ingredient-create
 import { IngredientAllComponent } from './ingredient-all/ingredient-all.component';
 import { IngredientSingleComponent } from './ingredient-single/ingredient-single.component';
 import { IngredientUpdateComponent } from './ingredient-update/ingredient-update.component';
+import { IngredientUpdateResolver } from '../../core/resolvers/ingredient-update-resolver';
 
 @NgModule({
   declarations: [
@@ -37,11 +38,12 @@ import { IngredientUpdateComponent } from './ingredient-update/ingredient-update
       { path: 'category/update/:id', component: CategoryUpdateComponent, resolve: { singleCategory: CategoryUpdateResolver } },
       { path: 'ingredient/all', component: IngredientAllComponent },
       { path: 'ingredient/create', component: IngredientCreateComponent },
-      //{ path: 'ingredient/update/:id', component: IngredientUpdateComponent, resolve: { singleIngredient: IngredientUpdateResolver } }
+      { path: 'ingredient/update/:id', component: IngredientUpdateComponent, resolve: { singleIngredient: IngredientUpdateResolver } }
     ])
   ],
   providers: [
-    CategoryUpdateResolver
+    CategoryUpdateResolver,
+    IngredientUpdateResolver
   ]
 })
 export class AdminModule { }

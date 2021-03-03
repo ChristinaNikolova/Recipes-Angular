@@ -16,6 +16,7 @@ import { RegisterComponent } from './components/authentication/register/register
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './core/services/auth/auth.service';
 import { NotFoundComponent } from './components/shared/not-found/not-found.component';
+
 @NgModule({
   declarations: [
     AppComponent,

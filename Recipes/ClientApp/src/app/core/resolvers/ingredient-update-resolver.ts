@@ -1,15 +1,21 @@
-//@Injectable({
-//  providedIn: 'root'
-//})
-//export class IngredientUpdateResolver implements Resolve<IIn> {
+import { Injectable } from "@angular/core";
+import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/router";
+import { Observable } from "rxjs";
+import IUpdateIngredient from "../../components/shared/models/ingredients/IUpdateIngredient";
+import { IngredientsService } from "../services/ingredients/ingredients.service";
 
-//  constructor(
-//    private categoriesService: CategoriesService
-//  ) { }
+@Injectable({
+  providedIn: 'root'
+})
+export class IngredientUpdateResolver implements Resolve<IUpdateIngredient> {
 
-//  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ICategoryUpdate> {
-//    const id: string = route.params['id'];
+  constructor(
+    private ingredientsService: IngredientsService
+  ) { }
 
-//    return this.categoriesService.getCategoryForUpdate(id);
-//  }
-//}
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IUpdateIngredient> {
+    const id: string = route.params['id'];
+
+    return this.ingredientsService.getIngredientForUpdate(id);
+  }
+}

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import ICreateIngredient from '../../../components/shared/models/ingredients/ICreateIngredient';
 import IIngredientAdmin from '../../../components/shared/models/ingredients/IIngredientAdmin';
 import IRecipeIngredientUpdate from '../../../components/shared/models/ingredients/IRecipeIngredientUpdate';
+import IUpdateIngredient from '../../../components/shared/models/ingredients/IUpdateIngredient';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,10 @@ export class IngredientsService {
   private readonly getByRecipeUrl = 'getByRecipe/';
   private readonly getAllUrl = 'all';
   private readonly createUrl = 'create';
+  private readonly updateUrl = 'update/';
   private readonly deleteUrl = 'delete'
   private readonly deleteFromAdminUrl = 'delete/'
+  private readonly getIngredientForUpdateURL = 'ingredientForUpdate/'
 
   constructor(
     private http: HttpClient
@@ -29,6 +32,10 @@ export class IngredientsService {
     return this.http.get<Array<IIngredientAdmin>>(this.baseUrlAdmin + this.getAllUrl);
   }
 
+  public getIngredientForUpdate(id: string): Observable<IUpdateIngredient> {
+    return this.http.get<IUpdateIngredient>(this.baseUrlAdmin + this.getIngredientForUpdateURL + `${id}`);
+  }
+
   public create(data: ICreateIngredient) {
     return this.http.post(this.baseUrlAdmin + this.createUrl, data);
   }
@@ -39,5 +46,10 @@ export class IngredientsService {
 
   public deleteFromAdmin(id: string) {
     return this.http.delete(this.baseUrlAdmin + this.deleteFromAdminUrl + `${id}`);
+  }
+
+  public update(data: IUpdateIngredient, id: string) {
+    data.id = id;
+    return this.http.put(this.baseUrlAdmin + this.updateUrl, data);
   }
 }

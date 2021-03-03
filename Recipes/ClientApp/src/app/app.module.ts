@@ -15,10 +15,6 @@ import { LoginComponent } from './components/authentication/login/login.componen
 import { RegisterComponent } from './components/authentication/register/register.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RecipeDetailsResolver } from './core/resolvers/recipe-details.resolver';
-import { UserFavouriteRecipesComponent } from './components/user/user-favourite-recipes/user-favourite-recipes.component';
-import { UserOwnRecipesComponent } from './components/user/user-own-recipes/user-own-recipes.component';
-import { UserFavouriteSingleRecipeComponent } from './components/user/user-favourite-single-recipe/user-favourite-single-recipe.component';
-import { UserOwnSingleRecipeComponent } from './components/user/user-own-single-recipe/user-own-single-recipe.component';
 import { RecipeUpdateResolver } from './core/resolvers/recipe-update.resolver';
 import { AuthService } from './core/services/auth/auth.service';
 import { RecipesService } from './core/services/recipes/recipes.service';
@@ -32,11 +28,7 @@ import { IngredientsService } from './core/services/ingredients/ingredients.serv
     FooterComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent,
-    UserFavouriteRecipesComponent,
-    UserOwnRecipesComponent,
-    UserFavouriteSingleRecipeComponent,
-    UserOwnSingleRecipeComponent
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

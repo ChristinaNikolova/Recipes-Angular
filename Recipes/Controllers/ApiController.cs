@@ -9,8 +9,5 @@
     [ApiController]
     public class ApiController : ControllerBase
     {
-        public ApiController()
-        {
-        }
     }
 }

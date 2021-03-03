@@ -1,0 +1,7 @@
+.custom-title {
+  color: #78C2AD
+}
+
+  .custom-title:hover {
+    cursor: pointer;
+  }

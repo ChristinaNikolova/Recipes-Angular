@@ -30,6 +30,16 @@
             await this.categoriesRepository.SaveChangesAsync();
         }
 
+        public async Task DeleteAsync(string id)
+        {
+            var category = await this.GetByIdAsync(id);
+
+            category.IsDeleted = true;
+
+            this.categoriesRepository.Update(category);
+            await this.categoriesRepository.SaveChangesAsync();
+        }
+
         public async Task<IEnumerable<T>> GetAllAsync<T>()
         {
             var categories = await this.categoriesRepository
@@ -40,6 +50,17 @@
                 .ToListAsync();
 
             return categories;
+        }
+
+        public async Task<T> GetDetailsAsync<T>(string id)
+        {
+            var category = await this.categoriesRepository
+                .All()
+                .Where(c => c.Id == id)
+                .To<T>()
+                .FirstOrDefaultAsync();
+
+            return category;
         }
 
         public async Task<string> GetIdByNameAsync(string categoryName)
@@ -60,6 +81,24 @@
                 .AnyAsync(c => c.Name.ToLower() == name.ToLower());
 
             return isAdded;
+        }
+
+        public async Task UpdateAsync(string id, string name, string picture)
+        {
+            var category = await this.GetByIdAsync(id);
+
+            category.Name = name;
+            category.Picture = picture;
+
+            this.categoriesRepository.Update(category);
+            await this.categoriesRepository.SaveChangesAsync();
+        }
+
+        private async Task<Category> GetByIdAsync(string id)
+        {
+            return await this.categoriesRepository
+                .All()
+                .FirstOrDefaultAsync(c => c.Id == id);
         }
     }
 }

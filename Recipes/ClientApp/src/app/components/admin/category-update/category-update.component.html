@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row space-top">
+    <div class="col-md-12">
+      <h1>Update Category</h1>
+    </div>
+  </div>
+  <form [formGroup]="updateForm" (submit)="update()">
+    <div class="row space-top">
+      <div class="col-lg-8">
+        <div class="form-group">
+          <label class="form-control-label" for="name">Name</label>
+          <input class="form-control" id="name" type="text" formControlName="name">
+        </div>
+        <div class="alert alert-danger" *ngIf="f.name?.errors?.required && f.name?.touched">The field is required</div>
+        <div class="alert alert-danger" *ngIf="f.name?.errors?.minlength">The name should be at least {{f.name.errors.minlength.requiredLength}} symbols</div>
+        <div class="alert alert-danger" *ngIf="f.name?.errors?.maxlength">The name should be lest than {{f.name.errors.maxlength.requiredLength}} symbols</div>
+        <div class="form-group">
+          <label class="form-control-label" for="picture">Picture</label>
+          <input class="form-control" id="picture" type="url" formControlName="picture">
+        </div>
+        <div class="alert alert-danger" *ngIf="f.picture?.errors?.required && f.picture?.touched">The field is required</div>
+        <button type="submit" class="btn btn-secondary" [disabled]="updateForm.invalid">Update</button>
+      </div>
+    </div>
+  </form>
+</div>

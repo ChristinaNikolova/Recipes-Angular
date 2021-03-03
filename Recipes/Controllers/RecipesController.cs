@@ -96,6 +96,28 @@
             }
         }
 
+        [HttpGet("{categoryId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult<IEnumerable<RecipeBaseViewModel>>> ByCategory(string categoryId)
+        {
+            try
+            {
+                var recipes = await this.recipesService.GetAllByCategoryAsync<RecipeBaseViewModel>(categoryId);
+
+                return new List<RecipeBaseViewModel>(recipes);
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = Messages.UnknownError,
+                });
+            }
+        }
+
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

@@ -76,6 +76,18 @@
             return recipes;
         }
 
+        public async Task<IEnumerable<T>> GetAllByCategoryAsync<T>(string categoryId)
+        {
+            var recipes = await this.recipesRepository
+                .All()
+                .Where(r => r.CategoryId == categoryId)
+                .OrderByDescending(r => r.CreatedOn)
+                .To<T>()
+                .ToListAsync();
+
+            return recipes;
+        }
+
         public async Task<T> GetDetailsAsync<T>(string id)
         {
             var recipe = await this.recipesRepository

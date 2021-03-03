@@ -1,8 +1,8 @@
-﻿using Recipes.Data.Models;
-using Recipes.Services.Mapping;
-
-namespace Recipes.Models.Categories.ViewModels
+﻿namespace Recipes.Models.Categories.ViewModels
 {
+    using global::Recipes.Data.Models;
+    using global::Recipes.Services.Mapping;
+
     public class CategoryNameViewModel : IMapFrom<Category>
     {
         public string Name { get; set; }

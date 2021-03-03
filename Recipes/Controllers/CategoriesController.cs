@@ -33,11 +33,11 @@
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult<IEnumerable<string>>> AllNames()
+        public async Task<ActionResult<IEnumerable<CategoryNameViewModel>>> AllNames()
         {
-            var categories = await this.categoriesService.GetAllNamesAsync();
+            var categories = await this.categoriesService.GetAllAsync<CategoryNameViewModel>();
 
-            return new List<string>(categories);
+            return new List<CategoryNameViewModel>(categories);
         }
     }
 }

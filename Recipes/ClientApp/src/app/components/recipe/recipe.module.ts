@@ -4,7 +4,6 @@ import { CreateRecipeComponent } from './create-recipe/create-recipe.component';
 import { AllRecipesComponent } from './all-recipes/all-recipes.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SingleRecipeComponent } from './single-recipe/single-recipe.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import { ToastrModule } from 'ngx-toastr';
 import { RecipeDetailsResolver } from '../../core/resolvers/recipe-details.resolver';
@@ -20,26 +19,27 @@ import { UpdateRecipeIngredientComponent } from './update-recipe-ingredient/upda
 import { SingleRecipeIngredientComponent } from './single-recipe-ingredient/single-recipe-ingredient.component';
 import { IngredientsService } from '../../core/services/ingredients/ingredients.service';
 import { RecipesService } from '../../core/services/recipes/recipes.service';
+import { RecipeCurrentCategoryComponent } from './recipe-current-category/recipe-current-category.component';
 
 @NgModule({
   declarations: [
     CreateRecipeComponent,
     AllRecipesComponent,
-    SingleRecipeComponent,
-    RecipeDetailsComponent,
     SearchRecipeComponent,
     RecipeSearchResultsComponent,
     RecipeOrderComponent,
     RecipeOrderResultComponent,
     UpdateRecipeComponent,
     UpdateRecipeIngredientComponent,
-    SingleRecipeIngredientComponent
+    SingleRecipeIngredientComponent,
+    RecipeDetailsComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule,
     ToastrModule.forRoot(),
     RouterModule.forChild([
       { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -49,7 +49,8 @@ import { RecipesService } from '../../core/services/recipes/recipes.service';
       { path: 'results', component: RecipeSearchResultsComponent },
       { path: 'orderResults', component: RecipeOrderResultComponent },
       { path: 'update/:id', component: UpdateRecipeComponent, resolve: { singleRecipe: RecipeUpdateResolver } },
-      { path: 'ingredients/:id', component: UpdateRecipeIngredientComponent }
+      { path: 'ingredients/:id', component: UpdateRecipeIngredientComponent },
+      { path: 'currentCategory/:id', component: RecipeCurrentCategoryComponent }
     ]),
   ],
   providers: [

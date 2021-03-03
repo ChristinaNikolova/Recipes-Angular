@@ -21,6 +21,7 @@ export class RecipesService {
   private readonly deleteUrl = 'delete/';
   private readonly recipeForUpdateUrl = 'recipeForUpdate/';
   private readonly updateUrl = 'update';
+  private readonly getbyCategoryUrl = 'byCategory/';
 
   constructor(
     private http: HttpClient
@@ -65,5 +66,9 @@ export class RecipesService {
   public update(data: IUpdateRecipe, id: string) {
     data.id = id;
     return this.http.put(this.baseUrl + this.updateUrl, data);
+  }
+
+  public getByCategory(categoryId: string): Observable<Array<IBaseRecipe>> {
+    return this.http.get<Array<IBaseRecipe>>(this.baseUrl + this.getbyCategoryUrl + `${categoryId}`);
   }
 }

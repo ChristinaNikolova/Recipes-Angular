@@ -4,24 +4,31 @@ import { AllCommentsComponent } from '../comment/all-comments/all-comments.compo
 import { SingleCommentComponent } from '../comment/single-comment/single-comment.component';
 import { CreateCommentComponent } from '../comment/create-comment/create-comment.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RecipeCurrentCategoryComponent } from '../recipe/recipe-current-category/recipe-current-category.component';
+import { SingleRecipeComponent } from '../recipe/single-recipe/single-recipe.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     CreateCommentComponent,
     AllCommentsComponent,
-    SingleCommentComponent
-
+    SingleCommentComponent,
+    SingleRecipeComponent,
+    RecipeCurrentCategoryComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   exports: [
     CommonModule,
     CreateCommentComponent,
     AllCommentsComponent,
-    SingleCommentComponent
+    SingleCommentComponent,
+    SingleRecipeComponent,
+    RecipeCurrentCategoryComponent
   ]
 })
 export class SharedModule { }

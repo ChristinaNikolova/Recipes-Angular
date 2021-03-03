@@ -18,7 +18,6 @@ import { RecipeDetailsResolver } from './core/resolvers/recipe-details.resolver'
 import { RecipeUpdateResolver } from './core/resolvers/recipe-update.resolver';
 import { AuthService } from './core/services/auth/auth.service';
 import { NotFoundComponent } from './components/shared/not-found/not-found.component';
-import { RecipeCurrentCategoryComponent } from './components/recipe/recipe-current-category/recipe-current-category.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +27,7 @@ import { RecipeCurrentCategoryComponent } from './components/recipe/recipe-curre
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    NotFoundComponent,
-    RecipeCurrentCategoryComponent
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

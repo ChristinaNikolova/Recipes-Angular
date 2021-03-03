@@ -7,8 +7,6 @@
     {
         Task<IEnumerable<T>> GetAllAsync<T>();
 
-        Task<IEnumerable<string>> GetAllNamesAsync();
-
         Task<string> GetIdByNameAsync(string categoryName);
     }
 }

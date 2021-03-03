@@ -30,17 +30,6 @@
             return categories;
         }
 
-        public async Task<IEnumerable<string>> GetAllNamesAsync()
-        {
-            var categories = await this.categoriesRepository
-                .All()
-                .OrderBy(c => c.Name)
-                .Select(c => c.Name)
-                .ToListAsync();
-
-            return categories;
-        }
-
         public async Task<string> GetIdByNameAsync(string categoryName)
         {
             var categoryId = await this.categoriesRepository

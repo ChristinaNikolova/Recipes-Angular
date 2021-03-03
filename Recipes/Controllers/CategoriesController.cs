@@ -5,6 +5,7 @@
 
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using Recipes.Models.Categories.ViewModels;
     using Recipes.Services.Data.Categories;
 
     [Route("api/[controller]/[action]")]
@@ -21,7 +22,18 @@
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult<IEnumerable<string>>> GetAllNames()
+        public async Task<ActionResult<IEnumerable<CategoryViewModel>>> All()
+        {
+            var categories = await this.categoriesService.GetAllAsync<CategoryViewModel>();
+
+            return new List<CategoryViewModel>(categories);
+        }
+
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult<IEnumerable<string>>> AllNames()
         {
             var categories = await this.categoriesService.GetAllNamesAsync();
 

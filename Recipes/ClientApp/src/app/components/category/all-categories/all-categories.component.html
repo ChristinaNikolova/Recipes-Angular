@@ -1,1 +1,11 @@
-<p>all-categories works!</p>
+<div class="container">
+  <div class="col-md-12">
+    <h1 class="text-center">All Categories</h1>
+    <hr />
+  </div>
+  <div class="row">
+    <div class="col-lg-4" *ngFor="let category of categories$ | async">
+      <app-single-category [category]=category></app-single-category>
+    </div>
+  </div>
+</div>

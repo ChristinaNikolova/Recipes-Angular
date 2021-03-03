@@ -1,1 +1,10 @@
-<p>single-category works!</p>
+<div class="card">
+  <h3 class="card-header">{{category.name}}</h3>
+  <img src="{{category.picture}}" alt="category-pic">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Recipes: {{category.recipesCount}}</li>
+  </ul>
+  <div class="card-body">
+    <button class="btn btn-dark" [routerLink]="['/recipe/currentCategory', category.id]">See recipes</button>
+  </div>
+</div>

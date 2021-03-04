@@ -43,7 +43,7 @@
           <label class="form-control-label" for="categoryName">Category</label>
           <select class="form-control" id="categoryName" formControlName="categoryName">
             <option disabled selected="selected">Please select one of the options below</option>
-            <option value="{{categoryName}}" *ngFor="let categoryName of categories$ | async">{{categoryName}}</option>
+            <option value="{{category.name}}" *ngFor="let category of categories$ | async">{{category.name}}</option>
           </select>
         </div>
         <div class="alert alert-danger" *ngIf="f.categoryName?.errors?.required && f.categoryName?.touched">The field is required</div>

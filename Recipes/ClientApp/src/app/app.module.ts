@@ -32,7 +32,9 @@ import { NotFoundComponent } from './components/shared/not-found/not-found.compo
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right'
+    }),
     BrowserAnimationsModule
   ],
   providers: [

@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
 
   public signUp() {
     if (this.registerForm.invalid) {
-      return
+      return;
     }
 
     this.authService

@@ -1,11 +1,14 @@
-<div class="jumbotron">
-  <h1 class="display-3" *ngIf="!isLoggedIn">Welcome to Recipes!</h1>
-  <h1 class="display-3" *ngIf="isLoggedIn">Welcome to Recipes, {{username}}!</h1>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-  <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-  <p class="lead">
-    <a class="btn btn-primary btn-lg mr-2" [routerLink]="['/recipe/all']" role="button">See our recipes</a>
-    <a class="btn btn-primary btn-lg" [routerLink]="['/recipe/create']" role="button">Create new recipe</a>
-  </p>
+<div class="home-wrapper">
+  <div class="jumbotron">
+    <h1 class="display-3" *ngIf="!isLoggedIn">Welcome to Recipes!</h1>
+    <h1 class="display-3" *ngIf="isLoggedIn">Welcome to Recipes, {{username}}!</h1>
+    <p class="lead" *ngIf="!authService.isAuthenticated()"><a class="bold" [routerLink]="['/register']">Register</a> or <a class="bold" [routerLink]="['/login']">Login</a> now to see the most delicious recipes!</p>
+    <hr class="my-4">
+    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    <img src="https://d23.com/app/uploads/2015/09/recipes-banner1180x600.jpg" />
+    <p class="lead" *ngIf="authService.isAuthenticated()">
+      <a class="btn btn-primary btn-lg mt-4 mr-2" [routerLink]="['/recipe/all']" role="button">See our recipes</a>
+      <a class="btn btn-primary btn-lg mt-4" [routerLink]="['/recipe/create']" role="button">Create new recipe</a>
+    </p>
+  </div>
 </div>

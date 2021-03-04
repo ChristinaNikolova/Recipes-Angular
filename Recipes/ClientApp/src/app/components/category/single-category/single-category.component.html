@@ -1,10 +1,10 @@
-<div class="card">
-  <h3 class="card-header">{{category.name}}</h3>
+<div class="card mb-2">
+  <h3 class="card-header title">{{category.name}}</h3>
   <img src="{{category.picture}}" alt="category-pic">
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">Recipes: {{category.recipesCount}}</li>
+    <li class="list-group-item"><span class="bold">Recipes:</span> {{category.recipesCount}}</li>
   </ul>
   <div class="card-body">
-    <button class="btn btn-dark" [routerLink]="['/recipe/currentCategory', category.id]">See recipes</button>
+    <button class="btn btn-dark button-position" [routerLink]="['/recipe/currentCategory', category.id]">See recipes</button>
   </div>
 </div>

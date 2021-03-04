@@ -1,4 +1,6 @@
 .custom-footer {
+  width: 1200px;
+  margin: auto;
   background-color: #78C2AD;
   color: white;
 }

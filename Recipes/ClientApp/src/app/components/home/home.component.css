@@ -1,0 +1,30 @@
+.home-wrapper {
+  width: 1200px;
+  margin: auto;
+}
+
+.jumbotron {
+  padding-top: 20px;
+  margin-bottom: 0px;
+  text-align: center;
+  background-color: lavender;
+}
+
+.bold {
+  font-weight: bold;
+  color: #78C2AD;
+  text-decoration-line: none;
+}
+
+.btn-primary {
+  border-color: #78C2AD !important;
+}
+
+img {
+  width: 70%;
+  border: 0.1rem double silver;
+}
+
+.display-3 {
+  font-family: 'Akaya Telivigala', cursive;
+}

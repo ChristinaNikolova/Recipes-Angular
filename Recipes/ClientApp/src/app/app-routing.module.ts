@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'category', loadChildren: './components/category/category.module#CategoryModule' },
+  { path: 'category', loadChildren: './components/category/category.module#CategoryModule', canActivate: [AuthGuard] },
   { path: 'recipe', loadChildren: './components/recipe/recipe.module#RecipeModule', canActivate: [AuthGuard]},
   { path: 'comment', loadChildren: './components/comment/comment.module#CommentModule', canActivate: [AuthGuard] },
   { path: 'user', loadChildren: './components/user/user.module#UserModule', canActivate: [AuthGuard] },

@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
 
   signIn() {
     if (this.loginForm.invalid) {
-      return
+      return;
     }
 
     this.authService

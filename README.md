@@ -31,6 +31,8 @@ Recipes can be used to present particular blog for recipes.
  - MSSQL Server 
 
  - Entity Framework Core 5.0
+
+ - WebApi
  
  - Angular
 

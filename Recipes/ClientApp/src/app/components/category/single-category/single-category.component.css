@@ -21,10 +21,17 @@ button {
 }
 
 .title {
+  font-family: 'Akaya Telivigala', cursive;
   background-color: #78C2AD;
   color: white;
+  text-align: center;
 }
 
 .button-position {
   align-self: center;
+}
+
+.card-body {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }

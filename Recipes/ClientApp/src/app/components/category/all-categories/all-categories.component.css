@@ -1,0 +1,9 @@
+.custom-font {
+  font-family: 'Akaya Telivigala', cursive;
+}
+
+.wrapper {
+  background-color: lavender;
+  width: 1200px !important;
+  margin: auto;
+}

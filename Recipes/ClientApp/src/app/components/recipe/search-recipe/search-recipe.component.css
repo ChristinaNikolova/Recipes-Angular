@@ -16,3 +16,15 @@ button {
   background-color: red;
   color: white;
 }
+
+.search-form {
+  background-color: lightgrey;
+  border: 0.2rem thin darkgrey;
+  padding-top: 10px;
+  text-align: center;
+  align-self: center;
+}
+
+.custom-row {
+  margin: 0px;
+}

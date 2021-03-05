@@ -5,9 +5,9 @@
     <p class="card-text">{{recipe.content | slice:0:70}}...</p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">Category: {{recipe.categoryName}}</li>
-    <li class="list-group-item">Likes: {{recipe.recipeLikesCount}}</li>
-    <li class="list-group-item">Comments: {{recipe.commentsCount}}</li>
+    <li class="list-group-item"><i class="fas fa-book"></i> Category: <a [routerLink]="['/recipe/currentCategory', recipe.categoryId]" class="hover-effect">{{recipe.categoryName}}</a></li>
+    <li class="list-group-item"><i class="fas fa-heart"></i> Likes: {{recipe.recipeLikesCount}}</li>
+    <li class="list-group-item"><i class="fas fa-comments"></i> Comments: {{recipe.commentsCount}}</li>
   </ul>
   <div class="card-body">
     <button class="btn btn-secondary" [routerLink]="['/recipe/details', recipe.id]">See the recipe</button>

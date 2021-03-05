@@ -19,8 +19,6 @@
 
         public bool IsFavourite { get; set; }
 
-        public string CategoryId { get; set; }
-
         public DateTime CreatedOn { get; set; }
 
         public string FormattedCreatedOn

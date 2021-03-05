@@ -13,6 +13,8 @@
 
         public string Picture { get; set; }
 
+        public string CategoryId { get; set; }
+
         public string CategoryName { get; set; }
 
         public int RecipeLikesCount { get; set; }

@@ -16,7 +16,8 @@ button {
     cursor: pointer;
   }
 
-.card-header {
+.card-header,
+.list-group-item {
   font-family: 'Akaya Telivigala', cursive;
 }
 
@@ -35,3 +36,19 @@ button {
 .test {
   text-align: center;
 }
+
+.fa-comments,
+.fa-heart,
+.fa-book {
+  color: #78C2AD;
+}
+
+.hover-effect {
+  color: black;
+}
+
+  .hover-effect:hover {
+    cursor: pointer;
+    color: #78C2AD;
+    font-weight: bold;
+  }

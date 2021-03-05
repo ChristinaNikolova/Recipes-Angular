@@ -1,5 +1,6 @@
 ﻿namespace Recipes.Models.Recipes.ViewModels
 {
+    using System;
     using System.Collections.Generic;
 
     using global::Recipes.Data.Models;
@@ -19,6 +20,11 @@
         public bool IsFavourite { get; set; }
 
         public string CategoryId { get; set; }
+
+        public DateTime CreatedOn { get; set; }
+
+        public string FormattedCreatedOn
+            => this.CreatedOn.ToShortDateString();
 
         public IEnumerable<BaseIngredientViewModel> Ingredients { get; set; }
     }

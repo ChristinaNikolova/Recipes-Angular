@@ -8,5 +8,6 @@ export default interface IDetailsRecipe extends IBaseRecipe {
   authorUserName: string;
   isFavourite: boolean;
   categoryId: string;
+  formattedCreatedOn: string;
   ingredients: Array<IRecipeIngredient>;
 }

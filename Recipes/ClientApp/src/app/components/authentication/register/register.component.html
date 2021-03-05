@@ -1,34 +1,37 @@
-<div class="container">
-  <h1>Register</h1>
-  <div class="row">
-    <div class="col-lg-10">
-      <form [formGroup]="registerForm" (submit)="signUp()">
-        <div class="form-group">
-          <label class="control-label" for="username">Username</label>
-          <input type="text" class="form-control" id="username" formControlName="username">
-        </div>
-        <div class="alert alert-danger" *ngIf="f.username?.errors?.required && f.username?.touched">This field is required</div>
-        <div class="alert alert-danger" *ngIf="f.username?.errors?.minlength">The username should be at least {{f.username.errors.minlength.requiredLength}} symbols</div>
-        <div class="form-group">
-          <label class="control-label" for="email">Email</label>
-          <input type="text" class="form-control" id="email" formControlName="email">
-        </div>
-        <div class="alert alert-danger" *ngIf="f.email?.errors?.required && f.email?.touched">This field is required</div>
-        <div class="alert alert-danger" *ngIf="f.email?.errors?.email">The email should be in format example@example.com</div>
-        <div class="form-group">
-          <label class="control-label" for="password">Password</label>
-          <input type="password" class="form-control" id="password" formControlName="password">
-        </div>
-        <div class="alert alert-danger" *ngIf="f.password?.errors?.required && f.password?.touched">This field is required</div>
-        <div class="alert alert-danger" *ngIf="f.password?.errors?.minlength">The password should be at least {{f.password.errors.minlength.requiredLength}} symbols</div>
-        <div class="form-group">
-          <label class="control-label" for="repeatPassword">Repeat password</label>
-          <input type="password" class="form-control" id="repeatPassword" formControlName="repeatPassword">
-        </div>
-        <div class="alert alert-danger" *ngIf="f.repeatPassword?.errors?.required && f.repeatPassword?.touched">This field is required</div>
-        <div class="alert alert-danger" *ngIf="f.repeatPassword?.value != f.password?.value">The passwords should match</div>
-        <button type="submit" class="btn btn-dark" [disabled]="registerForm.invalid">Register</button>
-      </form>
+<div class="register-wrapper">
+  <div class="container">
+    <h1 class="custom-font">Register</h1>
+    <div class="row">
+      <div class="col-lg-10">
+        <form [formGroup]="registerForm" (submit)="signUp()">
+          <div class="form-group">
+            <label class="control-label" for="username">Username</label>
+            <input type="text" class="form-control" id="username" formControlName="username">
+          </div>
+          <div class="alert alert-danger" *ngIf="f.username?.errors?.required && f.username?.touched">This field is required</div>
+          <div class="alert alert-danger" *ngIf="f.username?.errors?.minlength">The username should be at least {{f.username.errors.minlength.requiredLength}} symbols</div>
+          <div class="form-group">
+            <label class="control-label" for="email">Email</label>
+            <input type="text" class="form-control" id="email" formControlName="email">
+          </div>
+          <div class="alert alert-danger" *ngIf="f.email?.errors?.required && f.email?.touched">This field is required</div>
+          <div class="alert alert-danger" *ngIf="f.email?.errors?.email">The email should be in format example@example.com</div>
+          <div class="form-group">
+            <label class="control-label" for="password">Password</label>
+            <input type="password" class="form-control" id="password" formControlName="password">
+          </div>
+          <div class="alert alert-danger" *ngIf="f.password?.errors?.required && f.password?.touched">This field is required</div>
+          <div class="alert alert-danger" *ngIf="f.password?.errors?.minlength">The password should be at least {{f.password.errors.minlength.requiredLength}} symbols</div>
+          <div class="form-group">
+            <label class="control-label" for="repeatPassword">Repeat password</label>
+            <input type="password" class="form-control" id="repeatPassword" formControlName="repeatPassword">
+          </div>
+          <div class="alert alert-danger" *ngIf="f.repeatPassword?.errors?.required && f.repeatPassword?.touched">This field is required</div>
+          <div class="alert alert-danger" *ngIf="f.repeatPassword?.value != f.password?.value">The passwords should match</div>
+          <button type="submit" class="btn btn-dark" [disabled]="registerForm.invalid">Register</button>
+        </form>
+      </div>
     </div>
   </div>
+
 </div>

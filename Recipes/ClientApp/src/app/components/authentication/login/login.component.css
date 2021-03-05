@@ -11,3 +11,20 @@ button {
   button:disabled {
     cursor: not-allowed;
   }
+
+.login-wrapper {
+  background-color: lavender;
+  width: 1200px !important;
+  height: 500px;
+  margin: auto;
+}
+
+.container {
+  background-color: lightgray;
+  padding: 10px;
+}
+
+.custom-font {
+  font-family: 'Akaya Telivigala', cursive;
+  padding: 10px;
+}

@@ -36,3 +36,22 @@
   color: black;
   cursor: pointer;
 }
+
+.wrapper {
+  margin: 10px;
+}
+
+.create-comment-wrapper {
+  background-color: lavender;
+  width: 1200px !important;
+  margin: auto;
+}
+
+.custom-font {
+  font-family: 'Akaya Telivigala', cursive;
+  padding-left: 15px;
+}
+
+.second-title {
+  margin: 15px 5px;
+}

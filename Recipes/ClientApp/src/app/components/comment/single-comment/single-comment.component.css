@@ -12,5 +12,10 @@
 }
 
 .info {
+  font-size: 14px;
   color: #999999;
+}
+
+.comment-content {
+  font-size: 20px;
 }

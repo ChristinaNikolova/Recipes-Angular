@@ -13,7 +13,7 @@ img {
 .fa-users,
 .fa-utensils,
 .fa-clock,
-.fa-list-ol,
+.fa-book,
 .fa-check {
   color: #78C2AD;
 }
@@ -21,7 +21,6 @@ img {
 .like-text {
   font-weight: bold;
 }
-
 
 .wrapper {
   background-color: lavender;
@@ -57,4 +56,28 @@ a {
   cursor: pointer;
   color: #78C2AD;
   font-weight: bold;
+}
+
+hr {
+  margin-right: 20px;
+}
+
+.custom-margin-left {
+  margin-left: 20px;
+}
+
+.fill {
+  background-color: lavender;
+}
+
+.meta {
+  text-align: center;
+  font-family: 'Akaya Telivigala', cursive;
+  color: #78C2AD;
+  font-size: 18px;
+}
+
+.like-text {
+  font-family: 'Akaya Telivigala', cursive;
+  color: #78C2AD;
 }

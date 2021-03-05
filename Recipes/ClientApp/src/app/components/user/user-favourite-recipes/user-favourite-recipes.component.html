@@ -1,18 +1,21 @@
-<div class="container">
-  <h1 class="text-center">My Favourite Recipes</h1>
-  <table class="table table-striped table-bordered table-hover">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Picture</th>
-        <th>Category</th>
-        <th>Author</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody *ngFor="let recipe of favouriteRecipes$ | async">
-      <tr app-user-favourite-single-recipe [recipe]="recipe" (reloadEventEmitter)="reload()"></tr>
-    </tbody>
-  </table>
+<div class="wrapper">
+  <div class="container">
+    <h1 class="text-center custom-font">My Favourite Recipes</h1>
+    <hr />
+    <table class="table table-bordered table-hover custom-table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Picture</th>
+          <th>Category</th>
+          <th>Author</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let recipe of favouriteRecipes$ | async">
+        <tr app-user-favourite-single-recipe [recipe]="recipe" (reloadEventEmitter)="reload()"></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="fill pt-1 pb-1"></div>
 </div>
-

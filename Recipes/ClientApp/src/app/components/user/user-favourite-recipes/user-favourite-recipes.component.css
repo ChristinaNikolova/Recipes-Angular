@@ -1,1 +1,18 @@
+.wrapper {
+  background-color: lavender;
+  width: 1200px !important;
+  margin: auto;
+}
 
+.custom-table {
+  background-color: white;
+}
+
+.custom-font {
+  font-family: 'Akaya Telivigala', cursive;
+  padding: 10px;
+}
+
+.fill {
+  background-color: lavender;
+}

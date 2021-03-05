@@ -1,9 +1,10 @@
 <div>
-  <button class="btn btn-secondary" (click)="toogle()">Order by</button>
+  <button class="btn btn-secondary" (click)="toogle()" *ngIf="!(isShown)"><i class="fas fa-hand-point-right"></i> Order by</button>
+  <button class="btn btn-secondary" (click)="toogle()" *ngIf="(isShown)"><i class="fas fa-hand-point-down"></i> Order by</button>
   <ul *ngIf="(isShown)">
-    <li class="recipe-order" (click)="getOldest()">Oldest to newest</li>
-    <li class="recipe-order" (click)="getNewest()">Newest to oldest</li>
-    <li class="recipe-order" (click)="likes()">Likes Count</li>
-    <li class="recipe-order" (click)="comments()">Comments Count</li>
+    <li class="recipe-order" (click)="getOldest()"><i class="fas fa-check-circle"></i> Oldest to newest</li>
+    <li class="recipe-order" (click)="getNewest()"><i class="fas fa-check-circle"></i> Newest to oldest</li>
+    <li class="recipe-order" (click)="likes()"><i class="fas fa-check-circle"></i> Likes Count</li>
+    <li class="recipe-order" (click)="comments()"><i class="fas fa-check-circle"></i> Comments Count</li>
   </ul>
 </div>

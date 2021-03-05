@@ -1,0 +1,12 @@
+.uppercase {
+  text-transform: uppercase;
+}
+
+.custom-font {
+  font-family: 'Akaya Telivigala', cursive;
+  margin-bottom: 0px;
+}
+
+.custom-position {
+  text-align: center;
+}

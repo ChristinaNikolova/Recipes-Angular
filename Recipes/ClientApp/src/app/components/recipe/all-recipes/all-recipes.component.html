@@ -2,10 +2,17 @@
   <div class="container">
     <app-search-recipe></app-search-recipe>
     <app-recipe-order></app-recipe-order>
-    <div class="col-md-12">
-      <h1 class="text-center custom-font pt-2">All Recipes</h1>
-      <hr />
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center custom-font pt-2">All Recipes</h1>
+      </div>
+      <div class="col-md-3"></div>
+      <div class="col-md-6 custom-position">
+        <a class="btn btn-primary btn-lg mt-4 text-center" [routerLink]="['/recipe/create']" role="button">Create new recipe</a>
+      </div>
+      <div class="col-md-3"></div>
     </div>
+    <hr />
     <div class="row">
       <div class="col-lg-4" *ngFor="let recipe of recipes$ | async">
         <app-single-recipe [recipe]=recipe></app-single-recipe>

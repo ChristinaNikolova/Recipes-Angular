@@ -52,8 +52,6 @@ Recipes can be used to present particular blog for recipes.
 
  - Toastr
 
- - Responsive Design
-
  - Dependency Injection
 
  - Repository Pattern

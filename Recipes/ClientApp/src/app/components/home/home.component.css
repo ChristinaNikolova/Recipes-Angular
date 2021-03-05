@@ -21,7 +21,7 @@
 }
 
 img {
-  width: 70%;
+  max-width: 70%;
   border: 0.1rem double silver;
 }
 

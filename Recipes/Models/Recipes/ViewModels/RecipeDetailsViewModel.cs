@@ -18,6 +18,8 @@
 
         public bool IsFavourite { get; set; }
 
+        public string CategoryId { get; set; }
+
         public IEnumerable<BaseIngredientViewModel> Ingredients { get; set; }
     }
 }

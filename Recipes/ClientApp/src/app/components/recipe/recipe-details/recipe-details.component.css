@@ -1,12 +1,20 @@
 img {
-  width: 100% !important;
+  max-width: 100% !important;
+  max-height: 150%;
+  border: 0.1rem hidden;
+  padding: 10px;
+  background-color: white;
 }
 
 .fa-heart:hover {
   cursor: pointer;
 }
 
-.feature-icon, .single-meta {
+.fa-users,
+.fa-utensils,
+.fa-clock,
+.fa-list-ol,
+.fa-check {
   color: #78C2AD;
 }
 
@@ -14,6 +22,39 @@ img {
   font-weight: bold;
 }
 
-.ingredients {
+
+.wrapper {
+  background-color: lavender;
+  width: 1200px !important;
+  margin: auto;
+}
+
+.custom-font {
+  font-family: 'Akaya Telivigala', cursive;
+  padding: 10px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.feature-title {
+  font-weight: bold;
   color: #78C2AD;
+}
+
+.item-title {
+  font-family: 'Akaya Telivigala', cursive;
+  color: #78C2AD;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.hover-effect:hover {
+  cursor: pointer;
+  color: #78C2AD;
+  font-weight: bold;
 }

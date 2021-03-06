@@ -1,16 +1,20 @@
-<div class="container">
-  <h1 class="text-center">Ingredients</h1>
-  <table class="table table-striped table-bordered table-hover">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Recipes Count</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody *ngFor="let ingredient of ingredients$ | async">
-      <tr app-ingredient-single [ingredient]="ingredient" (reloadEventEmitter)="reload()"></tr>
-    </tbody>
-  </table>
+<div class="all-ingredients-wrapper">
+  <div class="container">
+    <h1 class="text-center custom-font">Ingredients</h1>
+    <hr />
+    <table class="table table-striped table-bordered table-hover custom-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Recipes Count</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let ingredient of ingredients$ | async">
+        <tr app-ingredient-single [ingredient]="ingredient" (reloadEventEmitter)="reload()"></tr>
+      </tbody>
+    </table>
+    <div class="fill pb-1 pt-1"></div>
+  </div>
 </div>

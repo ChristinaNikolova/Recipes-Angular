@@ -11,3 +11,20 @@ button {
   button:disabled {
     cursor: not-allowed;
   }
+
+.create-ingredient-wrapper {
+  background-color: lavender;
+  width: 1200px !important;
+  height: 600px;
+  margin: auto;
+}
+
+.create-ingredient-form {
+  background-color: lightgray;
+  padding: 10px;
+}
+
+.custom-font {
+  font-family: 'Akaya Telivigala', cursive;
+  padding: 15px;
+}

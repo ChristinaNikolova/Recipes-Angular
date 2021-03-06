@@ -1,21 +1,25 @@
-<div class="container">
-  <div class="row space-top">
-    <div class="col-md-12">
-      <h1>Create New Ingredient</h1>
-    </div>
-  </div>
-  <form [formGroup]="createForm" (submit)="create()">
+<div class="create-ingredient-wrapper">
+  <div class="container">
     <div class="row space-top">
-      <div class="col-lg-8">
-        <div class="form-group">
-          <label class="form-control-label" for="name">Name</label>
-          <input class="form-control" id="name" type="text" formControlName="name">
-        </div>
-        <div class="alert alert-danger" *ngIf="f.name?.errors?.required && f.name?.touched">The field is required</div>
-        <div class="alert alert-danger" *ngIf="f.name?.errors?.minlength">Ingredient name should be at least {{f.name.errors.minlength.requiredLength}} characters</div>
-        <div class="alert alert-danger" *ngIf="f.name?.errors?.maxlength">Ingredient name should be maximal {{f.name.errors.maxlength.requiredLength}} characters</div>
-        <button type="submit" class="btn btn-secondary" [disabled]="createForm.invalid">Create</button>
+      <div class="col-md-12">
+        <h1 class="custom-font">Create New Ingredient</h1>
+        <hr />
       </div>
     </div>
-  </form>
+    <form [formGroup]="createForm" (submit)="create()" class="create-ingredient-form">
+      <div class="row space-top">
+        <div class="col-lg-8">
+          <div class="form-group">
+            <label class="form-control-label" for="name">Name</label>
+            <input class="form-control" id="name" type="text" formControlName="name">
+          </div>
+          <div class="alert alert-danger" *ngIf="f.name?.errors?.required && f.name?.touched">The field is required</div>
+          <div class="alert alert-danger" *ngIf="f.name?.errors?.minlength">Ingredient name should be at least {{f.name.errors.minlength.requiredLength}} characters</div>
+          <div class="alert alert-danger" *ngIf="f.name?.errors?.maxlength">Ingredient name should be maximal {{f.name.errors.maxlength.requiredLength}} characters</div>
+          <button type="submit" class="btn btn-secondary" [disabled]="createForm.invalid">Create</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
 </div>

@@ -1,11 +1,13 @@
-<div class="container">
-  <div class="col-md-12">
-    <h1 class="text-center">Recipes in category: </h1>
-    <hr />
-  </div>
-  <div class="row">
-    <div class="col-lg-4" *ngFor="let recipe of recipes$ | async">
-      <app-single-recipe [recipe]=recipe></app-single-recipe>
+<div class="recipes-current-category-wrapper">
+  <div class="container">
+    <div class="col-md-12">
+      <h1 class="text-center custom-font">Recipes in category: </h1>
+      <hr />
+    </div>
+    <div class="row">
+      <div class="col-lg-4" *ngFor="let recipe of recipes$ | async">
+        <app-single-recipe [recipe]=recipe></app-single-recipe>
+      </div>
     </div>
   </div>
 </div>

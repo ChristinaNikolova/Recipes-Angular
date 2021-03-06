@@ -10,3 +10,25 @@
 .custom-position {
   text-align: center;
 }
+
+.order-recipes-result-wrapper {
+  background-color: lavender;
+  width: 1200px !important;
+  margin: auto;
+}
+
+.create-recipe-btn {
+  border-color: #78c2ad;
+}
+
+  .create-recipe-btn:hover {
+    border-color: #0069d9;
+  }
+
+.fill {
+  background-color: lavender;
+}
+
+.hr-fill {
+  border-top-color: lavender;
+}

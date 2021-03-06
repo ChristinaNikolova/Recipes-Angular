@@ -1,5 +1,7 @@
 <div class="wrapper">
   <div class="container">
+    <div class="fill pt-1 pb-1"></div>
+    <hr class="hr-fill" />
     <app-search-recipe></app-search-recipe>
     <app-recipe-order></app-recipe-order>
     <div class="row">
@@ -8,7 +10,7 @@
       </div>
       <div class="col-md-3"></div>
       <div class="col-md-6 custom-position">
-        <a class="btn btn-primary btn-lg mt-4 text-center" [routerLink]="['/recipe/create']" role="button">Create new recipe</a>
+        <a class="btn btn-primary btn-lg mt-4 text-center create-recipe-btn" [routerLink]="['/recipe/create']" role="button">Create new recipe</a>
       </div>
       <div class="col-md-3"></div>
     </div>

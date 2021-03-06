@@ -12,14 +12,32 @@ button {
     cursor: not-allowed;
   }
 
-.custom-danger:hover {
-  background-color: red;
-  color: white;
+.custom-danger {
+  margin-left: 0px;
 }
+
+  .custom-danger:hover {
+    background-color: red;
+    color: white;
+  }
 
 .search-form {
   background-color: lightgrey;
   border: 0.2rem solid lightgrey;
-  padding-top: 10px;
+}
+
+.remove {
+  padding-left: 0px !important;
+  margin-left: 0px !important;
+  padding-right: 0px !important;
+  margin-right: 0px !important;
+}
+
+.col-lg-2 {
+  flex: 0 0 8.666667%;
+}
+
+.test {
   text-align: center;
+  margin-left: 100px;
 }

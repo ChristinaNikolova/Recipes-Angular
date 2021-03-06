@@ -12,3 +12,19 @@
 .custom-position {
   text-align: center;
 }
+
+.fill {
+  background-color: lavender;
+}
+
+.hr-fill {
+  border-top-color: lavender;
+}
+
+.create-recipe-btn {
+  border-color: #78c2ad;
+}
+
+  .create-recipe-btn:hover {
+    border-color: #0069d9;
+  }

@@ -1,29 +1,28 @@
 <div class="search-form">
-  <div class="row mb-2">
-    <div class="col-md-8">
-      <h4 class="ml-5">Find a recipe</h4>
-      <p class="ml-5">Search for a recipe using the form below:</p>
-      <div class="row">
-        <div class="col-md-10">
-          <form [formGroup]="form" (submit)="search()" class="my-2 my-lg-0">
-            <div class="row test">
-              <div class="col-md-9 ml-1">
-                <input class="form-control" type="text" placeholder="Search" formControlName="search">
-                <div class="alert alert-danger" *ngIf="f.search?.errors?.required && f.search?.touched">The field is required</div>
-                <div class="alert alert-danger" *ngIf="f.search?.errors?.minlength">The field should be at least {{f.search.errors.minlength.requiredLength}} characters</div>
-              </div>
-              <div class="col-md-2">
-                <button [disabled]="form.invalid" class="btn btn-secondary" type="submit">Search</button>
-              </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <h4 class="text-center">Find a recipe</h4>
+      <p class="text-center">Search for a recipe using the form below:</p>
+    </div>
+    <div class="col-lg-12">
+      <div class="test">
+        <form [formGroup]="form" (submit)="search()" class="m-2">
+          <div class="row remove">
+            <div class="col-lg-8">
+              <input class="form-control" type="text" placeholder="Search" formControlName="search">
+              <div class="alert alert-danger" *ngIf="f.search?.errors?.required && f.search?.touched">The field is required</div>
+              <div class="alert alert-danger" *ngIf="f.search?.errors?.minlength">The field should be at least {{f.search.errors.minlength.requiredLength}} characters</div>
             </div>
-          </form>
-        </div>
-        <div class="col-md-2">
-          <button (click)="clear()" class="btn btn-danger custom-danger">Clear</button>
-        </div>
+            <div class="col-lg-2 remove">
+              <button [disabled]="form.invalid" class="btn btn-secondary" type="submit">Search</button>
+            </div>
+            <div class="col-lg-2">
+              <button (click)="clear()" class="btn btn-danger custom-danger">Clear</button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
-    <hr />
   </div>
 </div>
 <hr />

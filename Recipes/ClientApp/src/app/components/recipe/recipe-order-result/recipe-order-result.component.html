@@ -1,20 +1,24 @@
-<div class="container">
-  <app-search-recipe></app-search-recipe>
-  <app-recipe-order></app-recipe-order>
-  <div class="row">
-    <div class="col-md-12">
-      <h1 class="text-center custom-font">Ordered Recipes by <span class="uppercase">{{orderCriteria}}</span></h1>
+<div class="order-recipes-result-wrapper">
+  <div class="container">
+    <div class="fill pt-1 pb-1"></div>
+    <hr class="hr-fill" />
+    <app-search-recipe></app-search-recipe>
+    <app-recipe-order></app-recipe-order>
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center custom-font">Ordered Recipes by <span class="uppercase">{{orderCriteria}}</span></h1>
+      </div>
+      <div class="col-md-3"></div>
+      <div class="col-md-6 custom-position">
+        <a class="btn btn-primary btn-lg mt-4 mb-2 text-center create-recipe-btn" [routerLink]="['/recipe/create']" role="button">Create new recipe</a>
+      </div>
+      <div class="col-md-3"></div>
     </div>
-    <div class="col-md-3"></div>
-    <div class="col-md-6 custom-position">
-      <a class="btn btn-primary btn-lg mt-4 mb-2 text-center" [routerLink]="['/recipe/create']" role="button">Create new recipe</a>
-    </div>
-    <div class="col-md-3"></div>
-  </div>
-  <hr />
-  <div class="row">
-    <div class="col-lg-4" *ngFor="let recipe of orderedRecipes$ | async">
-      <app-single-recipe [recipe]=recipe></app-single-recipe>
+    <hr />
+    <div class="row">
+      <div class="col-lg-4" *ngFor="let recipe of orderedRecipes$ | async">
+        <app-single-recipe [recipe]=recipe></app-single-recipe>
+      </div>
     </div>
   </div>
 </div>

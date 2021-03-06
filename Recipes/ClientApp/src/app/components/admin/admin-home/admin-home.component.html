@@ -1,19 +1,22 @@
-<h1 class="text-center">Wellcome to Administration</h1>
-<div>
-  <ul>
-    <li class="bold">
-      Categories
-      <div class="mt-2 mb-2">
-        <button [routerLink]="['/admin/category/all']" class="btn btn-secondary mr-2">All Categories</button>
-        <button [routerLink]="['/admin/category/create']" class="btn btn-primary mr-2">Create category</button>
-      </div>
-    </li>
-    <li class="bold">
-      Ingredients
-      <div class="mt-2 mb-2">
-        <button [routerLink]="['/admin/ingredient/all']" class="btn btn-secondary mr-2">All Ingredients</button>
-        <button [routerLink]="['/admin/ingredient/create']" class="btn btn-primary mr-2">Create ingredient</button>
-      </div>
-    </li>
-  </ul>
+<div class="admin-home-wrapper">
+  <h1 class="text-center custom-font">Wellcome to Administration</h1>
+  <hr />
+  <div>
+    <ul class="custom-font-li">
+      <li class="bold m-1">
+        Categories
+        <div class="mt-2 mb-2">
+          <button [routerLink]="['/admin/category/all']" class="btn btn-secondary mr-2 remove-font all">All Categories</button>
+          <button [routerLink]="['/admin/category/create']" class="btn btn-primary mr-2 remove-font create">Create category</button>
+        </div>
+      </li>
+      <li class="bold m-1">
+        Ingredients
+        <div class="mt-2 mb-2">
+          <button [routerLink]="['/admin/ingredient/all']" class="btn btn-secondary mr-2 remove-font all">All Ingredients</button>
+          <button [routerLink]="['/admin/ingredient/create']" class="btn btn-primary mr-2 remove-font create">Create ingredient</button>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>

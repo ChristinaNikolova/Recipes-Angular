@@ -4,7 +4,7 @@
     <h1 class="display-3" *ngIf="isLoggedIn">Welcome to Recipes, {{username}}!</h1>
     <p class="lead" *ngIf="!authService.isAuthenticated()"><a class="bold" [routerLink]="['/register']">Register</a> or <a class="bold" [routerLink]="['/login']">Login</a> now to see the most delicious recipes!</p>
     <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    <p class="custom-font">Don't be afraid to adapt new ingredients into your own techniques, and traditional ingredients into new recipes.</p>
     <img src="https://d23.com/app/uploads/2015/09/recipes-banner1180x600.jpg" />
     <p class="lead" *ngIf="authService.isAuthenticated()">
       <a class="btn btn-primary btn-lg mt-4 mr-2" [routerLink]="['/recipe/all']" role="button">See our recipes</a>

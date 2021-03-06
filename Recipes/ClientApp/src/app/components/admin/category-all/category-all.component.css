@@ -1,0 +1,14 @@
+.all-category-wrapper {
+  background-color: lavender;
+  width: 1200px !important;
+  margin: auto;
+}
+
+.custom-font {
+  font-family: 'Akaya Telivigala', cursive;
+  padding: 10px;
+}
+
+.custom-table {
+  background-color: white;
+}

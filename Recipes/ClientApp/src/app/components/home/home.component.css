@@ -28,3 +28,9 @@ img {
 .display-3 {
   font-family: 'Akaya Telivigala', cursive;
 }
+
+.custom-font {
+  font-family: 'Akaya Telivigala', cursive;
+  color: #78C2AD;
+  font-style: italic;
+}

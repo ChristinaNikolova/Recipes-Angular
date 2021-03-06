@@ -2,3 +2,43 @@
   font-size: 20px;
   font-weight: bold;
 }
+
+.admin-home-wrapper {
+  background-color: lavender;
+  width: 1200px !important;
+  height: 650px;
+  margin: auto;
+}
+
+.custom-font {
+  font-family: 'Akaya Telivigala', cursive;
+  padding: 10px;
+}
+
+hr {
+  margin: 20px;
+}
+
+ul {
+  list-style-type: circle;
+}
+
+.custom-font-li li {
+  font-family: 'Akaya Telivigala', cursive;
+  color: #78C2AD;
+  font-size: 24px;
+}
+
+.remove-font {
+  color: white;
+  font-size: 16px;
+  font-family: BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif
+}
+
+.create {
+  border-color: #78C2AD;
+}
+
+.all {
+  border-color: #5A6268;
+}

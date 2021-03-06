@@ -55,3 +55,12 @@ Recipes can be used to present particular blog for recipes.
  - Dependency Injection
 
  - Repository Pattern
+
+## :framed_picture: Screen Shoots
+
+![Home Page](https://res.cloudinary.com/dieu4mste/image/upload/v1615017321/home_scwmf8.png)
+![All Recipes](https://res.cloudinary.com/dieu4mste/image/upload/v1615017320/allRecipes_usbtvt.png)
+![Recipe's Details](https://res.cloudinary.com/dieu4mste/image/upload/v1615017379/recipeDetails_azvzfe.png)
+![My Recipes](https://res.cloudinary.com/dieu4mste/image/upload/v1615017320/myRecipes_ehbndo.png)
+![Notification](https://res.cloudinary.com/dieu4mste/image/upload/v1615017317/toastr_nkzhqc.png)
+![Create Recipe](https://res.cloudinary.com/dieu4mste/image/upload/v1615017657/form_oqdmid.png)

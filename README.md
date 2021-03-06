@@ -63,3 +63,4 @@ Recipes can be used to present particular blog for recipes.
 ![Recipe's Details](https://res.cloudinary.com/dieu4mste/image/upload/v1615017379/recipeDetails_azvzfe.png)
 ![My Recipes](https://res.cloudinary.com/dieu4mste/image/upload/v1615017320/myRecipes_ehbndo.png)
 ![Notification](https://res.cloudinary.com/dieu4mste/image/upload/v1615017317/toastr_nkzhqc.png)
+![Create Recipe](https://res.cloudinary.com/dieu4mste/image/upload/v1615017657/form_oqdmid.png)

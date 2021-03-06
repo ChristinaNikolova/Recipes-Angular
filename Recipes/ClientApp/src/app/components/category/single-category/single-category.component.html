@@ -2,7 +2,7 @@
   <h3 class="card-header title">{{category.name}}</h3>
   <img src="{{category.picture}}" alt="category-pic">
   <ul class="list-group list-group-flush">
-    <li class="list-group-item"> Recipes in category: {{category.recipesCount}}</li>
+    <li class="list-group-item"><i class="fas fa-book"></i> Recipes in category: {{category.recipesCount}}</li>
   </ul>
   <div class="card-body">
     <button class="btn btn-secondary button-position" [routerLink]="['/recipe/currentCategory', category.id]">See recipes</button>

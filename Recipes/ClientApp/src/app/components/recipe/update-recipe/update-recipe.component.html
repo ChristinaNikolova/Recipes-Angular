@@ -1,9 +1,9 @@
 <div class="wrapper">
+  <div class="fill pt-2 pb-2"></div>
   <div class="container">
     <div class="row space-top">
       <div class="col-md-12">
         <h1 class="custom-font">Update Recipe</h1>
-        <hr />
       </div>
     </div>
     <form [formGroup]="updateForm" (submit)="update()">
@@ -54,6 +54,7 @@
             <input class="form-control" id="picture" type="url" formControlName="picture">
           </div>
           <div class="alert alert-danger" *ngIf="f.picture?.errors?.required && f.picture?.touched">The field is required</div>
+          <hr />
           <div formArrayName="ingredients">
             <label class="form-control-label bold">Ingredients: </label>
             <div *ngFor="let ingredient of ingredients.controls; let i=index" [formGroupName]="i">
@@ -81,5 +82,5 @@
       </div>
     </form>
   </div>
-
+  <div class="fill pt-2 pb-2"></div>
 </div>

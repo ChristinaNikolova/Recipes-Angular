@@ -15,7 +15,7 @@ button {
 .register-wrapper {
   background-color: lavender;
   width: 1200px !important;
-  height: 500px;
+  height: 800px;
   margin: auto;
 }
 
@@ -27,4 +27,8 @@ button {
 .custom-font {
   font-family: 'Akaya Telivigala', cursive;
   padding: 10px;
+}
+
+.fill {
+  background-color: lavender;
 }

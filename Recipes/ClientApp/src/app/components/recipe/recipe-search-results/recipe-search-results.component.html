@@ -1,12 +1,16 @@
-<div class="container">
-  <app-search-recipe></app-search-recipe>
-  <div class="col-md-12">
-    <h1 class="text-center">Searched Recipes</h1>
-    <hr />
-  </div>
-  <div class="row">
-    <div class="col-lg-4" *ngFor="let recipe of searchedRecipes$ | async">
-      <app-single-recipe [recipe]=recipe></app-single-recipe>
+<div class="search-recipe-result-wrapper">
+  <div class="container">
+    <div class="fill pt-1 pb-1"></div>
+    <hr class="hr-fill" />
+    <app-search-recipe></app-search-recipe>
+    <div class="col-md-12">
+      <h1 class="text-center custom-font">Searched Recipes</h1>
+      <hr />
+    </div>
+    <div class="row">
+      <div class="col-lg-4" *ngFor="let recipe of searchedRecipes$ | async">
+        <app-single-recipe [recipe]=recipe></app-single-recipe>
+      </div>
     </div>
   </div>
 </div>

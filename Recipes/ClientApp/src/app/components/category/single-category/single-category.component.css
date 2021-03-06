@@ -12,6 +12,7 @@ button {
 
   button:hover {
     background-color: #78C2AD;
+    border-color: #78C2AD;
     color: black;
     cursor: pointer;
   }
@@ -34,4 +35,12 @@ button {
 .card-body {
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.fa-book {
+  color: #78C2AD;
+}
+
+.list-group-item {
+  font-family: 'Akaya Telivigala', cursive;
 }

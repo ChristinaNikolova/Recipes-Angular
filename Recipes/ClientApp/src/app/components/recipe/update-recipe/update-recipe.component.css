@@ -32,3 +32,16 @@ button {
 .color {
   color: #78C2AD;
 }
+
+.container {
+  background-color: lightgray;
+  padding: 10px;
+}
+
+.fill {
+  background-color: lavender;
+}
+
+.bold {
+  font-weight: bold;
+}

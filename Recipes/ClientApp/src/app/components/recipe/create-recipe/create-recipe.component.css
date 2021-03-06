@@ -1,4 +1,4 @@
-.wrapper {
+.create-recipe-wrapper {
   background-color: lavender;
   width: 1200px !important;
   margin: auto;
@@ -35,4 +35,13 @@ button {
 
 .color {
   color: #78C2AD;
+}
+
+.container {
+  background-color: lightgray;
+  padding: 10px;
+}
+
+.fill {
+  background-color: lavender;
 }

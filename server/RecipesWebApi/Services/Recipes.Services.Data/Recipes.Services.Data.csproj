@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\Recipes.Data.Common\Recipes.Data.Common.csproj" />
+    <ProjectReference Include="..\..\Data\Recipes.Data.Models\Recipes.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Recipes.Common\Recipes.Common.csproj" />
+    <ProjectReference Include="..\..\Web\Recipes.Web.Models\Recipes.Web.Models.csproj" />
+    <ProjectReference Include="..\Recipes.Services.Mapping\Recipes.Services.Mapping.csproj" />
+  </ItemGroup>
+
+</Project>

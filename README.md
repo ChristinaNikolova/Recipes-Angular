@@ -1,5 +1,5 @@
 # :egg::ramen::spaghetti: Recipes
-Recipes is a small SPA
+Recipes is a small SPA created with Asp.Net Core with Angular template.
 
 ## :memo: Description
 Recipes can be used to present particular blog for recipes.

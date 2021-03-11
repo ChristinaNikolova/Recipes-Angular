@@ -11,8 +11,7 @@ export class ResponseHandlerInterceptorService implements HttpInterceptor {
 
   constructor(
     private toastr: ToastrService
-  ) {
-  }
+  ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(tap((success) => {

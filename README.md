@@ -50,7 +50,7 @@ Recipes can be used to present particular blog for recipes.
 
  - HTML5
 
- - Toastr
+ - ngx-toastr
 
  - Dependency Injection
 

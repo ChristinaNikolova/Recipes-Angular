@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
     this.authService
       .login(this.loginForm.value)
       .subscribe((data) => {
+        console.log(data);
         localStorage.setItem('token', data['token']);
         localStorage.setItem('username', data['username']);
         localStorage.setItem('isAdmin', data['isAdmin']);

@@ -20,7 +20,8 @@ export class CategoriesService {
   private readonly categoryForUpdateUrl = 'categoryForUpdate/';
 
   constructor(
-    private http: HttpClient) { }
+    private http: HttpClient) {
+     }
 
   public getAll(): Observable<Array<ICategory>> {
     return this.http.get<Array<ICategory>>(this.baseUrl + this.allUrl);
